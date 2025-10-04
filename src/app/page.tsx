@@ -1,9 +1,34 @@
-import Image from 'next/image';
+'use client';
+
+import { textToSpeech } from '@/lib/tts';
+import { useState } from 'react';
+import Image from 'next/image'
 
 export default function Home() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleSpeak = async () => {
+    try {
+      setIsPlaying(true);
+      const audioBlob = await textToSpeech("I love language learning");
+      const audio = new Audio(URL.createObjectURL(audioBlob));
+      audio.onended = () => setIsPlaying(false);
+      await audio.play();
+    } catch (error) {
+      console.error('Error playing audio:', error);
+      setIsPlaying(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen relative bg-white">
-      <div className="fixed inset-0 bg-gray-400/30 backdrop-blur-[2px] -z-10" />
+    <div className="min-h-screen relative">
+      <Image 
+      src="/globe.svg" 
+      alt="Language Background"
+      fill
+      className="object-cover fixed"
+      priority
+      />
       {/* Navigation */}
       <nav className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
@@ -11,6 +36,10 @@ export default function Home() {
             <span className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent">
               LLM
             </span>
+          </div>
+          <div className="hidden md:flex space-x-8">
+            <a href="#features" className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition">Features</a>
+            <a href="#how-it-works" className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition">How It Works</a>
           </div>
           <a href="/login" className="bg-gradient-to-r from-green-600 to-green-800 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-block">
             Login
@@ -30,8 +59,12 @@ export default function Home() {
           <a href="/login" className="bg-gradient-to-r from-green-600 to-green-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-block">
             Start Learning
           </a>
-          <button className="bg-white text-green-600 px-8 py-4 rounded-full text-lg font-semibold border-2 border-green-600 hover:bg-green-50 shadow-lg hover:shadow-xl transition-all duration-300">
-            KYS
+          <button 
+            onClick={handleSpeak}
+            disabled={isPlaying}
+            className="bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 px-8 py-4 rounded-full text-lg font-semibold border-2 border-purple-600 dark:border-purple-400 hover:bg-purple-50 dark:hover:bg-gray-700 transition-all duration-300 disabled:opacity-50"
+          >
+            {isPlaying ? "Playing..." : "I Love Language Learning"}
           </button>
         </div>
       </section>
@@ -49,7 +82,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent">Gamified Learning</h3>
+            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-400">Gamified Learning</h3>
             <p className="text-gray-600 dark:text-gray-400">
               Level up your skills with interactive games, challenges, and rewards. Make learning addictive and fun!
             </p>

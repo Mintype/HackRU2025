@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import { playStreamingAudio } from '@/lib/tts';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -20,6 +21,20 @@ export default function ChatPage() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [initializing, setInitializing] = useState(true);
+  const [speakingMessageId, setSpeakingMessageId] = useState<number | null>(null);
+
+  const playMessage = async (text: string, messageId: number) => {
+    try {
+      await playStreamingAudio(
+        text,
+        () => setSpeakingMessageId(messageId),
+        () => setSpeakingMessageId(null)
+      );
+    } catch (error) {
+      console.error('Error playing audio:', error);
+      setSpeakingMessageId(null);
+    }
+  };
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -73,12 +88,19 @@ export default function ChatPage() {
       
       const languageName = languageNames[profile.learning_language] || profile.learning_language;
       
+      const welcomeMessage = `Hello! I'm your ${languageName} practice partner. Let's have a conversation to help you practice. Feel free to write in ${languageName} or ask me anything!`;
+      
       setMessages([
         {
           role: 'assistant',
-          content: `Hello! I'm your ${languageName} practice partner. Let's have a conversation to help you practice. Feel free to write in ${languageName} or ask me anything!`,
+          content: welcomeMessage,
         },
       ]);
+
+      // Play the welcome message after a short delay to ensure the UI is ready
+      setTimeout(() => {
+        playMessage(welcomeMessage, 0);
+      }, 500);
     } catch (error) {
       console.error('Error:', error);
       router.push('/login');
@@ -128,6 +150,10 @@ export default function ChatPage() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
+      
+      // Automatically play the new message
+      const newMessageIndex = messages.length + 1;
+      playMessage(data.message, newMessageIndex);
     } catch (error) {
       console.error('Error sending message:', error);
       setMessages((prev) => [
@@ -197,7 +223,26 @@ export default function ChatPage() {
                     : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-lg'
                 }`}
               >
-                <p className="whitespace-pre-wrap break-words">{message.content}</p>
+                <div className="flex items-start space-x-2">
+                  <p className="whitespace-pre-wrap break-words flex-1">{message.content}</p>
+                  {message.role === 'assistant' && (
+                    <button
+                      onClick={() => playMessage(message.content, index)}
+                      disabled={speakingMessageId !== null}
+                      className="ml-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                    >
+                      {speakingMessageId === index ? (
+                        <svg className="w-5 h-5 text-purple-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
+                        </svg>
+                      ) : (
+                        <svg className="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      )}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           ))}
