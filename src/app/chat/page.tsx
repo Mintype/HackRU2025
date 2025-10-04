@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import { playStreamingAudio } from '@/lib/tts';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -20,6 +21,20 @@ export default function ChatPage() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [initializing, setInitializing] = useState(true);
+  const [speakingMessageId, setSpeakingMessageId] = useState<number | null>(null);
+
+  const playMessage = async (text: string, messageId: number) => {
+    try {
+      await playStreamingAudio(
+        text,
+        () => setSpeakingMessageId(messageId),
+        () => setSpeakingMessageId(null)
+      );
+    } catch (error) {
+      console.error('Error playing audio:', error);
+      setSpeakingMessageId(null);
+    }
+  };
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -128,6 +143,10 @@ export default function ChatPage() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
+      
+      // Automatically play the new message
+      const newMessageIndex = messages.length + 1;
+      playMessage(data.message, newMessageIndex);
     } catch (error) {
       console.error('Error sending message:', error);
       setMessages((prev) => [
@@ -197,7 +216,26 @@ export default function ChatPage() {
                     : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-lg'
                 }`}
               >
-                <p className="whitespace-pre-wrap break-words">{message.content}</p>
+                <div className="flex items-start space-x-2">
+                  <p className="whitespace-pre-wrap break-words flex-1">{message.content}</p>
+                  {message.role === 'assistant' && (
+                    <button
+                      onClick={() => playMessage(message.content, index)}
+                      disabled={speakingMessageId !== null}
+                      className="ml-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                    >
+                      {speakingMessageId === index ? (
+                        <svg className="w-5 h-5 text-purple-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
+                        </svg>
+                      ) : (
+                        <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.75 5.25a3 3 0 013 3m-3-3a3 3 0 00-3 3m3-3v14.25M5.25 5.25a3 3 0 00-3 3m3-3a3 3 0 013 3m-3-3v14.25" />
+                        </svg>
+                      )}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           ))}

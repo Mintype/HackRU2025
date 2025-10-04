@@ -4,22 +4,36 @@ const elevenlabs = new ElevenLabsClient({
   apiKey: 'sk_83fc3fec7991d1967e08ee96f21be8c7fe7a164233638972',
 });
 
-export async function textToSpeech(text: string): Promise<Blob> {
+export async function playStreamingAudio(text: string, onStart?: () => void, onEnd?: () => void) {
   try {
+    onStart?.();
+
     const audioStream = await elevenlabs.textToSpeech.stream('JBFqnCBsd6RMkjVDRZzb', {
       text,
       modelId: 'eleven_multilingual_v2',
     });
 
-    // Convert stream to blob
-    const chunks: Uint8Array[] = [];
-    for await (const chunk of audioStream) {
-      chunks.push(chunk);
-    }
+    const reader = audioStream.getReader();
+    const audioContext = new AudioContext();
     
-    return new Blob(chunks, { type: 'audio/mpeg' });
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      if (value) {
+        const audioBuffer = await audioContext.decodeAudioData(value.buffer);
+        const source = audioContext.createBufferSource();
+        source.buffer = audioBuffer;
+        source.connect(audioContext.destination);
+        source.start(0);
+        await new Promise(resolve => source.onended = resolve);
+      }
+    }
+
+    onEnd?.();
   } catch (error) {
-    console.error('Text-to-speech error:', error);
+    console.error('Error playing streaming audio:', error);
+    onEnd?.();
     throw error;
   }
 }
