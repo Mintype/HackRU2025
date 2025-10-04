@@ -4,10 +4,25 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { User } from '@supabase/supabase-js';
+import LanguageSelectionModal from '@/components/LanguageSelectionModal';
+
+interface UserProfile {
+  id: string;
+  email: string;
+  learning_language: string | null;
+  native_language: string;
+  xp_points: number;
+  lessons_completed: number;
+  words_learned: number;
+  current_streak: number;
+}
 
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showLanguageModal, setShowLanguageModal] = useState(false);
+  const [savingLanguage, setSavingLanguage] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -19,14 +34,62 @@ export default function DashboardPage() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         router.push('/login');
+        return;
+      }
+      
+      setUser(user);
+      
+      // Fetch user profile
+      const { data: profile, error } = await supabase
+        .from('user_profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+
+      if (error) {
+        console.error('Error fetching profile:', error);
+        // Profile might not exist yet, show language modal
+        setShowLanguageModal(true);
       } else {
-        setUser(user);
+        setUserProfile(profile);
+        // Check if user has selected a language
+        if (!profile.learning_language) {
+          setShowLanguageModal(true);
+        }
       }
     } catch (error) {
       console.error('Error checking user:', error);
       router.push('/login');
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleLanguageSelection(languageCode: string) {
+    if (!user) return;
+    
+    setSavingLanguage(true);
+    try {
+      const { error } = await supabase
+        .from('user_profiles')
+        .upsert({
+          id: user.id,
+          email: user.email!,
+          learning_language: languageCode,
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      // Refresh profile
+      await checkUser();
+      setShowLanguageModal(false);
+    } catch (error) {
+      console.error('Error setting language:', error);
+      alert('Failed to set language. Please try again.');
+    } finally {
+      setSavingLanguage(false);
     }
   }
 
@@ -49,20 +112,60 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900">
+      {/* Language Selection Modal */}
+      {showLanguageModal && (
+        <LanguageSelectionModal 
+          onSelect={handleLanguageSelection}
+          loading={savingLanguage}
+        />
+      )}
+
       {/* Navigation */}
       <nav className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <button onClick={() => router.push('/')} className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">L</span>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 LLM
               </span>
-            </div>
+            </button>
             <div className="flex items-center space-x-4">
-              <span className="text-gray-700 dark:text-gray-300">
+              {userProfile?.learning_language && (
+                <div className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 px-4 py-2 rounded-full border border-purple-200 dark:border-purple-700">
+                  <span className="text-lg">
+                    {userProfile.learning_language === 'es' && '🇪🇸'}
+                    {userProfile.learning_language === 'fr' && '🇫🇷'}
+                    {userProfile.learning_language === 'de' && '🇩🇪'}
+                    {userProfile.learning_language === 'ja' && '🇯🇵'}
+                    {userProfile.learning_language === 'zh' && '🇨🇳'}
+                    {userProfile.learning_language === 'ko' && '🇰🇷'}
+                    {userProfile.learning_language === 'it' && '🇮🇹'}
+                    {userProfile.learning_language === 'pt' && '🇵🇹'}
+                    {userProfile.learning_language === 'ru' && '🇷🇺'}
+                    {userProfile.learning_language === 'ar' && '🇸🇦'}
+                    {userProfile.learning_language === 'hi' && '🇮🇳'}
+                    {userProfile.learning_language === 'nl' && '🇳🇱'}
+                  </span>
+                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 capitalize">
+                    {userProfile.learning_language === 'es' && 'Spanish'}
+                    {userProfile.learning_language === 'fr' && 'French'}
+                    {userProfile.learning_language === 'de' && 'German'}
+                    {userProfile.learning_language === 'ja' && 'Japanese'}
+                    {userProfile.learning_language === 'zh' && 'Chinese'}
+                    {userProfile.learning_language === 'ko' && 'Korean'}
+                    {userProfile.learning_language === 'it' && 'Italian'}
+                    {userProfile.learning_language === 'pt' && 'Portuguese'}
+                    {userProfile.learning_language === 'ru' && 'Russian'}
+                    {userProfile.learning_language === 'ar' && 'Arabic'}
+                    {userProfile.learning_language === 'hi' && 'Hindi'}
+                    {userProfile.learning_language === 'nl' && 'Dutch'}
+                  </span>
+                </div>
+              )}
+              <span className="text-gray-700 dark:text-gray-300 hidden md:block">
                 {user?.email}
               </span>
               <button
@@ -101,7 +204,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-800 dark:text-white">0</p>
+            <p className="text-3xl font-bold text-gray-800 dark:text-white">{userProfile?.lessons_completed || 0}</p>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border-l-4 border-purple-600">
@@ -115,7 +218,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-800 dark:text-white">0 days</p>
+            <p className="text-3xl font-bold text-gray-800 dark:text-white">{userProfile?.current_streak || 0} days</p>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border-l-4 border-pink-600">
@@ -129,7 +232,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-800 dark:text-white">0</p>
+            <p className="text-3xl font-bold text-gray-800 dark:text-white">{userProfile?.words_learned || 0}</p>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border-l-4 border-green-600">
@@ -143,7 +246,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-800 dark:text-white">0</p>
+            <p className="text-3xl font-bold text-gray-800 dark:text-white">{userProfile?.xp_points || 0}</p>
           </div>
         </div>
 
@@ -163,7 +266,7 @@ export default function DashboardPage() {
             </p>
           </button>
 
-          <button className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-left group">
+          <button onClick={() => router.push('/chat')} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-left group">
             <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
