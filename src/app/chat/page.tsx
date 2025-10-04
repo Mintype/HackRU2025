@@ -39,11 +39,25 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  // Handle visibility change
   useEffect(() => {
-    checkUserAndProfile();
+    const handleVisibilityChange = () => {
+      if (document.hidden && speakingMessageId !== null) {
+        stopAudio();
+        setSpeakingMessageId(null);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       stopAudio();
     };
+  }, [speakingMessageId]);
+
+  useEffect(() => {
+    checkUserAndProfile();
   }, []);
 
   useEffect(() => {
