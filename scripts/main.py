@@ -6,10 +6,14 @@ import json
 # Load environment variables
 load_dotenv()
 
-# Initialize Supabase client
+# Initialize Supabase client with service role key to bypass RLS
 url: str = os.environ.get("NEXT_PUBLIC_SUPABASE_URL")
-key: str = os.environ.get("NEXT_PUBLIC_SUPABASE_ANON_KEY")
-supabase: Client = create_client(url, key)
+# Use service role key instead of anon key to bypass RLS
+service_key: str = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+if not service_key:
+    print("Warning: SUPABASE_SERVICE_ROLE_KEY not found, trying anon key...")
+    service_key = os.environ.get("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+supabase: Client = create_client(url, service_key)
 
 def get_course_id(language_code: str):
     """Get course ID by language code"""
