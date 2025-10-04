@@ -88,12 +88,19 @@ export default function ChatPage() {
       
       const languageName = languageNames[profile.learning_language] || profile.learning_language;
       
+      const welcomeMessage = `Hello! I'm your ${languageName} practice partner. Let's have a conversation to help you practice. Feel free to write in ${languageName} or ask me anything!`;
+      
       setMessages([
         {
           role: 'assistant',
-          content: `Hello! I'm your ${languageName} practice partner. Let's have a conversation to help you practice. Feel free to write in ${languageName} or ask me anything!`,
+          content: welcomeMessage,
         },
       ]);
+
+      // Play the welcome message after a short delay to ensure the UI is ready
+      setTimeout(() => {
+        playMessage(welcomeMessage, 0);
+      }, 500);
     } catch (error) {
       console.error('Error:', error);
       router.push('/login');
@@ -229,8 +236,8 @@ export default function ChatPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
                         </svg>
                       ) : (
-                        <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.75 5.25a3 3 0 013 3m-3-3a3 3 0 00-3 3m3-3v14.25M5.25 5.25a3 3 0 00-3 3m3-3a3 3 0 013 3m-3-3v14.25" />
+                        <svg className="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
                         </svg>
                       )}
                     </button>
