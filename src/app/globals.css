@@ -9,34 +9,6 @@ html {
   --foreground: #171717;
 }
 
-.cursor {
-  position: fixed;
-  border: 2px solid #ffffff2b;
-  border-radius: 50%;
-  mix-blend-mode: screen;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 999999 !important ;
-  backdrop-filter: blur(1px);
-  background-color: #0000005e;
-  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-  /* cursor: none !important;  */
-}
-
-@media screen and (max-width: 768px) {
-  .cursor {
-    width: 0;
-    height: 0;
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
-      opacity 0.2s ease-in-out;
-  }
-}
-
-.cursor.pointer {
-  opacity: 0 !important;
-  transition: width 0.2s ease-in-out, height 0.2s ease-in-out, opacity 0.2s ease-in-out;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

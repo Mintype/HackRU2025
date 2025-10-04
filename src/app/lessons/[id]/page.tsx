@@ -102,6 +102,10 @@ export default function LessonPage() {
         }
       }
 
+      // Print number of activities
+      const activityCount = lessonData?.content?.activities?.length || 0;
+      console.log(`📚 This lesson has ${activityCount} activity${activityCount !== 1 ? 'ies' : ''}`);
+
       setLesson(lessonData);
 
       // Mark lesson as in progress
@@ -145,7 +149,10 @@ export default function LessonPage() {
         return;
       }
 
-      // Redirect back to lessons page
+      console.log(`🎉 Lesson "${lesson.title}" completed with score: ${score}%`);
+
+      // Show completion message and redirect
+      // alert('Lesson completed!');
       router.push('/lessons');
     } catch (error) {
       console.error('Error completing lesson:', error);
@@ -153,21 +160,45 @@ export default function LessonPage() {
   }
 
   function handleMultipleChoice(activityIndex: number, answer: string, correctAnswer: string) {
+    const isCorrect = answer === correctAnswer;
     setUserAnswers({ ...userAnswers, [activityIndex]: answer });
     setShowResult({ ...showResult, [activityIndex]: true });
-    setCorrectAnswers({ ...correctAnswers, [activityIndex]: answer === correctAnswer });
+    setCorrectAnswers({ ...correctAnswers, [activityIndex]: isCorrect });
+    console.log(`Activity ${activityIndex + 1} completed! Answer: ${isCorrect ? '✓ Correct' : '✗ Incorrect'}`);
   }
 
   function handleWrittenAnswer(activityIndex: number, userAnswer: string, correctAnswer: string) {
     setShowResult({ ...showResult, [activityIndex]: true });
     const isCorrect = userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase().trim();
     setCorrectAnswers({ ...correctAnswers, [activityIndex]: isCorrect });
+    console.log(`Activity ${activityIndex + 1} completed! Answer: ${isCorrect ? '✓ Correct' : '✗ Incorrect'}`);
+
+    const activityCount = lesson?.content?.activities?.length || 0;
+
+    if(activityIndex + 1 >= activityCount) {
+      // All activities completed
+      const score = calculateScore();
+      setTimeout(() => {
+        completeLesson(score);
+      }, 2000); // Wait 2 seconds to show completion screen
+    }
+
   }
 
   function handleNextActivity() {
-    setCurrentActivityIndex(currentActivityIndex + 1);
+    const nextIndex = currentActivityIndex + 1;
+    setCurrentActivityIndex(nextIndex);
     setWrittenAnswer('');
     setShowHint(false);
+    
+    // Check if this was the last activity
+    if (lesson && nextIndex >= lesson.content.activities.length) {
+      // Complete the lesson and redirect
+      const score = calculateScore();
+      setTimeout(() => {
+        completeLesson(score);
+      }, 2000); // Wait 2 seconds to show completion screen
+    }
   }
 
   function calculateScore() {
@@ -437,6 +468,7 @@ export default function LessonPage() {
                               onClick={() => {
                                 setShowResult({ ...showResult, [currentActivityIndex]: true });
                                 setCorrectAnswers({ ...correctAnswers, [currentActivityIndex]: true });
+                                console.log(`Activity ${currentActivityIndex + 1} completed! (Matching activity)`);
                               }}
                               className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors mt-4"
                             >
