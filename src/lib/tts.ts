@@ -7,6 +7,8 @@ const elevenlabs = new ElevenLabsClient({
 let currentAudioContext: AudioContext | null = null;
 let currentSources: AudioBufferSourceNode[] = [];
 let isPlaying = false;
+let lastPlayedMessage = '';
+let lastPlayedTimestamp = 0;
 
 export function stopAudio() {
   if (currentAudioContext) {
@@ -25,6 +27,16 @@ export function stopAudio() {
 }
 
 export async function playStreamingAudio(text: string, onStart?: () => void, onEnd?: () => void) {
+  // Prevent duplicate plays within 1 second and for the same message
+  const now = Date.now();
+  if (text === lastPlayedMessage && now - lastPlayedTimestamp < 1000) {
+    return;
+  }
+
+  // Update tracking
+  lastPlayedMessage = text;
+  lastPlayedTimestamp = now;
+
   // If already playing, stop first and wait a small delay to ensure cleanup
   if (isPlaying) {
     stopAudio();
