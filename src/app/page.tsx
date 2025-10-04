@@ -1,25 +1,8 @@
 'use client';
 
-import { textToSpeech } from '@/lib/tts';
-import { useState } from 'react';
 import Image from 'next/image'
 
 export default function Home() {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handleSpeak = async () => {
-    try {
-      setIsPlaying(true);
-      const audioBlob = await textToSpeech("I love language learning");
-      const audio = new Audio(URL.createObjectURL(audioBlob));
-      audio.onended = () => setIsPlaying(false);
-      await audio.play();
-    } catch (error) {
-      console.error('Error playing audio:', error);
-      setIsPlaying(false);
-    }
-  };
-
   return (
     <div className="min-h-screen relative">
       <Image 
@@ -59,13 +42,6 @@ export default function Home() {
           <a href="/login" className="bg-gradient-to-r from-green-600 to-green-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-block">
             Start Learning
           </a>
-          <button 
-            onClick={handleSpeak}
-            disabled={isPlaying}
-            className="bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 px-8 py-4 rounded-full text-lg font-semibold border-2 border-purple-600 dark:border-purple-400 hover:bg-purple-50 dark:hover:bg-gray-700 transition-all duration-300 disabled:opacity-50"
-          >
-            {isPlaying ? "Playing..." : "I Love Language Learning"}
-          </button>
         </div>
       </section>
 
