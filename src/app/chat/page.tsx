@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
-import { playStreamingAudio } from '@/lib/tts';
+import { playStreamingAudio, stopAudio } from '@/lib/tts';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -227,8 +227,15 @@ export default function ChatPage() {
                   <p className="whitespace-pre-wrap break-words flex-1">{message.content}</p>
                   {message.role === 'assistant' && (
                     <button
-                      onClick={() => playMessage(message.content, index)}
-                      disabled={speakingMessageId !== null}
+                      onClick={() => {
+                        if (speakingMessageId === index) {
+                          stopAudio();
+                          setSpeakingMessageId(null);
+                        } else {
+                          playMessage(message.content, index);
+                        }
+                      }}
+                      disabled={speakingMessageId !== null && speakingMessageId !== index}
                       className="ml-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
                     >
                       {speakingMessageId === index ? (
