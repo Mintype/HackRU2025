@@ -22,6 +22,7 @@ export default function ChatPage() {
   const [loading, setLoading] = useState(false);
   const [initializing, setInitializing] = useState(true);
   const [speakingMessageId, setSpeakingMessageId] = useState<number | null>(null);
+  const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
 
   const playMessage = async (text: string, messageId: number) => {
     try {
@@ -36,7 +37,6 @@ export default function ChatPage() {
     }
   };
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const autoPlayEnabled = useRef<boolean>(process.env.NEXT_PUBLIC_TTS_AUTOPLAY_ENABLED !== 'false');
   const router = useRouter();
 
   useEffect(() => {
@@ -52,14 +52,14 @@ export default function ChatPage() {
 
   // Handle auto-play for all assistant messages
   useEffect(() => {
-    if (autoPlayEnabled.current && messages.length > 0 && 
+    if (autoPlayEnabled && messages.length > 0 && 
         messages[messages.length - 1].role === 'assistant' && 
         !speakingMessageId && !initializing) {
       const lastMessage = messages[messages.length - 1];
       const messageId = messages.length - 1;
       playMessage(lastMessage.content, messageId);
     }
-  }, [messages, initializing]);
+  }, [messages, initializing, autoPlayEnabled]);
 
   async function checkUserAndProfile() {
     try {
@@ -102,15 +102,12 @@ export default function ChatPage() {
       };
       
       const languageName = languageNames[profile.learning_language] || profile.learning_language;
-      
       const welcomeMessage = `Hello! I'm your ${languageName} practice partner. Let's have a conversation to help you practice. Feel free to write in ${languageName} or ask me anything!`;
       
-      setMessages([
-        {
-          role: 'assistant',
-          content: welcomeMessage,
-        },
-      ]);
+      setMessages([{
+        role: 'assistant',
+        content: welcomeMessage,
+      }]);
     } catch (error) {
       console.error('Error:', error);
       router.push('/login');
@@ -153,7 +150,6 @@ export default function ChatPage() {
       }
 
       const data = await response.json();
-
       const assistantMessage: Message = {
         role: 'assistant',
         content: data.message,
@@ -234,7 +230,6 @@ export default function ChatPage() {
                   {message.role === 'assistant' && (
                     <button
                       onClick={() => {
-                        autoPlayEnabled.current = false;
                         if (speakingMessageId === index) {
                           stopAudio();
                           setSpeakingMessageId(null);
@@ -274,26 +269,57 @@ export default function ChatPage() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input Form */}
-        <form onSubmit={sendMessage} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4">
-          <div className="flex space-x-4">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              disabled={loading}
-              placeholder="Type your message..."
-              className="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition disabled:opacity-50"
-            />
-            <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        {/* Bottom Controls */}
+        <div className="flex flex-col space-y-4">
+          <button
+            onClick={() => setAutoPlayEnabled(!autoPlayEnabled)}
+            className={`self-start flex items-center space-x-2 px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
+              autoPlayEnabled
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600'
+            }`}
+            title={autoPlayEnabled ? 'Disable autoplay' : 'Enable autoplay'}
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              Send
-            </button>
-          </div>
-        </form>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={autoPlayEnabled 
+                  ? "M15.536 15.536L9.879 9.879M9.879 9.879L4.222 4.222M9.879 9.879L15.536 4.222M9.879 9.879L4.222 15.536"
+                  : "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"}
+              />
+            </svg>
+            <span>
+              Autoplay {autoPlayEnabled ? 'On' : 'Off'}
+            </span>
+          </button>
+
+          <form onSubmit={sendMessage} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4">
+            <div className="flex space-x-4">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                disabled={loading}
+                placeholder="Type your message..."
+                className="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                disabled={loading || !input.trim()}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              >
+                Send
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
