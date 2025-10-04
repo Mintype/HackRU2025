@@ -46,7 +46,7 @@ export default function LoginPage() {
         if (error) throw error;
 
         setMessage({ type: 'success', text: 'Successfully logged in!' });
-        setTimeout(() => router.push('/dashboard'), 1500);
+        setTimeout(() => router.push('/dashboard'), 10);
       } else {
         // Sign up
         const { data, error } = await supabase.auth.signUp({
@@ -60,7 +60,7 @@ export default function LoginPage() {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
           setMessage({ type: 'success', text: 'Account created successfully!' });
-          setTimeout(() => router.push('/dashboard'), 1500);
+          setTimeout(() => router.push('/dashboard'), 10);
         } else {
           setMessage({
             type: 'success',
@@ -80,43 +80,53 @@ export default function LoginPage() {
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-600"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-2xl">L</span>
-            </div>
-            <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100">
+      {/* Navigation */}
+      <nav className="container mx-auto px-6 py-6 backdrop-blur-sm bg-white/80 sticky top-0 z-50 rounded-b-2xl shadow-sm">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-800 bg-clip-text text-transparent animate-gradient-flow-fast">
               LLM
             </span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-            {isLogin ? 'Welcome Back!' : 'Create Account'}
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            {isLogin
-              ? 'Sign in to continue your language learning journey'
-              : 'Start your language learning adventure today'}
-          </p>
+          <button
+            onClick={() => router.push('/')}
+            className="text-gray-900 hover:text-purple-600 transition font-medium"
+          >
+            ← Back to Home
+          </button>
         </div>
+      </nav>
 
-        {/* Form Card */}
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8">
+      <div className="container mx-auto px-4 py-12 flex items-center justify-center min-h-[calc(100vh-120px)]">
+        <div className="w-full max-w-md">
+          {/* Logo */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent animate-gradient-flow-slow">
+              {isLogin ? 'Welcome Back!' : 'Create Account'}
+            </h1>
+            <p className="text-gray-700 text-lg">
+              {isLogin
+                ? 'Sign in to continue your language learning journey'
+                : 'Start your language learning adventure today'}
+            </p>
+          </div>
+
+          {/* Form Card */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Input */}
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Email Address
               </label>
@@ -126,7 +136,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
                 placeholder="you@example.com"
               />
             </div>
@@ -135,7 +145,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Password
               </label>
@@ -146,11 +156,11 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
                 placeholder="••••••••"
               />
               {!isLogin && (
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mt-2 text-sm text-gray-600">
                   Password must be at least 6 characters
                 </p>
               )}
@@ -161,8 +171,8 @@ export default function LoginPage() {
               <div
                 className={`p-4 rounded-xl ${
                   message.type === 'error'
-                    ? 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400'
-                    : 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400'
+                    ? 'bg-red-50 text-red-600'
+                    : 'bg-green-50 text-green-600'
                 }`}
               >
                 <p className="text-sm font-medium">{message.text}</p>
@@ -173,7 +183,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-800 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none animate-gradient-flow"
             >
               {loading ? (
                 <span className="flex items-center justify-center">
@@ -208,7 +218,7 @@ export default function LoginPage() {
 
           {/* Toggle Login/Signup */}
           <div className="mt-6 text-center">
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-700">
               {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
               <button
                 type="button"
@@ -216,7 +226,7 @@ export default function LoginPage() {
                   setIsLogin(!isLogin);
                   setMessage(null);
                 }}
-                className="text-purple-600 dark:text-purple-400 font-semibold hover:underline"
+                className="text-purple-600 font-semibold hover:underline"
               >
                 {isLogin ? 'Sign Up' : 'Sign In'}
               </button>
@@ -228,24 +238,15 @@ export default function LoginPage() {
             <div className="mt-4 text-center">
               <button
                 type="button"
-                className="text-sm text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                className="text-sm text-gray-600 hover:text-purple-600"
               >
                 Forgot your password?
               </button>
             </div>
           )}
         </div>
-
-        {/* Back to Home */}
-        <div className="mt-6 text-center">
-          <button
-            onClick={() => router.push('/')}
-            className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 font-medium"
-          >
-            ← Back to Home
-          </button>
-        </div>
       </div>
+    </div>
     </div>
   );
 }
