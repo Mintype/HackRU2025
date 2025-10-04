@@ -36,15 +36,30 @@ export default function ChatPage() {
     }
   };
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const autoPlayEnabled = useRef<boolean>(true);
   const router = useRouter();
 
   useEffect(() => {
     checkUserAndProfile();
+    return () => {
+      stopAudio();
+    };
   }, []);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Handle auto-play for all assistant messages
+  useEffect(() => {
+    if (autoPlayEnabled.current && messages.length > 0 && 
+        messages[messages.length - 1].role === 'assistant' && 
+        !speakingMessageId && !initializing) {
+      const lastMessage = messages[messages.length - 1];
+      const messageId = messages.length - 1;
+      playMessage(lastMessage.content, messageId);
+    }
+  }, [messages, initializing]);
 
   async function checkUserAndProfile() {
     try {
@@ -97,10 +112,10 @@ export default function ChatPage() {
         },
       ]);
 
-      // Play the welcome message after a short delay to ensure the UI is ready
+      // Small delay to ensure state is updated before playing
       setTimeout(() => {
         playMessage(welcomeMessage, 0);
-      }, 500);
+      }, 100);
     } catch (error) {
       console.error('Error:', error);
       router.push('/login');
@@ -150,10 +165,6 @@ export default function ChatPage() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-      
-      // Automatically play the new message
-      const newMessageIndex = messages.length + 1;
-      playMessage(data.message, newMessageIndex);
     } catch (error) {
       console.error('Error sending message:', error);
       setMessages((prev) => [
@@ -228,6 +239,7 @@ export default function ChatPage() {
                   {message.role === 'assistant' && (
                     <button
                       onClick={() => {
+                        autoPlayEnabled.current = false;
                         if (speakingMessageId === index) {
                           stopAudio();
                           setSpeakingMessageId(null);
