@@ -36,7 +36,7 @@ export default function ChatPage() {
     }
   };
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const autoPlayEnabled = useRef<boolean>(true);
+  const autoPlayEnabled = useRef<boolean>(process.env.NEXT_PUBLIC_TTS_AUTOPLAY_ENABLED !== 'false');
   const router = useRouter();
 
   useEffect(() => {
@@ -111,11 +111,6 @@ export default function ChatPage() {
           content: welcomeMessage,
         },
       ]);
-
-      // Small delay to ensure state is updated before playing
-      setTimeout(() => {
-        playMessage(welcomeMessage, 0);
-      }, 100);
     } catch (error) {
       console.error('Error:', error);
       router.push('/login');
