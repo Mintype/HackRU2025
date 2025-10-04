@@ -2,11 +2,17 @@
 
 import Image from 'next/image'
 import { useState } from 'react';
+import CustomCursor from '@/components/CustomCursor';
 
 export default function Home() {
 
   return (
     <div className="min-h-screen rel  ative bg-gradient-to-br from-blue-100 via-white to-purple-100">
+
+      <CustomCursor
+        {...someProps}
+      />
+
       {/* Navigation */}
       <nav className="container mx-auto px-6 py-6 backdrop-blur-sm bg-white/80 sticky top-0 z-50 rounded-b-2xl shadow-sm opacity-0-animate animate-fadeInDown">
         <div className="flex items-center justify-between">
