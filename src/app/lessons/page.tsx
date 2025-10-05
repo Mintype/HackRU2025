@@ -309,7 +309,7 @@ export default function LessonsPage() {
                         #{lesson.lesson_number}
                       </span>
                       {status === 'completed' && (
-                        <span className="text-2xl">✓</span>
+                        <span className="text-2xl text-green-600">✓</span>
                       )}
                     </div>
 

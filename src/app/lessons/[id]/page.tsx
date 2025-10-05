@@ -168,16 +168,21 @@ export default function LessonPage() {
   }
 
   function handleWrittenAnswer(activityIndex: number, userAnswer: string, correctAnswer: string) {
-    setShowResult({ ...showResult, [activityIndex]: true });
     const isCorrect = userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase().trim();
-    setCorrectAnswers({ ...correctAnswers, [activityIndex]: isCorrect });
+    const newCorrectAnswers = { ...correctAnswers, [activityIndex]: isCorrect };
+    
+    setShowResult({ ...showResult, [activityIndex]: true });
+    setCorrectAnswers(newCorrectAnswers);
     console.log(`Activity ${activityIndex + 1} completed! Answer: ${isCorrect ? '✓ Correct' : '✗ Incorrect'}`);
 
     const activityCount = lesson?.content?.activities?.length || 0;
 
     if(activityIndex + 1 >= activityCount) {
-      // All activities completed
-      const score = calculateScore();
+      // All activities completed - calculate score with the updated answers
+      const totalActivities = Object.keys(newCorrectAnswers).length;
+      const correctCount = Object.values(newCorrectAnswers).filter(Boolean).length;
+      const score = totalActivities > 0 ? Math.round((correctCount / totalActivities) * 100) : 0;
+      
       setTimeout(() => {
         completeLesson(score);
       }, 2000); // Wait 2 seconds to show completion screen
@@ -193,8 +198,11 @@ export default function LessonPage() {
     
     // Check if this was the last activity
     if (lesson && nextIndex >= lesson.content.activities.length) {
-      // Complete the lesson and redirect
-      const score = calculateScore();
+      // Complete the lesson and redirect - calculate final score
+      const totalActivities = Object.keys(correctAnswers).length;
+      const correctCount = Object.values(correctAnswers).filter(Boolean).length;
+      const score = totalActivities > 0 ? Math.round((correctCount / totalActivities) * 100) : 0;
+      
       setTimeout(() => {
         completeLesson(score);
       }, 2000); // Wait 2 seconds to show completion screen
@@ -338,7 +346,20 @@ export default function LessonPage() {
         </div>
 
         {/* Lesson Content */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 p-6 mb-6">
+        {currentActivityIndex >= (lesson.content?.activities?.length || 0) ? (
+          /* Show completion message when all activities are done */
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 p-12 mb-6 text-center">
+            <div className="text-6xl mb-4">🎉</div>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">Lesson completed!</h2>
+            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6 mb-6">
+              <p className="text-5xl font-bold text-indigo-600 mb-2">{calculateScore()}%</p>
+              <p className="text-gray-600">Your Score</p>
+            </div>
+            <p className="text-gray-600 mb-6">Redirecting you back to lessons...</p>
+          </div>
+        ) : (
+          /* Show lesson content when activities are in progress */
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 p-6 mb-6">
           {lesson.content?.activities && lesson.content.activities.length > 0 ? (
             <>
               {/* Progress Bar */}
@@ -503,7 +524,7 @@ export default function LessonPage() {
                 /* Lesson Complete */
                 <div className="text-center space-y-6">
                   <div className="text-6xl mb-4">🎉</div>
-                  <h2 className="text-3xl font-bold text-gray-800">Lesson Complete!</h2>
+                  <h2 className="text-3xl font-bold text-gray-800">Lesson completed!</h2>
                   <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6">
                     <p className="text-5xl font-bold text-indigo-600 mb-2">{calculateScore()}%</p>
                     <p className="text-gray-600">Your Score</p>
@@ -544,6 +565,7 @@ export default function LessonPage() {
             </div>
           )}
         </div>
+        )}
       </div>
     </div>
   );
