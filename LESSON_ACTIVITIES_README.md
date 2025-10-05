@@ -5,18 +5,25 @@ The lesson system has been updated to include **interactive activities** that us
 
 ## Activity Types
 
-### 1. **Multiple Choice** (`multiple_choice`)
+### 1. **Teaching** (`teaching`)
+- Presents educational content without requiring user interaction
+- Used at the beginning of lessons to introduce new concepts
+- Can include vocabulary, grammar explanations, cultural notes, and examples
+- Users click "Continue" to proceed to the next activity
+- Example: "Let's learn the basic greetings in Chinese. Here are the key words..."
+
+### 2. **Multiple Choice** (`multiple_choice`)
 - Users select one answer from multiple options
 - Shows correct/incorrect feedback immediately
 - Example: "What does 'Hola' mean in English?"
 
-### 2. **Written Response** (`written`)
+### 3. **Written Response** (`written`)
 - Users type their answer in a text field
 - Case-insensitive answer checking
 - Optional hints available
 - Example: "Translate to Spanish: 'My name is...'"
 
-### 3. **Matching** (`matching`)
+### 4. **Matching** (`matching`)
 - Shows pairs of related terms (e.g., Spanish word → English translation)
 - Users review the matches
 - Example: Matching "Buenos días" to "Good morning"
@@ -100,11 +107,21 @@ To add more lessons or activities:
 
 ## Example Activity Templates
 
+### Teaching
+```python
+{
+    'type': 'teaching',
+    'order': 1,
+    'title': 'Introduction to Greetings',
+    'content': 'In this lesson, we will learn basic greetings. Here are the key phrases:\n\n你好 (nǐ hǎo) - Hello\n再见 (zài jiàn) - Goodbye\n\nThese are the most essential greetings you will use every day.'
+}
+```
+
 ### Multiple Choice
 ```python
 {
     'type': 'multiple_choice',
-    'order': 1,
+    'order': 2,
     'question': 'Your question here?',
     'options': ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
     'correct_answer': 'Option 1',
@@ -116,7 +133,7 @@ To add more lessons or activities:
 ```python
 {
     'type': 'written',
-    'order': 2,
+    'order': 3,
     'question': 'Your question here?',
     'correct_answer': 'expected answer',
     'hint': 'Optional hint',
@@ -128,7 +145,7 @@ To add more lessons or activities:
 ```python
 {
     'type': 'matching',
-    'order': 3,
+    'order': 4,
     'question': 'Match the pairs:',
     'pairs': [
         {'spanish': 'Word1', 'english': 'Translation1'},

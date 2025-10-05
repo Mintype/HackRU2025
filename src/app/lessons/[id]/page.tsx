@@ -18,13 +18,15 @@ interface Lesson {
 }
 
 interface Activity {
-  type: 'multiple_choice' | 'written' | 'matching';
+  type: 'teaching' | 'multiple_choice' | 'written' | 'matching';
   order: number;
-  question: string;
+  question?: string;
+  title?: string;
+  content?: string;
   options?: string[];
-  correct_answer: string | any;
+  correct_answer?: string | any;
   hint?: string;
-  explanation: string;
+  explanation?: string;
   pairs?: { spanish: string; english: string }[];
 }
 
@@ -384,7 +386,35 @@ export default function LessonPage() {
 
                   return (
                     <div className="space-y-6">
-                      <h2 className="text-2xl font-bold text-gray-800">{activity.question}</h2>
+                      {activity.type === 'teaching' ? (
+                        <h2 className="text-2xl font-bold text-gray-800">{activity.title || 'Lesson Content'}</h2>
+                      ) : (
+                        <h2 className="text-2xl font-bold text-gray-800">{activity.question}</h2>
+                      )}
+
+                      {/* Teaching Activity */}
+                      {activity.type === 'teaching' && (
+                        <div className="space-y-4">
+                          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-lg p-6">
+                            <div className="prose prose-lg max-w-none">
+                              <div className="text-gray-800 whitespace-pre-line text-base leading-relaxed">
+                                {activity.content}
+                              </div>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => {
+                              setShowResult({ ...showResult, [currentActivityIndex]: true });
+                              setCorrectAnswers({ ...correctAnswers, [currentActivityIndex]: true });
+                              console.log(`Activity ${currentActivityIndex + 1} completed! (Teaching activity)`);
+                              setTimeout(() => handleNextActivity(), 500);
+                            }}
+                            className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+                          >
+                            Continue →
+                          </button>
+                        </div>
+                      )}
 
                       {/* Multiple Choice Activity */}
                       {activity.type === 'multiple_choice' && (

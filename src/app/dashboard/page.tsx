@@ -15,6 +15,7 @@ interface UserProfile {
   lessons_completed: number;
   words_learned: number;
   current_streak: number;
+  last_activity_date: string | null;
 }
 
 export default function DashboardPage() {
@@ -56,12 +57,69 @@ export default function DashboardPage() {
         if (!profile.learning_language) {
           setShowLanguageModal(true);
         }
+        // Update streak
+        await updateStreak(user.id, profile);
       }
     } catch (error) {
       console.error('Error checking user:', error);
       router.push('/login');
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function updateStreak(userId: string, profile: UserProfile) {
+    try {
+      const today = new Date().toISOString().split('T')[0]; // Get YYYY-MM-DD format
+      const lastActivityDate = profile.last_activity_date;
+
+      // If last activity was today, no need to update
+      if (lastActivityDate === today) {
+        return;
+      }
+
+      let newStreak = profile.current_streak || 0; // Handle null/undefined
+
+      if (lastActivityDate) {
+        const lastDate = new Date(lastActivityDate);
+        const todayDate = new Date(today);
+        const diffTime = todayDate.getTime() - lastDate.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 1) {
+          // User was active yesterday, increment streak
+          newStreak = newStreak + 1;
+        } else if (diffDays > 1) {
+          // Streak broken, reset to 1
+          newStreak = 1;
+        }
+      } else {
+        // First time tracking activity, set streak to 1
+        newStreak = 1;
+      }
+
+      // Ensure streak is at least 1
+      if (newStreak === 0) {
+        newStreak = 1;
+      }
+
+      // Update the profile with new streak and last activity date
+      const { data, error } = await supabase
+        .from('user_profiles')
+        .update({
+          current_streak: newStreak,
+          last_activity_date: today,
+        })
+        .eq('id', userId)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      // Update local state
+      setUserProfile(data);
+    } catch (error) {
+      console.error('Error updating streak:', error);
     }
   }
 

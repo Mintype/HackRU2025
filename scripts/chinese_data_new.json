@@ -1,0 +1,464 @@
+{
+  "zh": [
+    {
+      "title": "Basic Greetings",
+      "description": "Learn how to say hello, goodbye, and introduce yourself in Chinese",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["你好", "再见", "早上好", "你好吗？", "我叫"],
+        "phrases": ["你好，你好吗？", "很高兴认识你", "你叫什么名字？"]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Basic Greetings",
+          "content": "Welcome to your first Chinese lesson! Let's learn the most essential greetings.\n\n📚 Basic Vocabulary:\n\n你好 (nǐ hǎo) - Hello\nThis is the most common greeting in Chinese, used at any time of day.\n\n再见 (zài jiàn) - Goodbye\nUse this when parting ways with someone.\n\n早上好 (zǎo shang hǎo) - Good morning\nA polite morning greeting, literally means \"morning good.\"\n\nLet's practice these greetings!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does "你好" mean in English?",
+          "options": ["Hello", "Goodbye", "Thank you", "Please"],
+          "correct_answer": "Hello",
+          "explanation": ""你好" (nǐ hǎo) is the most common way to say hello in Chinese. It's used in both formal and informal situations."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does "再见" mean?",
+          "options": ["Hello", "Goodbye", "Please", "Sorry"],
+          "correct_answer": "Goodbye",
+          "explanation": ""再见" (zài jiàn) means goodbye. Literally, it means \"see again,\" expressing the hope to meet again."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "What does "早上好" mean?",
+          "options": ["Good morning", "Good afternoon", "Good night", "Hello"],
+          "correct_answer": "Good morning",
+          "explanation": ""早上好" (zǎo shang hǎo) is used to greet someone in the morning. 早上 means \"morning\" and 好 means \"good.\""
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Asking How Someone Is",
+          "content": "Now let's learn how to ask someone how they are doing.\n\n你好吗？ (nǐ hǎo ma?) - How are you?\nThis is formed by adding 吗 (ma) to 你好, turning it into a question.\n\n💡 Common responses:\n• 很好 (hěn hǎo) - Very good/I'm fine\n• 不错 (bù cuò) - Not bad/Pretty good\n• 还好 (hái hǎo) - Okay/So-so\n\nRemember: Adding 吗 (ma) to the end of a statement turns it into a yes/no question!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "How do you ask 'How are you?' in Chinese?",
+          "options": ["你好吗？", "你好", "再见", "早上好"],
+          "correct_answer": "你好吗？",
+          "explanation": ""你好吗？" (nǐ hǎo ma?) means \"How are you?\" The 吗 (ma) particle at the end makes it a question."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Introducing Yourself",
+          "content": "Let's learn how to introduce yourself in Chinese.\n\n我叫 (wǒ jiào) - My name is... / I am called...\n\nStructure:\n我 (wǒ) = I/me\n叫 (jiào) = to be called\n\nExample:\n我叫李明。(Wǒ jiào Lǐ Míng.) - My name is Li Ming.\n我叫Sarah。(Wǒ jiào Sarah.) - My name is Sarah.\n\n🎯 You can use 我叫 with any name, whether Chinese or foreign!"
+        },
+        {
+          "type": "written",
+          "order": 8,
+          "question": "Translate to Chinese: \"My name is...\"",
+          "correct_answer": "我叫",
+          "hint": "Starts with "我" (I/me)",
+          "explanation": ""我叫" (wǒ jiào) is how you introduce yourself in Chinese. It literally means \"I am called.\""
+        },
+        {
+          "type": "teaching",
+          "order": 9,
+          "title": "Asking Someone's Name",
+          "content": "Now you know how to introduce yourself. Let's learn how to ask someone their name.\n\n你叫什么名字？ (Nǐ jiào shén me míng zi?) - What is your name?\n\nBreaking it down:\n• 你 (nǐ) = you\n• 叫 (jiào) = to be called\n• 什么 (shén me) = what\n• 名字 (míng zi) = name\n\n💬 Complete exchange:\nA: 你好！你叫什么名字？ (Hello! What's your name?)\nB: 我叫王芳。你呢？ (My name is Wang Fang. And you?)\nA: 我叫Tom。很高兴认识你！ (I'm Tom. Nice to meet you!)"
+        },
+        {
+          "type": "written",
+          "order": 10,
+          "question": "Write in Chinese: \"What is your name?\"",
+          "correct_answer": "你叫什么名字",
+          "hint": "Uses 你 (you), 叫 (called), 什么 (what), 名字 (name)",
+          "explanation": ""你叫什么名字？" is how you ask someone their name in Chinese. Remember to add the question mark!"
+        },
+        {
+          "type": "teaching",
+          "order": 11,
+          "title": "Putting It All Together",
+          "content": "Great work! Let's review everything you've learned:\n\n✅ Greetings:\n• 你好 (nǐ hǎo) - Hello\n• 早上好 (zǎo shang hǎo) - Good morning\n• 再见 (zài jiàn) - Goodbye\n\n✅ Questions:\n• 你好吗？ (nǐ hǎo ma?) - How are you?\n• 你叫什么名字？ (Nǐ jiào shén me míng zi?) - What's your name?\n\n✅ Introduction:\n• 我叫... (wǒ jiào...) - My name is...\n\n✅ Bonus phrases:\n• 很高兴认识你 (hěn gāo xìng rèn shi nǐ) - Nice to meet you\n\nYou now have all the basics to have a polite greeting conversation in Chinese!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "Which phrase means \"Nice to meet you\" in Chinese?",
+          "options": ["很高兴认识你", "你好吗", "再见", "你叫什么名字"],
+          "correct_answer": "很高兴认识你",
+          "explanation": ""很高兴认识你" (hěn gāo xìng rèn shi nǐ) means \"Nice to meet you.\" It's commonly used when meeting someone for the first time."
+        }
+      ]
+    },
+    {
+      "title": "Numbers 1-20",
+      "description": "Learn to count from 1 to 20 in Chinese",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十"],
+        "exercises": ["Count to 10", "Count to 20", "Practice pronunciation"]
+      },
+      "xp_reward": 15,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Chinese Numbers",
+          "content": "Welcome to Chinese numbers! Chinese counting is actually quite logical once you understand the pattern.\n\n🔢 Numbers 1-10:\n一 (yī) - 1\n二 (èr) - 2\n三 (sān) - 3\n四 (sì) - 4\n五 (wǔ) - 5\n六 (liù) - 6\n七 (qī) - 7\n八 (bā) - 8\n九 (jiǔ) - 9\n十 (shí) - 10\n\n💡 Fun fact: The character 三 (3) has three horizontal lines, and 二 (2) has two!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What number does "三" represent?",
+          "options": ["2", "3", "4", "5"],
+          "correct_answer": "3",
+          "explanation": ""三" (sān) is the Chinese character for 3. Notice it has three horizontal lines!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does "一" mean in English?",
+          "options": ["Zero", "One", "Two", "Ten"],
+          "correct_answer": "One",
+          "explanation": ""一" (yī) means one in Chinese. It's a single horizontal stroke."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Chinese character for the number 5.",
+          "correct_answer": "五",
+          "hint": "Has two horizontal lines with other strokes",
+          "explanation": ""五" (wǔ) is the Chinese character for 5."
+        },
+        {
+          "type": "written",
+          "order": 5,
+          "question": "Write the Chinese character for 10.",
+          "correct_answer": "十",
+          "hint": "One single stroke cross",
+          "explanation": ""十" (shí) means ten in Chinese. It looks like a cross or plus sign."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "Which number comes after "九" (nine)?",
+          "options": ["八", "十", "十一", "七"],
+          "correct_answer": "十",
+          "explanation": ""十" (shí) means 10, and comes after 9."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Numbers 11-19: The Pattern",
+          "content": "Here's where Chinese numbers get clever! Numbers 11-19 follow a simple pattern:\n\n十 (10) + [number] = 10 + that number\n\n十一 (shí yī) - 11 (literally \"ten one\")\n十二 (shí èr) - 12 (literally \"ten two\")\n十三 (shí sān) - 13 (literally \"ten three\")\n十四 (shí sì) - 14 (literally \"ten four\")\n十五 (shí wǔ) - 15 (literally \"ten five\")\n十六 (shí liù) - 16 (literally \"ten six\")\n十七 (shí qī) - 17 (literally \"ten seven\")\n十八 (shí bā) - 18 (literally \"ten eight\")\n十九 (shí jiǔ) - 19 (literally \"ten nine\")\n\n🎯 Just combine 十 with the single digits!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "What does "十五" mean?",
+          "options": ["5", "10", "15", "50"],
+          "correct_answer": "15",
+          "explanation": ""十五" (shí wǔ) means 15. It's literally \"ten five\" (10 + 5)."
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the Chinese characters for the number 12.",
+          "correct_answer": "十二",
+          "hint": "Think: ten two",
+          "explanation": ""十二" (shí èr) means 12. It follows the pattern of 十 (ten) + 二 (two)."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 10,
+          "question": "How do you write 18 in Chinese?",
+          "options": ["十八", "八十", "十九", "九十"],
+          "correct_answer": "十八",
+          "explanation": ""十八" (shí bā) means 18. It's 十 (ten) plus 八 (eight)."
+        },
+        {
+          "type": "teaching",
+          "order": 11,
+          "title": "Number 20 and Beyond",
+          "content": "Now let's learn 20!\n\n二十 (èr shí) - 20 (literally \"two ten\")\n\n🔢 Pattern for multiples of 10:\n• 二十 (èr shí) - 20 (two tens)\n• 三十 (sān shí) - 30 (three tens)\n• 四十 (sì shí) - 40 (four tens)\n• 五十 (wǔ shí) - 50 (five tens)\n\n💡 The pattern is: [number] + 十 = that number × 10\n\nFor numbers like 21, 22, etc., you combine:\n二十一 (èr shí yī) - 21 (two tens and one)\n二十二 (èr shí èr) - 22 (two tens and two)\n\nChinese numbers are very systematic!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does "二十" mean?",
+          "options": ["2", "10", "12", "20"],
+          "correct_answer": "20",
+          "explanation": ""二十" (èr shí) means 20. It's literally \"two tens\" (2 × 10)."
+        },
+        {
+          "type": "written",
+          "order": 13,
+          "question": "Write the Chinese characters for 17.",
+          "correct_answer": "十七",
+          "hint": "Remember: 十 (ten) + 七 (seven)",
+          "explanation": ""十七" (shí qī) is 17. It follows the pattern of 十 (ten) + 七 (seven)."
+        },
+        {
+          "type": "teaching",
+          "order": 14,
+          "title": "Review: All Numbers 1-20",
+          "content": "Excellent work! Here's your complete reference:\n\n1-10:\n一(1) 二(2) 三(3) 四(4) 五(5) 六(6) 七(7) 八(8) 九(9) 十(10)\n\n11-19:\n十一(11) 十二(12) 十三(13) 十四(14) 十五(15)\n十六(16) 十七(17) 十八(18) 十九(19)\n\n20:\n二十(20)\n\n✅ Key patterns:\n• 11-19: 十 + single digit\n• 20: 二 + 十\n\nYou now know how to count to 20 in Chinese! 🎉"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 15,
+          "question": "Which character represents the number 6?",
+          "options": ["五", "六", "七", "八"],
+          "correct_answer": "六",
+          "explanation": ""六" (liù) is the Chinese character for 6."
+        }
+      ]
+    },
+    {
+      "title": "Colors",
+      "description": "Learn the names of common colors in Chinese",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["红色", "蓝色", "绿色", "黄色", "黑色", "白色"],
+        "phrases": ["天空是蓝色的", "苹果是红色的"]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Colors",
+          "content": "Let's learn the basic colors in Chinese! In Chinese, most colors end with 色 (sè), which means \"color.\"\n\n🎨 Basic Colors:\n\n红色 (hóng sè) - Red 🔴\n蓝色 (lán sè) - Blue 🔵\n绿色 (lǜ sè) - Green 🟢\n黄色 (huáng sè) - Yellow 🟡\n黑色 (hēi sè) - Black ⚫\n白色 (bái sè) - White ⚪\n\n💡 Tip: The first character is the color root, and 色 is added to make it a full color word."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What color is "红色"?",
+          "options": ["Red", "Blue", "Green", "Yellow"],
+          "correct_answer": "Red",
+          "explanation": ""红色" (hóng sè) means red in Chinese. 红 means red, and 色 means color."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does "蓝色" mean?",
+          "options": ["Red", "Blue", "Green", "Black"],
+          "correct_answer": "Blue",
+          "explanation": ""蓝色" (lán sè) means blue in Chinese."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Chinese word for \"blue\".",
+          "correct_answer": "蓝色",
+          "hint": "Starts with the character 蓝",
+          "explanation": ""蓝色" (lán sè) means blue. Remember, 色 means color!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "What does "黄色" mean?",
+          "options": ["Yellow", "Black", "White", "Green"],
+          "correct_answer": "Yellow",
+          "explanation": ""黄色" (huáng sè) means yellow in Chinese."
+        },
+        {
+          "type": "written",
+          "order": 6,
+          "question": "Write the Chinese word for \"green\".",
+          "correct_answer": "绿色",
+          "hint": "Same root as the word for 'leaf'",
+          "explanation": ""绿色" (lǜ sè) means green. The character 绿 is also used in words related to plants and nature."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Black and White",
+          "content": "Let's focus on black and white, two fundamental colors:\n\n黑色 (hēi sè) - Black ⚫\n白色 (bái sè) - White ⚪\n\n🌓 Cultural note:\nIn Chinese culture, these colors have special meanings:\n• 白色 (white) - Associated with purity and mourning\n• 黑色 (black) - Can represent mystery or formality\n\n📝 Common uses:\n• 黑色的鞋 (hēi sè de xié) - black shoes\n• 白色的纸 (bái sè de zhǐ) - white paper"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "What color is "黑色"?",
+          "options": ["White", "Black", "Gray", "Brown"],
+          "correct_answer": "Black",
+          "explanation": ""黑色" (hēi sè) means black in Chinese."
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the Chinese word for \"white\".",
+          "correct_answer": "白色",
+          "hint": "Starts with 白",
+          "explanation": ""白色" (bái sè) means white in Chinese."
+        },
+        {
+          "type": "teaching",
+          "order": 10,
+          "title": "Using Colors in Sentences",
+          "content": "Now let's learn how to use colors to describe things!\n\n📝 Pattern: [Object] + 是 + [Color] + 的\n是 (shì) = is/am/are\n的 (de) = possessive/descriptive particle\n\nExamples:\n天空是蓝色的。(Tiān kōng shì lán sè de.)\n= The sky is blue.\n\n苹果是红色的。(Píng guǒ shì hóng sè de.)\n= The apple is red.\n\n草是绿色的。(Cǎo shì lǜ sè de.)\n= The grass is green.\n\n💡 The 的 at the end makes it descriptive!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 11,
+          "question": "Complete: \"天空是____的。\" (The sky is blue)",
+          "options": ["红色", "蓝色", "绿色", "黑色"],
+          "correct_answer": "蓝色",
+          "explanation": "The sky is blue — \"天空是蓝色的\"。天空 (tiān kōng) means sky, and 蓝色 (lán sè) means blue."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does \"苹果是红色的\" mean?",
+          "options": ["The apple is red", "The apple is green", "The grass is red", "The sky is red"],
+          "correct_answer": "The apple is red",
+          "explanation": "\"苹果是红色的\" means \"The apple is red.\" 苹果 (píng guǒ) = apple, 是 (shì) = is, 红色 (hóng sè) = red."
+        },
+        {
+          "type": "teaching",
+          "order": 13,
+          "title": "Color Review",
+          "content": "Great job! Let's review all the colors you've learned:\n\n🎨 Complete Color List:\n• 红色 (hóng sè) - Red 🔴\n• 蓝色 (lán sè) - Blue 🔵\n• 绿色 (lǜ sè) - Green 🟢\n• 黄色 (huáng sè) - Yellow 🟡\n• 黑色 (hēi sè) - Black ⚫\n• 白色 (bái sè) - White ⚪\n\n✅ Sentence Pattern:\n[Object] + 是 + [Color] + 的\n\nExample: 花是黄色的。(The flower is yellow.)\n\nYou now know all six basic colors! 🌈"
+        },
+        {
+          "type": "written",
+          "order": 14,
+          "question": "Write the Chinese word for \"red\".",
+          "correct_answer": "红色",
+          "hint": "First character is 红",
+          "explanation": ""红色" (hóng sè) means red in Chinese."
+        }
+      ]
+    },
+    {
+      "title": "Family Members",
+      "description": "Learn vocabulary for family and relatives in Chinese",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": ["妈妈", "爸爸", "哥哥", "姐姐", "弟弟", "妹妹", "奶奶", "爷爷"],
+        "phrases": ["这是我的家人", "我有两个哥哥"]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Family Terms",
+          "content": "Welcome! Let's learn how to talk about family in Chinese. Chinese family terms are more specific than English.\n\n👨‍👩‍👧‍👦 Parents:\n妈妈 (mā ma) - Mother/Mom\n爸爸 (bà ba) - Father/Dad\n\n💡 Notice: Both words repeat the character twice! This makes them easier to remember and adds affection.\n\n📝 Usage:\n我的妈妈 (wǒ de mā ma) - My mother\n我的爸爸 (wǒ de bà ba) - My father\n\nLet's practice these important words!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does "妈妈" mean?",
+          "options": ["Mother", "Father", "Sister", "Brother"],
+          "correct_answer": "Mother",
+          "explanation": ""妈妈" (mā ma) means mother. Both characters are the same, making it easy to remember!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does "爸爸" mean?",
+          "options": ["Mother", "Father", "Grandfather", "Uncle"],
+          "correct_answer": "Father",
+          "explanation": ""爸爸" (bà ba) means father. Like 妈妈, it repeats the same character twice."
+        },
+        {
+          "type": "teaching",
+          "order": 4,
+          "title": "Siblings - Older Brothers and Sisters",
+          "content": "In Chinese, there are different words for older and younger siblings!\n\n👦 Older Siblings:\n哥哥 (gē ge) - Older brother\n姐姐 (jiě jie) - Older sister\n\n⚠️ Important: These specifically mean OLDER siblings (born before you).\n\n📝 Examples:\n我有一个哥哥。(Wǒ yǒu yī gè gē ge.)\n= I have one older brother.\n\n我的姐姐很好。(Wǒ de jiě jie hěn hǎo.)\n= My older sister is very nice.\n\nThis specificity helps everyone understand the family structure clearly!"
+        },
+        {
+          "type": "written",
+          "order": 5,
+          "question": "Write the Chinese word for \"older brother\".",
+          "correct_answer": "哥哥",
+          "hint": "Two identical characters",
+          "explanation": ""哥哥" (gē ge) means older brother. Both characters are the same!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "What does "姐姐" mean?",
+          "options": ["Younger sister", "Older sister", "Mother", "Aunt"],
+          "correct_answer": "Older sister",
+          "explanation": ""姐姐" (jiě jie) means older sister - a sister who is older than you."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Younger Siblings",
+          "content": "Now let's learn the words for younger siblings:\n\n👶 Younger Siblings:\n弟弟 (dì di) - Younger brother\n妹妹 (mèi mei) - Younger sister\n\n🔑 Key difference:\n• 哥哥/姐姐 = OLDER siblings\n• 弟弟/妹妹 = YOUNGER siblings\n\n📝 Examples:\n我有一个弟弟。(Wǒ yǒu yī gè dì di.)\n= I have one younger brother.\n\n我的妹妹五岁。(Wǒ de mèi mei wǔ suì.)\n= My younger sister is 5 years old.\n\n💡 This system helps clarify birth order in the family!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "Complete: \"我有两个____。\" (I have two older brothers)",
+          "options": ["哥哥", "姐姐", "爸爸", "爷爷"],
+          "correct_answer": "哥哥",
+          "explanation": ""哥哥" (gē ge) means older brother. The sentence means \"I have two older brothers.\""
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the Chinese word for \"younger sister\".",
+          "correct_answer": "妹妹",
+          "hint": "Two identical characters, starts with 妹",
+          "explanation": ""妹妹" (mèi mei) means younger sister - a sister younger than you."
+        },
+        {
+          "type": "teaching",
+          "order": 10,
+          "title": "Grandparents",
+          "content": "Let's learn how to say grandmother and grandfather:\n\n👴👵 Grandparents:\n奶奶 (nǎi nai) - Grandmother (father's side)\n爷爷 (yé ye) - Grandfather (father's side)\n\n📝 Note: These specifically refer to paternal grandparents (your father's parents). There are different words for maternal grandparents!\n\n💭 Usage:\n我的奶奶 (wǒ de nǎi nai) - My grandmother\n我的爷爷 (wǒ de yé ye) - My grandfather\n\nExamples:\n我爱我的奶奶。(Wǒ ài wǒ de nǎi nai.)\n= I love my grandmother.\n\n爷爷很高。(Yé ye hěn gāo.)\n= Grandfather is very tall."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 11,
+          "question": "What does "奶奶" mean?",
+          "options": ["Grandmother", "Grandfather", "Sister", "Mother"],
+          "correct_answer": "Grandmother",
+          "explanation": ""奶奶" (nǎi nai) means grandmother, specifically on your father's side of the family."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does "爷爷" mean?",
+          "options": ["Father", "Grandfather", "Older brother", "Uncle"],
+          "correct_answer": "Grandfather",
+          "explanation": ""爷爷" (yé ye) means grandfather, specifically your father's father."
+        },
+        {
+          "type": "teaching",
+          "order": 13,
+          "title": "Family Phrases and Review",
+          "content": "Let's learn some useful family phrases and review!\n\n📝 Useful Phrases:\n这是我的家人。(Zhè shì wǒ de jiā rén.)\n= This is my family.\n\n我有一个大家庭。(Wǒ yǒu yī gè dà jiā tíng.)\n= I have a big family.\n\n我爱我的家人。(Wǒ ài wǒ de jiā rén.)\n= I love my family.\n\n✅ Complete Family Vocabulary:\n• 妈妈 (mā ma) - Mother\n• 爸爸 (bà ba) - Father\n• 哥哥 (gē ge) - Older brother\n• 姐姐 (jiě jie) - Older sister\n• 弟弟 (dì di) - Younger brother\n• 妹妹 (mèi mei) - Younger sister\n• 奶奶 (nǎi nai) - Grandmother\n• 爷爷 (yé ye) - Grandfather\n\nYou now know all the essential family terms! 👨‍👩‍👧‍👦"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 14,
+          "question": "What does \"这是我的家人\" mean?",
+          "options": ["This is my family", "I love my family", "I have a family", "My family is big"],
+          "correct_answer": "This is my family",
+          "explanation": "\"这是我的家人\" means \"This is my family.\" 这是 = this is, 我的 = my, 家人 = family."
+        },
+        {
+          "type": "written",
+          "order": 15,
+          "question": "Write the Chinese word for \"grandfather\".",
+          "correct_answer": "爷爷",
+          "hint": "Two identical characters",
+          "explanation": ""爷爷" (yé ye) means grandfather (on your father's side)."
+        }
+      ]
+    }
+  ]
+}

@@ -37,6 +37,7 @@ export default function ReadingTextPage() {
   const [translationLoading, setTranslationLoading] = useState(false);
   const [wordPosition, setWordPosition] = useState<{ x: number; y: number } | null>(null);
   const [showInstruction, setShowInstruction] = useState(true);
+  const [translationCache, setTranslationCache] = useState<Record<string, string>>({});
   const router = useRouter();
   const params = useParams();
   const textId = params.id as string;
@@ -176,6 +177,14 @@ export default function ReadingTextPage() {
       });
     }
 
+    // Check if translation is cached
+    if (translationCache[newWord]) {
+      setTranslation(translationCache[newWord]);
+      setTranslationLoading(false);
+      await incrementWordsLookedUp();
+      return;
+    }
+
     setTranslationLoading(true);
 
     try {
@@ -194,6 +203,12 @@ export default function ReadingTextPage() {
 
       const data = await response.json();
       setTranslation(data.translation);
+      
+      // Cache the translation
+      setTranslationCache(prev => ({
+        ...prev,
+        [newWord]: data.translation
+      }));
 
       // Increment words looked up counter
       await incrementWordsLookedUp();

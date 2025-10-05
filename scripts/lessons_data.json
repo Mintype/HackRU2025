@@ -1,0 +1,505 @@
+{
+  "es": [
+    {
+      "title": "Basic Greetings",
+      "description": "Learn how to say hello, goodbye, and introduce yourself in Spanish",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["Hola", "Adiós", "Buenos días", "¿Cómo estás?", "Me llamo"],
+        "phrases": ["Hola, ¿cómo estás?", "Mucho gusto", "¿Cómo te llamas?"]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does \"Hola\" mean in English?",
+          "options": ["Hello", "Goodbye", "Thank you", "Please"],
+          "correct_answer": "Hello",
+          "explanation": "Hola is the most common way to say hello in Spanish!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "How do you say \"goodbye\" in Spanish?",
+          "options": ["Hola", "Gracias", "Adiós", "Por favor"],
+          "correct_answer": "Adiós",
+          "explanation": "Adiós is used to say goodbye."
+        },
+        {
+          "type": "written",
+          "order": 3,
+          "question": "Translate to Spanish: \"My name is...\"",
+          "correct_answer": "Me llamo",
+          "hint": "Starts with \"Me\"",
+          "explanation": "\"Me llamo\" is how you introduce yourself in Spanish."
+        },
+        {
+          "type": "matching",
+          "order": 4,
+          "question": "Match the Spanish greetings to their English meanings:",
+          "pairs": [
+            {"spanish": "Buenos días", "english": "Good morning"},
+            {"spanish": "Buenas tardes", "english": "Good afternoon"},
+            {"spanish": "Buenas noches", "english": "Good night"}
+          ],
+          "explanation": "These are formal greetings used at different times of day."
+        }
+      ]
+    },
+    {
+      "title": "Numbers 1-20",
+      "description": "Master counting from 1 to 20 in Spanish",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["uno", "dos", "tres", "cuatro", "cinco", "diez", "veinte"],
+        "exercises": ["Count to 10", "Practice pronunciation"]
+      },
+      "xp_reward": 15,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What is the Spanish word for \"three\"?",
+          "options": ["dos", "tres", "cuatro", "cinco"],
+          "correct_answer": "tres",
+          "explanation": "Tres means three in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Spanish word for the number 5",
+          "correct_answer": "cinco",
+          "hint": "Sounds like \"sink-o\"",
+          "explanation": "Cinco is the Spanish word for five."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Which number comes after \"nueve\"?",
+          "options": ["ocho", "diez", "once", "siete"],
+          "correct_answer": "diez",
+          "explanation": "Nueve is nine, so diez (ten) comes next."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Spanish word for \"ten\"",
+          "correct_answer": "diez",
+          "hint": "Sounds like \"dee-eth\"",
+          "explanation": "Diez is the Spanish word for ten."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "What is \"uno\" in English?",
+          "options": ["Zero", "One", "Two", "Ten"],
+          "correct_answer": "One",
+          "explanation": "Uno means one in Spanish."
+        }
+      ]
+    },
+    {
+      "title": "Colors",
+      "description": "Learn the names of common colors in Spanish",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["rojo", "azul", "verde", "amarillo", "negro", "blanco"],
+        "phrases": ["El cielo es azul", "La manzana es roja"]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What color is \"rojo\"?",
+          "options": ["Red", "Blue", "Green", "Yellow"],
+          "correct_answer": "Red",
+          "explanation": "Rojo means red in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Spanish word for \"blue\"",
+          "correct_answer": "azul",
+          "hint": "Similar to the English word \"azure\"",
+          "explanation": "Azul is the Spanish word for blue."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Complete: \"El cielo es ____\" (The sky is blue)",
+          "options": ["rojo", "azul", "verde", "negro"],
+          "correct_answer": "azul",
+          "explanation": "The sky is blue - El cielo es azul."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Spanish word for \"green\"",
+          "correct_answer": "verde",
+          "hint": "Similar to \"verdant\"",
+          "explanation": "Verde is green in Spanish."
+        },
+        {
+          "type": "matching",
+          "order": 5,
+          "question": "Match the colors:",
+          "pairs": [
+            {"spanish": "amarillo", "english": "yellow"},
+            {"spanish": "negro", "english": "black"},
+            {"spanish": "blanco", "english": "white"}
+          ],
+          "explanation": "These are basic color words in Spanish."
+        }
+      ]
+    },
+    {
+      "title": "Family Members",
+      "description": "Vocabulary for talking about your family",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": ["madre", "padre", "hermano", "hermana", "abuela", "abuelo"],
+        "phrases": ["Esta es mi familia", "Tengo dos hermanos"]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does \"madre\" mean?",
+          "options": ["Mother", "Father", "Sister", "Brother"],
+          "correct_answer": "Mother",
+          "explanation": "Madre means mother in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Spanish word for \"brother\"",
+          "correct_answer": "hermano",
+          "hint": "Similar to the word \"hermana\" (sister)",
+          "explanation": "Hermano means brother in Spanish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Complete: \"Tengo dos ____\" (I have two brothers)",
+          "options": ["hermanos", "hermanas", "padres", "abuelos"],
+          "correct_answer": "hermanos",
+          "explanation": "Hermanos is the plural of hermano (brother)."
+        },
+        {
+          "type": "matching",
+          "order": 4,
+          "question": "Match the family members:",
+          "pairs": [
+            {"spanish": "abuela", "english": "grandmother"},
+            {"spanish": "abuelo", "english": "grandfather"},
+            {"spanish": "hermana", "english": "sister"}
+          ],
+          "explanation": "These are common family member terms in Spanish."
+        }
+      ]
+    },
+    {
+      "title": "Days of the Week",
+      "description": "Learn all seven days of the week",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"],
+        "phrases": ["Hoy es lunes", "¿Qué día es hoy?"]
+      },
+      "xp_reward": 15,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What day is \"lunes\"?",
+          "options": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "correct_answer": "Monday",
+          "explanation": "Lunes is Monday in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Spanish word for \"Friday\"",
+          "correct_answer": "viernes",
+          "hint": "It starts with \"v\"",
+          "explanation": "Viernes is Friday in Spanish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does \"¿Qué día es hoy?\" mean?",
+          "options": ["What time is it?", "What day is today?", "How are you?", "Where are you?"],
+          "correct_answer": "What day is today?",
+          "explanation": "This phrase is used to ask what day it is today."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Spanish word for \"Saturday\"",
+          "correct_answer": "sábado",
+          "hint": "Starts with \"s\"",
+          "explanation": "Sábado is Saturday in Spanish."
+        },
+        {
+          "type": "matching",
+          "order": 5,
+          "question": "Match the days:",
+          "pairs": [
+            {"spanish": "martes", "english": "Tuesday"},
+            {"spanish": "jueves", "english": "Thursday"},
+            {"spanish": "domingo", "english": "Sunday"}
+          ],
+          "explanation": "These are important days of the week."
+        }
+      ]
+    },
+    {
+      "title": "Food and Drinks",
+      "description": "Essential vocabulary for ordering food",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": ["agua", "pan", "leche", "carne", "frutas", "verduras"],
+        "phrases": ["Quiero agua, por favor", "La comida está deliciosa"]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What is \"agua\"?",
+          "options": ["Water", "Bread", "Milk", "Meat"],
+          "correct_answer": "Water",
+          "explanation": "Agua means water in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "How do you say \"bread\" in Spanish?",
+          "correct_answer": "pan",
+          "hint": "Similar to the English word \"pan\"",
+          "explanation": "Pan is bread in Spanish."
+        },
+        {
+          "type": "matching",
+          "order": 3,
+          "question": "Match the foods:",
+          "pairs": [
+            {"spanish": "carne", "english": "meat"},
+            {"spanish": "frutas", "english": "fruits"},
+            {"spanish": "verduras", "english": "vegetables"}
+          ],
+          "explanation": "These are essential food vocabulary words."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "How do you say \"I want water, please\"?",
+          "options": ["Quiero agua, por favor", "Tengo agua", "Necesito pan", "Como frutas"],
+          "correct_answer": "Quiero agua, por favor",
+          "explanation": "\"Quiero\" means \"I want\" and \"por favor\" means \"please\"."
+        }
+      ]
+    },
+    {
+      "title": "Present Tense Verbs",
+      "description": "Introduction to regular -ar, -er, -ir verbs",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": ["hablar", "comer", "vivir", "trabajar", "estudiar"],
+        "grammar": ["yo hablo", "tú hablas", "él/ella habla"],
+        "phrases": ["Yo hablo español", "Ella come frutas"]
+      },
+      "xp_reward": 25,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does \"hablar\" mean?",
+          "options": ["to speak", "to eat", "to live", "to work"],
+          "correct_answer": "to speak",
+          "explanation": "Hablar is a regular -ar verb meaning \"to speak\"."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Conjugate \"hablar\" for \"yo\" (I)",
+          "correct_answer": "hablo",
+          "hint": "Remove -ar and add -o",
+          "explanation": "For -ar verbs, the yo form ends in -o: hablo."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Which is correct: \"I speak Spanish\"?",
+          "options": ["Yo hablo español", "Yo hablas español", "Yo hablar español", "Yo hablan español"],
+          "correct_answer": "Yo hablo español",
+          "explanation": "Yo (I) uses the -o ending: hablo."
+        },
+        {
+          "type": "matching",
+          "order": 4,
+          "question": "Match the verbs to their meanings:",
+          "pairs": [
+            {"spanish": "comer", "english": "to eat"},
+            {"spanish": "vivir", "english": "to live"},
+            {"spanish": "trabajar", "english": "to work"}
+          ],
+          "explanation": "These are common regular verbs in Spanish."
+        }
+      ]
+    },
+    {
+      "title": "Asking Questions",
+      "description": "Learn how to ask common questions",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": ["¿Qué?", "¿Dónde?", "¿Cuándo?", "¿Cómo?", "¿Por qué?", "¿Quién?"],
+        "phrases": ["¿Dónde está el baño?", "¿Cuánto cuesta?"]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does \"¿Dónde?\" mean?",
+          "options": ["Where?", "When?", "How?", "Why?"],
+          "correct_answer": "Where?",
+          "explanation": "¿Dónde? is used to ask \"where?\"."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "How do you ask \"What?\" in Spanish?",
+          "correct_answer": "¿Qué?",
+          "hint": "Starts with Q",
+          "explanation": "¿Qué? means \"What?\" in Spanish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does \"¿Dónde está el baño?\" mean?",
+          "options": ["Where is the bathroom?", "How much is it?", "What is this?", "Who are you?"],
+          "correct_answer": "Where is the bathroom?",
+          "explanation": "This is a very useful phrase for travelers!"
+        },
+        {
+          "type": "matching",
+          "order": 4,
+          "question": "Match the question words:",
+          "pairs": [
+            {"spanish": "¿Cuándo?", "english": "When?"},
+            {"spanish": "¿Cómo?", "english": "How?"},
+            {"spanish": "¿Quién?", "english": "Who?"}
+          ],
+          "explanation": "These are essential question words in Spanish."
+        }
+      ]
+    },
+    {
+      "title": "Common Adjectives",
+      "description": "Descriptive words for people and things",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": ["grande", "pequeño", "bueno", "malo", "bonito", "feo"],
+        "phrases": ["La casa es grande", "El perro es pequeño"]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does \"grande\" mean?",
+          "options": ["Big/Large", "Small", "Good", "Bad"],
+          "correct_answer": "Big/Large",
+          "explanation": "Grande means big or large in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "What is the opposite of \"grande\"?",
+          "correct_answer": "pequeño",
+          "hint": "Means \"small\"",
+          "explanation": "Pequeño means small, the opposite of grande."
+        },
+        {
+          "type": "matching",
+          "order": 3,
+          "question": "Match the adjectives:",
+          "pairs": [
+            {"spanish": "bueno", "english": "good"},
+            {"spanish": "malo", "english": "bad"},
+            {"spanish": "bonito", "english": "pretty/beautiful"}
+          ],
+          "explanation": "These are common adjectives to describe quality."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "Complete: \"La casa es ____\" (The house is big)",
+          "options": ["grande", "pequeño", "bueno", "malo"],
+          "correct_answer": "grande",
+          "explanation": "Grande is the correct adjective for \"big\"."
+        }
+      ]
+    },
+    {
+      "title": "Shopping Basics",
+      "description": "Vocabulary and phrases for shopping",
+      "difficulty": "hard",
+      "content": {
+        "vocabulary": ["tienda", "precio", "dinero", "comprar", "vender"],
+        "phrases": ["¿Cuánto cuesta esto?", "Es muy caro", "Quiero comprar"],
+        "dialogues": ["Shopping conversation at a market"]
+      },
+      "xp_reward": 30,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does \"¿Cuánto cuesta esto?\" mean?",
+          "options": ["How much does this cost?", "Where is the store?", "I want to buy this", "This is expensive"],
+          "correct_answer": "How much does this cost?",
+          "explanation": "This is the most common way to ask the price of something."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Spanish word for \"store\"",
+          "correct_answer": "tienda",
+          "hint": "Starts with \"t\"",
+          "explanation": "Tienda means store or shop in Spanish."
+        },
+        {
+          "type": "matching",
+          "order": 3,
+          "question": "Match the shopping vocabulary:",
+          "pairs": [
+            {"spanish": "comprar", "english": "to buy"},
+            {"spanish": "vender", "english": "to sell"},
+            {"spanish": "dinero", "english": "money"}
+          ],
+          "explanation": "Essential vocabulary for shopping transactions."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "How do you say \"It's very expensive\"?",
+          "options": ["Es muy caro", "Es muy barato", "Quiero comprar", "No tengo dinero"],
+          "correct_answer": "Es muy caro",
+          "explanation": "Caro means expensive, barato means cheap."
+        },
+        {
+          "type": "written",
+          "order": 5,
+          "question": "Translate: \"I want to buy\"",
+          "correct_answer": "Quiero comprar",
+          "hint": "Quiero = I want",
+          "explanation": "Quiero comprar is used when you want to purchase something."
+        }
+      ]
+    }
+  ]
+}

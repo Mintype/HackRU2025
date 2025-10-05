@@ -1,0 +1,196 @@
+{
+  "zh": [
+    {
+      "title": "Basic Greetings",
+      "description": "Learn how to say hello, goodbye, and introduce yourself in Chinese",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["你好", "再见", "早上好", "你好吗？", "我叫"],
+        "phrases": ["你好，你好吗？", "很高兴认识你", "你叫什么名字？"]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does “你好” mean in English?",
+          "options": ["Hello", "Goodbye", "Thank you", "Please"],
+          "correct_answer": "Hello",
+          "explanation": "“你好” is the most common way to say hello in Chinese."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does “再见” mean?",
+          "options": ["Hello", "Goodbye", "Please", "Sorry"],
+          "correct_answer": "Goodbye",
+          "explanation": "“再见” means goodbye."
+        },
+        {
+          "type": "written",
+          "order": 3,
+          "question": "Translate to Chinese: “My name is...”",
+          "correct_answer": "我叫",
+          "hint": "Starts with “我”",
+          "explanation": "“我叫” is how you introduce yourself in Chinese."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "What does “早上好” mean?",
+          "options": ["Good morning", "Good afternoon", "Good night", "Hello"],
+          "correct_answer": "Good morning",
+          "explanation": "“早上好” is used to greet someone in the morning."
+        }
+      ]
+    },
+    {
+      "title": "Numbers 1-20",
+      "description": "Learn to count from 1 to 20 in Chinese",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["一", "二", "三", "四", "五", "十", "二十"],
+        "exercises": ["Count to 10", "Practice pronunciation"]
+      },
+      "xp_reward": 15,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What number does “三” represent?",
+          "options": ["2", "3", "4", "5"],
+          "correct_answer": "3",
+          "explanation": "“三” is the Chinese character for 3."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Chinese character for the number 5.",
+          "correct_answer": "五",
+          "hint": "Has two horizontal lines",
+          "explanation": "“五” is the Chinese character for 5."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Which number comes after “九” (nine)?",
+          "options": ["八", "十", "十一", "七"],
+          "correct_answer": "十",
+          "explanation": "“十” means 10, and comes after 9."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Chinese character for 10.",
+          "correct_answer": "十",
+          "hint": "One single stroke cross",
+          "explanation": "“十” means ten in Chinese."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "What does “一” mean in English?",
+          "options": ["Zero", "One", "Two", "Ten"],
+          "correct_answer": "One",
+          "explanation": "“一” means one in Chinese."
+        }
+      ]
+    },
+    {
+      "title": "Colors",
+      "description": "Learn the names of common colors in Chinese",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["红色", "蓝色", "绿色", "黄色", "黑色", "白色"],
+        "phrases": ["天空是蓝色的", "苹果是红色的"]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What color is “红色”?",
+          "options": ["Red", "Blue", "Green", "Yellow"],
+          "correct_answer": "Red",
+          "explanation": "“红色” means red in Chinese."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Chinese word for “blue”.",
+          "correct_answer": "蓝色",
+          "hint": "Starts with the character 蓝",
+          "explanation": "“蓝色” means blue."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Complete: “天空是____的。” (The sky is blue)",
+          "options": ["红色", "蓝色", "绿色", "黑色"],
+          "correct_answer": "蓝色",
+          "explanation": "The sky is blue — “天空是蓝色的”。"
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Chinese word for “green”.",
+          "correct_answer": "绿色",
+          "hint": "Same root as the word for 'leaf'",
+          "explanation": "“绿色” means green."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "What does “黄色” mean?",
+          "options": ["Yellow", "Black", "White", "Green"],
+          "correct_answer": "Yellow",
+          "explanation": "“黄色” means yellow in Chinese."
+        }
+      ]
+    },
+    {
+      "title": "Family Members",
+      "description": "Learn vocabulary for family and relatives in Chinese",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": ["妈妈", "爸爸", "哥哥", "姐姐", "奶奶", "爷爷"],
+        "phrases": ["这是我的家人", "我有两个哥哥"]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "multiple_choice",
+          "order": 1,
+          "question": "What does “妈妈” mean?",
+          "options": ["Mother", "Father", "Sister", "Brother"],
+          "correct_answer": "Mother",
+          "explanation": "“妈妈” means mother."
+        },
+        {
+          "type": "written",
+          "order": 2,
+          "question": "Write the Chinese word for “brother”.",
+          "correct_answer": "哥哥",
+          "hint": "Two identical characters",
+          "explanation": "“哥哥” means older brother."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Complete: “我有两个____。” (I have two brothers)",
+          "options": ["哥哥", "姐姐", "爸爸", "爷爷"],
+          "correct_answer": "哥哥",
+          "explanation": "“哥哥” means older brother."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "What does “奶奶” mean?",
+          "options": ["Grandmother", "Grandfather", "Sister", "Mother"],
+          "correct_answer": "Grandmother",
+          "explanation": "“奶奶” means grandmother."
+        }
+      ]
+    }
+  ]
+}
