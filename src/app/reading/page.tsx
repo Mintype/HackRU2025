@@ -27,7 +27,19 @@ export default function ReadingPage() {
   const [readingTexts, setReadingTexts] = useState<ReadingText[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [customTitle, setCustomTitle] = useState('');
+  const [customText, setCustomText] = useState('');
   const router = useRouter();
+
+  const handleCustomTextSubmit = () => {
+    if (customText.trim() === '') return;
+    const title = customTitle.trim() === '' ? 'Custom Text' : customTitle;
+    router.push(`/reading/custom?title=${encodeURIComponent(title)}&text=${encodeURIComponent(customText)}`);
+    setIsModalOpen(false);
+    setCustomTitle('');
+    setCustomText('');
+  };
 
   useEffect(() => {
     checkUser();
@@ -148,6 +160,76 @@ export default function ReadingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100">
+      {/* Modal */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setIsModalOpen(false);
+              setCustomTitle('');
+              setCustomText('');
+            }
+          }}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => {
+                setIsModalOpen(false);
+                setCustomTitle('');
+                setCustomText('');
+              }}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Add Your Own Text</h2>
+            <input
+              type="text"
+              placeholder="Title (optional)"
+              value={customTitle}
+              onChange={(e) => setCustomTitle(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
+            />
+            <textarea
+              placeholder="Paste your text here..."
+              value={customText}
+              onChange={(e) => setCustomText(e.target.value)}
+              className="w-full h-64 p-3 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none text-gray-800"
+            />
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => {
+                  setIsModalOpen(false);
+                  setCustomTitle('');
+                  setCustomText('');
+                }}
+                className="px-6 py-2 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleCustomTextSubmit}
+                disabled={customText.trim() === ''}
+                className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                  customText.trim() === ''
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-blue-600 to-purple-800 text-white hover:shadow-lg hover:scale-105'
+                }`}
+              >
+                Start Reading
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="container mx-auto px-6 py-6 backdrop-blur-sm bg-white/80 sticky top-0 z-50 rounded-b-2xl shadow-sm">
         <div>
@@ -266,6 +348,12 @@ export default function ReadingPage() {
             }`}
           >
             Advanced
+          </button>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg hover:shadow-md`}
+          >
+            Add Custom Text
           </button>
         </div>
 

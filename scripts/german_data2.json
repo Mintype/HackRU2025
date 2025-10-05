@@ -1,0 +1,302 @@
+{
+  "de": [
+    {
+      "title": "Food and Drinks",
+      "description": "Learn vocabulary for common foods and drinks in German, plus how to order, describe, and ask about meals.",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "Brot", "Milch", "Apfel", "Wasser", "Käse", "Kaffee", "Tee", "Ei",
+          "Fisch", "Fleisch", "Obst", "Gemüse", "Saft", "Bier", "Wein", "Suppe"
+        ],
+        "phrases": [
+          "Ich esse einen Apfel.",
+          "Ich trinke Wasser.",
+          "Ich möchte ein Brot, bitte.",
+          "Haben Sie Tee?"
+        ]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Food Vocabulary",
+          "content": "Let's start with common foods:\n\nBrot – Bread\nMilch – Milk\nApfel – Apple\nKäse – Cheese\nEi – Egg\nFisch – Fish\nFleisch – Meat\nObst – Fruit\nGemüse – Vegetables\n\n🍽️ Practice saying each word aloud and try to remember at least 5 of them."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does 'Gemüse' mean?",
+          "options": ["Meat", "Vegetables", "Fruit", "Cheese"],
+          "correct_answer": "Vegetables",
+          "explanation": "'Gemüse' means vegetables."
+        },
+        {
+          "type": "teaching",
+          "order": 3,
+          "title": "Drinks Vocabulary",
+          "content": "Common drinks:\n\nWasser – Water\nKaffee – Coffee\nTee – Tea\nMilch – Milk\nSaft – Juice\nBier – Beer\nWein – Wine\n\n💡 Example sentence:\nIch trinke Saft. – I drink juice."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the German word for 'juice'.",
+          "correct_answer": "Saft",
+          "hint": "Starts with S",
+          "explanation": "'Saft' means juice in German."
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Ordering Food",
+          "content": "Phrases to order food:\n\nIch möchte ein Brot, bitte. – I would like a bread, please.\nHaben Sie Tee? – Do you have tea?\nIch nehme die Suppe. – I’ll take the soup.\n\n✅ Tip: 'möchte' is used for polite requests."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "Translate: 'Ich möchte ein Brot, bitte.'",
+          "options": ["I want an apple.", "I would like a bread, please.", "I eat bread.", "Do you have bread?"],
+          "correct_answer": "I would like a bread, please.",
+          "explanation": "'Ich möchte' is a polite way to say 'I would like'."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Talking About Meals",
+          "content": "You can describe what you eat or drink:\n\nIch esse Käse. – I eat cheese.\nIch trinke Wasser. – I drink water.\nIch esse Obst und Gemüse. – I eat fruit and vegetables.\n\n✅ Practice forming sentences with the new words."
+        },
+        {
+          "type": "written",
+          "order": 8,
+          "question": "Write in German: 'I eat fish.'",
+          "correct_answer": "Ich esse Fisch.",
+          "hint": "Ich + esse + Fisch",
+          "explanation": "'Ich esse Fisch' means 'I eat fish.'"
+        },
+        {
+          "type": "teaching",
+          "order": 9,
+          "title": "Extended Practice",
+          "content": "Combine food and drinks in sentences:\n\nIch trinke Kaffee und esse ein Ei. – I drink coffee and eat an egg.\nIch möchte Saft und Brot, bitte. – I would like juice and bread, please.\n\n✅ Tip: Use 'und' to connect multiple items."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 10,
+          "question": "Which phrase means 'I drink coffee and eat an egg'?",
+          "options": ["Ich esse Kaffee und trinke Ei.", "Ich trinke Kaffee und esse ein Ei.", "Ich trinke Tee und esse Brot.", "Ich esse Fisch und trinke Milch."],
+          "correct_answer": "Ich trinke Kaffee und esse ein Ei.",
+          "explanation": "The correct structure is 'Ich trinke [drink] und esse [food]'."
+        }
+      ]
+    },
+    {
+      "title": "Common Verbs",
+      "description": "Learn essential German verbs and practice using them in sentences.",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": [
+          "gehen", "kommen", "sehen", "essen", "trinken", "sprechen", "lernen", "schreiben",
+          "lesen", "spielen", "arbeiten", "wohnen", "fahren", "laufen", "fragen", "antworten"
+        ],
+        "phrases": [
+          "Ich gehe zur Schule.",
+          "Wir lernen Deutsch.",
+          "Er spielt Fußball.",
+          "Sie liest ein Buch."
+        ]
+      },
+      "xp_reward": 25,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Common Verbs",
+          "content": "Important verbs:\n\ngehen – to go\nkommen – to come\nsehen – to see\nsprechen – to speak\nessen – to eat\ntrinken – to drink\nlernen – to learn\nschreiben – to write\nlesen – to read\nspielen – to play\narbeiten – to work\nwohnen – to live\nfahren – to drive/go\nlaufen – to run\nfragen – to ask\nantworten – to answer"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does 'lesen' mean?",
+          "options": ["To play", "To read", "To write", "To drink"],
+          "correct_answer": "To read",
+          "explanation": "'lesen' is 'to read' in German."
+        },
+        {
+          "type": "teaching",
+          "order": 3,
+          "title": "Verbs in Sentences",
+          "content": "Examples:\n\nIch gehe zur Schule. – I go to school.\nWir lernen Deutsch. – We learn German.\nEr spielt Fußball. – He plays soccer.\nSie liest ein Buch. – She reads a book."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write in German: 'I play.'",
+          "correct_answer": "Ich spiele.",
+          "hint": "Use spielen",
+          "explanation": "'Ich spiele' means 'I play.'"
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Forming Sentences with Subjects",
+          "content": "Subjects:\nIch – I\nDu – You (informal)\nEr / Sie – He / She\nWir – We\nIhr – You (plural)\nSie – They / You formal\n\n✅ Example:\nDu lernst Deutsch. – You learn German.\nWir schreiben einen Brief. – We write a letter."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "Translate: 'He writes a letter.'",
+          "options": ["Er schreibt einen Brief.", "Er spielt einen Brief.", "Er liest einen Brief.", "Er trinkt einen Brief."],
+          "correct_answer": "Er schreibt einen Brief.",
+          "explanation": "'schreibt' is 'writes', so 'Er schreibt einen Brief.'"
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Questions with Verbs",
+          "content": "To ask questions:\n\nWas machst du? – What are you doing?\nWo gehst du hin? – Where are you going?\nWas liest du? – What are you reading?\n\n✅ Tip: The verb often comes second in German questions."
+        },
+        {
+          "type": "written",
+          "order": 8,
+          "question": "Translate: 'What do you eat?'",
+          "correct_answer": "Was isst du?",
+          "hint": "Use 'isst' for 'eat'",
+          "explanation": "'Was isst du?' is the correct question form in German."
+        }
+      ]
+    },
+    {
+      "title": "Weather",
+      "description": "Learn how to describe weather conditions in German with more details and practice sentences.",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "Sonne", "Regen", "Wind", "Schnee", "wolkenlos", "bewölkt", "heiß", "kalt",
+          "neblig", "stürmisch", "regnerisch", "sonnig", "trocken", "warm", "kühl"
+        ],
+        "phrases": [
+          "Es ist sonnig.",
+          "Es regnet heute.",
+          "Heute ist es kalt und windig.",
+          "Morgen wird es warm sein."
+        ]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Weather Vocabulary",
+          "content": "Learn these words:\n\nSonne – sun\nRegen – rain\nWind – wind\nSchnee – snow\nwolkenlos – clear\nbewölkt – cloudy\nheiß – hot\nkalt – cold\nneblig – foggy\nstürmisch – stormy\nregnerisch – rainy\nsonnig – sunny\nwarm – warm\nkühl – cool"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does 'stürmisch' mean?",
+          "options": ["Sunny", "Stormy", "Foggy", "Rainy"],
+          "correct_answer": "Stormy",
+          "explanation": "'stürmisch' means stormy."
+        },
+        {
+          "type": "teaching",
+          "order": 3,
+          "title": "Describing the Weather",
+          "content": "Example sentences:\n\nEs ist sonnig. – It is sunny.\nEs regnet. – It is raining.\nHeute ist es kalt und windig. – Today it is cold and windy.\nMorgen wird es warm sein. – Tomorrow it will be warm."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Translate to German: 'It is foggy.'",
+          "correct_answer": "Es ist neblig.",
+          "hint": "Use 'neblig'",
+          "explanation": "'Es ist neblig' means 'It is foggy.'"
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Practice with Weather Sentences",
+          "content": "Combine words:\n\nEs ist heiß und sonnig. – It is hot and sunny.\nEs ist regnerisch und windig. – It is rainy and windy.\nEs wird morgen kühl sein. – It will be cool tomorrow."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "Translate: 'It is rainy and windy.'",
+          "options": ["Es ist warm und sonnig.", "Es ist regnerisch und windig.", "Es ist kalt und bewölkt.", "Es ist trocken und heiß."],
+          "correct_answer": "Es ist regnerisch und windig.",
+          "explanation": "Correct German translation for 'rainy and windy' is 'regnerisch und windig'."
+        }
+      ]
+    },
+    {
+      "title": "Transportation",
+      "description": "Learn about transportation modes in German and how to talk about traveling.",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": [
+          "Auto", "Fahrrad", "Bus", "Zug", "Flugzeug", "Schiff", "Taxi", "U-Bahn",
+          "Straßenbahn", "Motorrad", "Fähre", "Haltestelle", "Bahnhof", "Flughafen"
+        ],
+        "phrases": [
+          "Ich fahre mit dem Bus.",
+          "Wir fliegen nach Berlin.",
+          "Der Zug kommt um 8 Uhr.",
+          "Nehmen Sie die U-Bahn."
+        ]
+      },
+      "xp_reward": 25,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Transportation Vocabulary",
+          "content": "Modes of transport:\n\nAuto – car\nFahrrad – bicycle\nBus – bus\nZug – train\nFlugzeug – airplane\nSchiff – ship\nTaxi – taxi\nU-Bahn – subway\nStraßenbahn – tram\nMotorrad – motorcycle\nFähre – ferry\n\nPlaces:\nHaltestelle – stop\nBahnhof – train station\nFlughafen – airport"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does 'Flughafen' mean?",
+          "options": ["Train station", "Airport", "Subway", "Bus stop"],
+          "correct_answer": "Airport",
+          "explanation": "'Flughafen' is airport in German."
+        },
+        {
+          "type": "teaching",
+          "order": 3,
+          "title": "Using Transportation in Sentences",
+          "content": "Examples:\n\nIch fahre mit dem Bus. – I go by bus.\nWir fliegen nach Berlin. – We fly to Berlin.\nDer Zug kommt um 8 Uhr. – The train arrives at 8 o'clock.\nNehmen Sie die U-Bahn. – Take the subway."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Translate to German: 'I go by bicycle.'",
+          "correct_answer": "Ich fahre mit dem Fahrrad.",
+          "hint": "Use 'Fahrrad'",
+          "explanation": "'Ich fahre mit dem Fahrrad' means 'I go by bicycle.'"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "Which word means 'train station'?",
+          "options": ["Bahnhof", "Haltestelle", "Fähre", "U-Bahn"],
+          "correct_answer": "Bahnhof",
+          "explanation": "'Bahnhof' means train station."
+        },
+        {
+          "type": "teaching",
+          "order": 6,
+          "title": "Travel Practice",
+          "content": "Create sentences:\n\nIch nehme das Flugzeug nach München. – I take the airplane to Munich.\nWir fahren mit dem Schiff. – We go by ship.\nEr fährt mit dem Motorrad zur Arbeit. – He rides the motorcycle to work."
+        },
+        {
+          "type": "written",
+          "order": 7,
+          "question": "Translate: 'We take the tram.'",
+          "correct_answer": "Wir nehmen die Straßenbahn.",
+          "hint": "Straßenbahn = tram",
+          "explanation": "'Wir nehmen die Straßenbahn.' means 'We take the tram.'"
+        }
+      ]
+    }
+  ]
+}

@@ -18,7 +18,7 @@ supabase: Client = create_client(url, service_key)
 def load_lessons_data():
     """Load lessons data from JSON file"""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    json_path = os.path.join(script_dir, 'german_data1.json')
+    json_path = os.path.join(script_dir, 'spanish_data1.json')
     
     with open(json_path, 'r', encoding='utf-8') as f:
         return json.load(f)
@@ -69,8 +69,8 @@ def main():
     print("Starting lesson creation...\n")
     
     languages = [
-        # ('es', 'Spanish'),
-        ('de', 'German'),
+        ('es', 'Spanish'),
+        # ('de', 'German'),
         # ('zh', 'Chinese')
     ]
     

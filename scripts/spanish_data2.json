@@ -1,0 +1,376 @@
+{
+  "es": [
+    {
+      "title": "Family Members",
+      "description": "Learn the Spanish words for family members, how to describe them, and talk about relationships.",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "madre",
+          "padre",
+          "hermano",
+          "hermana",
+          "abuelo",
+          "abuela",
+          "tío",
+          "tía",
+          "primo",
+          "prima",
+          "hijo",
+          "hija",
+          "esposo",
+          "esposa"
+        ],
+        "phrases": [
+          "Mi madre es amable",
+          "Tengo dos hermanos",
+          "Mi abuelo vive en España",
+          "Ella es mi tía favorita",
+          "Su padre es médico"
+        ]
+      },
+      "xp_reward": 25,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Meet the Family",
+          "content": "👨‍👩‍👧‍👦 Family members in Spanish:\n• madre – mother\n• padre – father\n• hermano – brother\n• hermana – sister\n• abuelo – grandfather\n• abuela – grandmother\n• tío – uncle\n• tía – aunt\n• primo/prima – cousin (m/f)\n• hijo/hija – son/daughter\n• esposo/esposa – husband/wife"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does 'hermana' mean?",
+          "options": ["brother", "mother", "sister", "aunt"],
+          "correct_answer": "sister",
+          "explanation": "'hermana' means sister in Spanish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Which of these means 'grandmother'?",
+          "options": ["abuelo", "abuela", "tía", "madre"],
+          "correct_answer": "abuela",
+          "explanation": "'abuela' means grandmother."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Spanish word for 'father'.",
+          "correct_answer": "padre",
+          "hint": "Starts with 'p'",
+          "explanation": "'padre' means father."
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Describing Family Members",
+          "content": "🗣️ Example sentences:\n• Mi madre es amable – My mother is kind.\n• Mi padre es trabajador – My father is hardworking.\n• Tengo dos hermanos – I have two brothers.\n• Ella es mi tía favorita – She is my favorite aunt."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "How do you say 'My grandfather lives in Spain'?",
+          "options": [
+            "Mi abuelo vive en España",
+            "Mi abuela vive en España",
+            "El abuelo está en casa",
+            "Tengo un abuelo español"
+          ],
+          "correct_answer": "Mi abuelo vive en España",
+          "explanation": "‘Mi abuelo vive en España’ means ‘My grandfather lives in Spain.’"
+        },
+        {
+          "type": "written",
+          "order": 7,
+          "question": "Translate to Spanish: 'My wife is kind.'",
+          "correct_answer": "Mi esposa es amable",
+          "hint": "Starts with 'Mi e...'",
+          "explanation": "'Mi esposa es amable' means 'My wife is kind.'"
+        },
+        {
+          "type": "teaching",
+          "order": 8,
+          "title": "Family Review",
+          "content": "You’ve learned how to name and describe family members. Remember that family words are used without articles when talking generally: e.g., 'Mi madre' (my mother), not 'La mi madre'."
+        }
+      ]
+    },
+    {
+      "title": "Food & Drinks",
+      "description": "Learn how to name common foods, drinks, and express likes and dislikes in Spanish.",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "pan",
+          "agua",
+          "leche",
+          "manzana",
+          "naranja",
+          "pollo",
+          "pescado",
+          "arroz",
+          "queso",
+          "huevo",
+          "ensalada",
+          "carne",
+          "café",
+          "té",
+          "jugo"
+        ],
+        "phrases": [
+          "Me gusta el queso",
+          "No me gusta el pescado",
+          "Quiero una manzana",
+          "Bebo agua todos los días",
+          "El café está caliente"
+        ]
+      },
+      "xp_reward": 25,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Common Foods & Drinks",
+          "content": "🍽️ Vocabulary:\n• pan – bread\n• agua – water\n• leche – milk\n• manzana – apple\n• naranja – orange\n• pollo – chicken\n• pescado – fish\n• arroz – rice\n• queso – cheese\n• huevo – egg\n• carne – meat\n• ensalada – salad\n• café – coffee\n• té – tea\n• jugo – juice"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does 'arroz' mean?",
+          "options": ["cheese", "rice", "fish", "egg"],
+          "correct_answer": "rice",
+          "explanation": "'arroz' means rice."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "Which drink is 'té'?",
+          "options": ["juice", "coffee", "tea", "milk"],
+          "correct_answer": "tea",
+          "explanation": "'té' means tea."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Translate to Spanish: 'I drink milk.'",
+          "correct_answer": "Bebo leche",
+          "hint": "Starts with 'Bebo...'",
+          "explanation": "'Bebo leche' means 'I drink milk.'"
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Likes & Dislikes",
+          "content": "💬 Expressing preferences:\n• Me gusta – I like\n• No me gusta – I don’t like\n\nExamples:\n• Me gusta el queso – I like cheese.\n• No me gusta el pescado – I don’t like fish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "How do you say 'I don’t like fish'?",
+          "options": [
+            "Me gusta el pescado",
+            "No me gusta el pescado",
+            "Me gusta el pollo",
+            "No me gusta el queso"
+          ],
+          "correct_answer": "No me gusta el pescado",
+          "explanation": "‘No me gusta el pescado’ means ‘I don’t like fish.’"
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "At the Table",
+          "content": "🍴 Common sentences:\n• Quiero una manzana – I want an apple.\n• El café está caliente – The coffee is hot.\n• Me gusta la ensalada – I like salad."
+        },
+        {
+          "type": "written",
+          "order": 8,
+          "question": "Translate to Spanish: 'The coffee is hot.'",
+          "correct_answer": "El café está caliente",
+          "hint": "Starts with 'El c...'",
+          "explanation": "'El café está caliente' means 'The coffee is hot.'"
+        }
+      ]
+    },
+    {
+      "title": "Weather & Seasons",
+      "description": "Learn how to describe the weather, the seasons, and express how you feel about them.",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "sol",
+          "lluvia",
+          "viento",
+          "nieve",
+          "calor",
+          "frío",
+          "nublado",
+          "tormenta",
+          "primavera",
+          "verano",
+          "otoño",
+          "invierno"
+        ],
+        "phrases": [
+          "Hace sol",
+          "Está lloviendo",
+          "Hace frío",
+          "Me gusta el verano",
+          "En invierno nieva mucho"
+        ]
+      },
+      "xp_reward": 25,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Weather Vocabulary",
+          "content": "☀️ Common weather words:\n• sol – sun\n• lluvia – rain\n• viento – wind\n• nieve – snow\n• calor – heat\n• frío – cold\n• nublado – cloudy\n• tormenta – storm"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does 'nublado' mean?",
+          "options": ["sunny", "cloudy", "windy", "snowy"],
+          "correct_answer": "cloudy",
+          "explanation": "'nublado' means cloudy."
+        },
+        {
+          "type": "teaching",
+          "order": 3,
+          "title": "Seasons of the Year",
+          "content": "🌤️ The four seasons:\n• primavera – spring\n• verano – summer\n• otoño – autumn/fall\n• invierno – winter\n\nExample: Me gusta el verano – I like summer."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Translate to Spanish: 'It’s snowing.'",
+          "correct_answer": "Está nevando",
+          "hint": "Starts with 'Está n...'",
+          "explanation": "'Está nevando' means 'It’s snowing.'"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "Which season is 'otoño'?",
+          "options": ["spring", "summer", "autumn", "winter"],
+          "correct_answer": "autumn",
+          "explanation": "'otoño' means autumn or fall."
+        },
+        {
+          "type": "teaching",
+          "order": 6,
+          "title": "Talking About Weather",
+          "content": "🌦️ Common expressions:\n• Hace sol – It’s sunny.\n• Hace frío – It’s cold.\n• Está lloviendo – It’s raining.\n• Hay tormenta – There’s a storm."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 7,
+          "question": "How do you say 'It’s cold'?",
+          "options": ["Hace frío", "Hace calor", "Está nevando", "Está nublado"],
+          "correct_answer": "Hace frío",
+          "explanation": "'Hace frío' means 'It’s cold.'"
+        },
+        {
+          "type": "written",
+          "order": 8,
+          "question": "Translate to Spanish: 'It’s sunny.'",
+          "correct_answer": "Hace sol",
+          "hint": "Starts with 'Hace...'",
+          "explanation": "'Hace sol' means 'It’s sunny.'"
+        }
+      ]
+    },
+    {
+      "title": "Time & Dates",
+      "description": "Learn to tell time, talk about days, and use time expressions in Spanish.",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": [
+          "hora",
+          "minuto",
+          "segundo",
+          "hoy",
+          "mañana",
+          "ayer",
+          "semana",
+          "mes",
+          "año",
+          "fecha",
+          "temprano",
+          "tarde",
+          "noche"
+        ],
+        "phrases": [
+          "¿Qué hora es?",
+          "Son las tres",
+          "Es la una",
+          "Hoy es lunes",
+          "Mañana será martes"
+        ]
+      },
+      "xp_reward": 30,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Telling Time",
+          "content": "🕒 How to ask and tell time:\n• ¿Qué hora es? – What time is it?\n• Es la una – It’s one o’clock.\n• Son las tres – It’s three o’clock.\n• Son las ocho y media – It’s eight thirty."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "How do you say 'It’s one o’clock'?",
+          "options": ["Son las una", "Es la una", "Son la una", "La una es"],
+          "correct_answer": "Es la una",
+          "explanation": "'Es la una' is the correct form because 'hora' is singular."
+        },
+        {
+          "type": "written",
+          "order": 3,
+          "question": "Translate to Spanish: 'It’s three o’clock.'",
+          "correct_answer": "Son las tres",
+          "hint": "Starts with 'Son las...'",
+          "explanation": "'Son las tres' means 'It’s three o’clock.'"
+        },
+        {
+          "type": "teaching",
+          "order": 4,
+          "title": "Days and Dates",
+          "content": "📅 Date words:\n• hoy – today\n• mañana – tomorrow\n• ayer – yesterday\n• semana – week\n• mes – month\n• año – year\n\nExample: Hoy es lunes – Today is Monday."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "What does 'mañana' mean?",
+          "options": ["yesterday", "today", "tomorrow", "night"],
+          "correct_answer": "tomorrow",
+          "explanation": "'mañana' means 'tomorrow.'"
+        },
+        {
+          "type": "teaching",
+          "order": 6,
+          "title": "Time Expressions",
+          "content": "🕓 Common expressions:\n• temprano – early\n• tarde – late/afternoon\n• noche – night\n\nExamples:\n• Trabajo por la mañana – I work in the morning.\n• Salgo tarde – I leave late.\n• Buenas noches – Good night."
+        },
+        {
+          "type": "written",
+          "order": 7,
+          "question": "Translate to Spanish: 'Good night.'",
+          "correct_answer": "Buenas noches",
+          "hint": "Starts with 'Buenas...'",
+          "explanation": "'Buenas noches' means 'Good night.'"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "How do you say 'today'?",
+          "options": ["ayer", "mañana", "hoy", "tarde"],
+          "correct_answer": "hoy",
+          "explanation": "'hoy' means 'today' in Spanish."
+        }
+      ]
+    }
+  ]
+}

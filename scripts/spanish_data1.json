@@ -417,6 +417,104 @@
           "content": "Great job! You now know the main colors in Spanish and how to use them in sentences.\n\n🎨 Summary:\n• rojo / roja – red\n• azul – blue\n• verde – green\n• amarillo / amarilla – yellow\n• negro / negra – black\n• blanco / blanca – white\n\n🗣️ Practice:\nDescribe things around you in Spanish:\n- El libro es rojo.\n- La camisa es blanca.\n- El pasto es verde.\n\nKeep practicing — colors are everywhere!"
         }
       ]
+    },
+    {
+    "title": "Days of the Week",
+    "description": "Learn the days of the week in Spanish and how to use them in sentences.",
+    "difficulty": "easy",
+    "content": {
+        "vocabulary": [
+        "lunes",
+        "martes",
+        "miércoles",
+        "jueves",
+        "viernes",
+        "sábado",
+        "domingo"
+        ],
+        "phrases": [
+        "Hoy es lunes",
+        "Mañana es martes",
+        "El domingo voy al parque"
+        ]
+    },
+        "xp_reward": 15,
+        "activities": [
+            {
+            "type": "teaching",
+            "order": 1,
+            "title": "Introduction to Days of the Week",
+            "content": "In Spanish, the days of the week are not capitalized unless they begin a sentence.\n\n🗓️ Days of the Week:\n• lunes – Monday\n• martes – Tuesday\n• miércoles – Wednesday\n• jueves – Thursday\n• viernes – Friday\n• sábado – Saturday\n• domingo – Sunday\n\nNote: All Spanish weekdays (lunes–viernes) end in 'es' except sábado and domingo."
+            },
+            {
+            "type": "multiple_choice",
+            "order": 2,
+            "question": "What is 'Monday' in Spanish?",
+            "options": ["martes", "lunes", "jueves", "domingo"],
+            "correct_answer": "lunes",
+            "explanation": "'lunes' means Monday in Spanish."
+            },
+            {
+            "type": "multiple_choice",
+            "order": 3,
+            "question": "Which of these means 'Friday'?",
+            "options": ["viernes", "miércoles", "sábado", "domingo"],
+            "correct_answer": "viernes",
+            "explanation": "'viernes' means Friday in Spanish."
+            },
+            {
+            "type": "written",
+            "order": 4,
+            "question": "Write the Spanish word for 'Wednesday'.",
+            "correct_answer": "miércoles",
+            "hint": "Starts with m and has an accent",
+            "explanation": "'miércoles' means Wednesday in Spanish."
+            },
+            {
+            "type": "multiple_choice",
+            "order": 5,
+            "question": "What does 'sábado' mean?",
+            "options": ["Saturday", "Sunday", "Thursday", "Tuesday"],
+            "correct_answer": "Saturday",
+            "explanation": "'sábado' means Saturday in Spanish."
+            },
+            {
+            "type": "multiple_choice",
+            "order": 6,
+            "question": "Which day comes after 'jueves'?",
+            "options": ["miércoles", "viernes", "sábado", "domingo"],
+            "correct_answer": "viernes",
+            "explanation": "After Thursday (jueves) comes Friday (viernes)."
+            },
+            {
+            "type": "teaching",
+            "order": 7,
+            "title": "Using Days in Sentences",
+            "content": "Let’s learn how to use days of the week in simple sentences.\n\n🗣️ Examples:\n• Hoy es lunes – Today is Monday.\n• Mañana es martes – Tomorrow is Tuesday.\n• El domingo voy al parque – On Sunday, I go to the park.\n\nTip: In Spanish, you use 'el' before a day to mean 'on' (e.g., 'el lunes' = on Monday)."
+            },
+            {
+            "type": "written",
+            "order": 8,
+            "question": "Translate to Spanish: 'Today is Monday.'",
+            "correct_answer": "Hoy es lunes",
+            "hint": "Starts with 'Hoy es...'",
+            "explanation": "'Hoy es lunes' means 'Today is Monday.'"
+            },
+            {
+            "type": "teaching",
+            "order": 9,
+            "title": "Days of the Week Review",
+            "content": "Excellent! Let’s review what you’ve learned:\n\n✅ Days of the week:\nlunes, martes, miércoles, jueves, viernes, sábado, domingo\n\n✅ Example phrases:\n• Hoy es lunes – Today is Monday\n• Mañana es martes – Tomorrow is Tuesday\n• El domingo voy al parque – On Sunday I go to the park\n\nYou can now recognize and use all the Spanish days of the week in daily conversation!"
+            },
+            {
+            "type": "multiple_choice",
+            "order": 10,
+            "question": "What does 'domingo' mean?",
+            "options": ["Monday", "Sunday", "Friday", "Saturday"],
+            "correct_answer": "Sunday",
+            "explanation": "'domingo' means Sunday in Spanish."
+            }
+        ]
     }
   ]
 }
