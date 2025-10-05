@@ -29,6 +29,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a, button, [role="button"], input[type="submit"], input[type="button"], input, text {
+  cursor: none;
+}
+
 @keyframes gradient {
   0%, 100% {
     background-size: 200% 200%;

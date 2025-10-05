@@ -211,6 +211,29 @@ export default function LessonPage() {
       const score = totalActivities > 0 ? Math.round((correctCount / totalActivities) * 100) : 0;
       console.log('All activities answered. Completing lesson with score:', score);
 
+      // // Display beautiful completion screen
+      // const pageDiv = document.getElementById('page');
+      // if (pageDiv) {
+      //   pageDiv.innerHTML = `
+      //     <div class="text-center py-12 space-y-6 animate-fade-in">
+      //       <div class="text-8xl mb-4 animate-bounce">🎉</div>
+      //       <h2 class="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+      //         Lesson Completed!
+      //       </h2>
+      //       <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 mx-auto max-w-md border-2 border-indigo-200 shadow-lg">
+      //         <p class="text-7xl font-bold text-indigo-600 mb-2">${score}%</p>
+      //         <p class="text-gray-600 text-lg">Your Score</p>
+      //       </div>
+      //       <div class="flex items-center justify-center gap-2 text-gray-500">
+      //         <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-600"></div>
+      //         <p>Redirecting you back to lessons...</p>
+      //       </div>
+      //     </div>
+      //   `;
+      // }
+
+      setTimeout(() => {
+
       // Display beautiful completion screen
       const pageDiv = document.getElementById('page');
       if (pageDiv) {
@@ -231,8 +254,7 @@ export default function LessonPage() {
           </div>
         `;
       }
-
-      setTimeout(() => {
+        
         completeLesson(score);
       }, 2000);
     }

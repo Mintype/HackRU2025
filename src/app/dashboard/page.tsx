@@ -256,7 +256,8 @@ export default function DashboardPage() {
       )}
 
       {/* Navigation */}
-      <nav className="container mx-auto px-6 py-6 backdrop-blur-sm bg-white/80 sticky top-0 z-50 rounded-b-2xl shadow-sm">
+      {!showLanguageModal && (
+        <nav className="container mx-auto px-6 py-6 backdrop-blur-sm bg-white/80 sticky top-0 z-50 rounded-b-2xl shadow-sm">
         <div>
           <div className="flex items-center justify-between">
             <button onClick={() => router.push('/')} className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
@@ -310,6 +311,7 @@ export default function DashboardPage() {
           </div>
         </div>
       </nav>
+      )}
 
       {/* Main Dashboard Content */}
       <div className="container mx-auto px-6 py-12">

@@ -23,6 +23,12 @@ export default function ChatPage() {
   const [initializing, setInitializing] = useState(true);
   const [speakingMessageId, setSpeakingMessageId] = useState<number | null>(null);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingError, setRecordingError] = useState<string | null>(null);
+  const [audioDownloaded, setAudioDownloaded] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
+  const streamRef = useRef<MediaStream | null>(null);
 
   const playMessage = async (text: string, messageId: number) => {
     try {
@@ -140,6 +146,256 @@ export default function ChatPage() {
 
   function scrollToBottom() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  async function startRecording() {
+    try {
+      setRecordingError(null);
+      
+      // Request microphone access
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      streamRef.current = stream;
+      
+      // Create MediaRecorder to record audio
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: 'audio/webm;codecs=opus'
+      });
+      
+      mediaRecorderRef.current = mediaRecorder;
+      audioChunksRef.current = [];
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunksRef.current.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = async () => {
+        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+        
+        // Stop all tracks
+        if (streamRef.current) {
+          streamRef.current.getTracks().forEach(track => track.stop());
+        }
+        
+        // // Download the audio file for testing
+        // downloadAudio(audioBlob);
+        
+        // Send audio for transcription
+        await handleAudioTranscription(audioBlob);
+      };
+
+      mediaRecorder.onerror = (event) => {
+        console.error('MediaRecorder error:', event);
+        setRecordingError('Recording error occurred. Please try again.');
+        setIsRecording(false);
+      };
+
+      mediaRecorder.start();
+      setIsRecording(true);
+      
+    } catch (error: any) {
+      console.error('Error starting recording:', error);
+      
+      if (error.name === 'NotAllowedError') {
+        setRecordingError('Microphone access denied. Please allow microphone access in your browser settings.');
+      } else if (error.name === 'NotFoundError') {
+        setRecordingError('No microphone found. Please connect a microphone and try again.');
+      } else {
+        setRecordingError('Failed to start recording. Please check your microphone and try again.');
+      }
+      
+      setIsRecording(false);
+    }
+  }
+
+  function stopRecording() {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+    }
+  }
+
+  function downloadAudio(audioBlob: Blob) {
+    try {
+      // Create a download link
+      const url = URL.createObjectURL(audioBlob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      
+      // Create filename with timestamp
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      a.download = `voice-recording-${timestamp}.webm`;
+      
+      // Trigger download
+      document.body.appendChild(a);
+      a.click();
+      
+      // Show success notification
+      setAudioDownloaded(true);
+      setTimeout(() => setAudioDownloaded(false), 3000);
+      
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+      
+      console.log('Audio file downloaded successfully');
+    } catch (error) {
+      console.error('Error downloading audio:', error);
+    }
+  }
+
+  async function handleAudioTranscription(audioBlob: Blob) {
+    try {
+      setLoading(true);
+      
+      // Convert audio blob to base64
+      const reader = new FileReader();
+      reader.readAsDataURL(audioBlob);
+      
+      reader.onloadend = async () => {
+        const base64Audio = reader.result as string;
+        const base64Data = base64Audio.split(',')[1];
+        
+        // Send to Gemini API with audio support
+        await sendAudioToGemini(base64Data);
+      };
+      
+      reader.onerror = () => {
+        setRecordingError('Failed to process audio. Please try again.');
+        setLoading(false);
+      };
+      
+    } catch (error) {
+      console.error('Error handling audio transcription:', error);
+      setRecordingError('Failed to process audio. Please try typing instead.');
+      setLoading(false);
+    }
+  }
+
+  async function sendAudioToGemini(base64Audio: string) {
+    try {
+      if (!userProfile) {
+        setLoading(false);
+        return;
+      }
+
+      // Add a placeholder message for user
+      const placeholderMessage: Message = {
+        role: 'user',
+        content: '🎤 Processing voice message...',
+      };
+      setMessages((prev) => [...prev, placeholderMessage]);
+
+      // Use the dedicated audio chat API
+      const response = await fetch('/api/chat-audio', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          audioData: base64Audio,
+          language: userProfile.learning_language,
+          conversationHistory: messages, // Send conversation context
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to process audio');
+      }
+
+      const data = await response.json();
+      
+      // Replace placeholder with actual transcription
+      if (data.transcription) {
+        setMessages((prev) => {
+          const newMessages = [...prev];
+          newMessages[newMessages.length - 1] = {
+            role: 'user',
+            content: data.transcription,
+          };
+          return newMessages;
+        });
+      }
+      
+      // Add assistant's response
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: data.message,
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error: any) {
+      console.error('Error sending audio:', error);
+      
+      // Remove placeholder and show error
+      setMessages((prev) => {
+        const newMessages = prev.slice(0, -1); // Remove placeholder
+        return [
+          ...newMessages,
+          {
+            role: 'assistant',
+            content: `Sorry, I couldn't process your voice message. ${error.message || 'Please try again or use text chat.'}`,
+          },
+        ];
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function sendTranscribedMessage(text: string) {
+    if (!text.trim() || !userProfile) {
+      return;
+    }
+
+    const userMessage: Message = {
+      role: 'user',
+      content: text.trim(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [...messages, userMessage],
+          language: userProfile.learning_language,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: data.message,
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: 'Sorry, I encountered an error. Please try again.',
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function sendMessage(e: React.FormEvent) {
@@ -323,18 +579,66 @@ export default function ChatPage() {
           </button>
 
           <form onSubmit={sendMessage} className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 p-6">
+            {audioDownloaded && (
+              <div className="mb-4 p-3 bg-blue-100 border border-blue-300 rounded-2xl text-blue-700 text-sm flex items-center space-x-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>✓ Audio file downloaded! Check your downloads folder.</span>
+              </div>
+            )}
+            {recordingError && (
+              <div className="mb-4 p-3 bg-red-100 border border-red-300 rounded-2xl text-red-700 text-sm flex items-start space-x-2">
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>{recordingError}</span>
+              </div>
+            )}
+            {isRecording && (
+              <div className="mb-4 p-3 bg-red-100 border border-red-300 rounded-2xl text-red-700 text-sm flex items-center space-x-2">
+                <div className="flex space-x-1">
+                  <div className="w-1 h-4 bg-red-600 rounded-full animate-pulse"></div>
+                  <div className="w-1 h-6 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-1 h-5 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                  <div className="w-1 h-7 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '0.6s' }}></div>
+                </div>
+                <span className="font-semibold">Recording... Click stop when finished</span>
+              </div>
+            )}
             <div className="flex space-x-4">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                disabled={loading}
-                placeholder="Type your message..."
+                disabled={loading || isRecording}
+                placeholder={isRecording ? "🎤 Recording..." : "Type your message or use voice..."}
                 className="flex-1 px-6 py-3 rounded-full border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition disabled:opacity-50"
               />
               <button
+                type="button"
+                onClick={isRecording ? stopRecording : startRecording}
+                disabled={loading}
+                className={`px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl ${
+                  isRecording
+                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white animate-pulse'
+                    : 'bg-gradient-to-r from-green-600 to-green-700 text-white'
+                }`}
+                title={isRecording ? "Stop recording and send" : "Start voice recording"}
+              >
+                {isRecording ? (
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <rect x="6" y="6" width="12" height="12" rx="2" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                )}
+              </button>
+              <button
                 type="submit"
-                disabled={loading || !input.trim()}
+                disabled={loading || !input.trim() || isRecording}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl"
               >
                 Send

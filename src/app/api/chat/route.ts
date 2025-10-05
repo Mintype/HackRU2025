@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
     const languageName = languageNames[language] || language;
 
-    // Create the model
+    // Create the model for text chat
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
 
     // Build the conversation history
