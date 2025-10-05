@@ -32,9 +32,11 @@ export default function ReadingTextPage() {
   const [readingText, setReadingText] = useState<ReadingText | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
+  const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
   const [translation, setTranslation] = useState<string | null>(null);
   const [translationLoading, setTranslationLoading] = useState(false);
   const [wordPosition, setWordPosition] = useState<{ x: number; y: number } | null>(null);
+  const [showInstruction, setShowInstruction] = useState(true);
   const router = useRouter();
   const params = useParams();
   const textId = params.id as string;
@@ -123,21 +125,57 @@ export default function ReadingTextPage() {
     }
   }
 
-  async function handleWordClick(word: string, event: React.MouseEvent) {
+  async function handleWordClick(word: string, index: number, event: React.MouseEvent) {
     // Clean the word (remove punctuation)
     const cleanWord = word.replace(/[。，、！？；：""''（）【】《》…—]/g, '').trim();
     
-    if (!cleanWord || cleanWord === selectedWord) {
+    if (!cleanWord) return;
+
+    // Check if clicking on an already selected word
+    if (selectedIndices.includes(index)) {
+      // Deselect all
       setSelectedWord(null);
+      setSelectedIndices([]);
       setTranslation(null);
       setWordPosition(null);
       return;
     }
 
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
-    setWordPosition({ x: rect.left + rect.width / 2, y: rect.top });
+    let newIndices: number[] = [];
+    let newWord: string = '';
 
-    setSelectedWord(cleanWord);
+    // Check if the clicked word is adjacent to any selected word
+    const isAdjacent = selectedIndices.length > 0 && 
+      (selectedIndices.includes(index - 1) || selectedIndices.includes(index + 1));
+
+    if (isAdjacent) {
+      // Add to selection
+      newIndices = [...selectedIndices, index].sort((a, b) => a - b);
+      
+      // Build the combined word from all selected characters
+      const chars = readingText?.content.split('') || [];
+      newWord = newIndices.map(i => chars[i]).join('').replace(/[。，、！？；：""''（）【】《》…—]/g, '').trim();
+    } else {
+      // Start new selection
+      newIndices = [index];
+      newWord = cleanWord;
+    }
+
+    setSelectedIndices(newIndices);
+    setSelectedWord(newWord);
+
+    // Calculate position (use the last clicked word's position)
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+    const container = document.querySelector('.reading-content-container');
+    const containerRect = container?.getBoundingClientRect();
+    
+    if (containerRect) {
+      setWordPosition({ 
+        x: rect.left - containerRect.left + rect.width / 2, 
+        y: rect.top - containerRect.top - 10
+      });
+    }
+
     setTranslationLoading(true);
 
     try {
@@ -146,7 +184,7 @@ export default function ReadingTextPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          word: cleanWord,
+          word: newWord,
           sourceLang: readingText?.language_code,
           targetLang: 'en'
         })
@@ -330,28 +368,36 @@ export default function ReadingTextPage() {
           </div>
 
           {/* Instruction */}
-          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <p className="text-sm text-blue-800 flex items-start">
-              <svg className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Click on any word to see its translation</span>
-            </p>
-          </div>
+          {showInstruction && (
+            <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl relative">
+              <button
+                onClick={() => setShowInstruction(false)}
+                className="absolute -top-2 -right-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-blue-600 transition-colors shadow-md"
+              >
+                ×
+              </button>
+              <p className="text-sm text-blue-800 flex items-start">
+                <svg className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Click on any word to see its translation. Click adjacent words to build phrases.</span>
+              </p>
+            </div>
+          )}
 
           {/* Reading Content */}
-          <div className="relative">
+          <div className="relative reading-content-container">
             <div className="text-lg md:text-xl leading-relaxed text-gray-800 space-y-4">
               {readingText.content.split('').map((char, index) => {
                 // Check if it's a word character (not punctuation or space)
                 const isWordChar = /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ffa-zA-Z]/.test(char);
                 
                 if (isWordChar) {
-                  const isSelected = selectedWord === char;
+                  const isSelected = selectedIndices.includes(index);
                   return (
                     <span
                       key={index}
-                      onClick={(e) => handleWordClick(char, e)}
+                      onClick={(e) => handleWordClick(char, index, e)}
                       className={`cursor-pointer transition-all duration-150 rounded px-0.5 ${
                         isSelected 
                           ? 'bg-yellow-300 text-purple-900 ring-2 ring-yellow-400 font-semibold' 
@@ -369,7 +415,7 @@ export default function ReadingTextPage() {
             {/* Translation Popup */}
             {selectedWord && wordPosition && (
               <div
-                className="fixed z-50 transform -translate-x-1/2 -translate-y-full mb-2"
+                className="absolute z-50 transform -translate-x-1/2 -translate-y-full mb-2"
                 style={{
                   left: `${wordPosition.x}px`,
                   top: `${wordPosition.y}px`,
@@ -379,6 +425,7 @@ export default function ReadingTextPage() {
                   <button
                     onClick={() => {
                       setSelectedWord(null);
+                      setSelectedIndices([]);
                       setTranslation(null);
                       setWordPosition(null);
                     }}
