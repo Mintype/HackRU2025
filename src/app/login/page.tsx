@@ -232,18 +232,6 @@ export default function LoginPage() {
               </button>
             </p>
           </div>
-
-          {/* Forgot Password */}
-          {isLogin && (
-            <div className="mt-4 text-center">
-              <button
-                type="button"
-                className="text-sm text-gray-600 hover:text-purple-600"
-              >
-                Forgot your password?
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>
