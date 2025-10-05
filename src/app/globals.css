@@ -96,6 +96,14 @@ body {
   .text-shadow-lg {
     text-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
 }
 
 /* Fade in animations */

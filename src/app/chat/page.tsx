@@ -39,22 +39,30 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  // Handle visibility change
+  // Handle visibility change and cleanup on unmount
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.hidden && speakingMessageId !== null) {
+      if (document.hidden) {
         stopAudio();
         setSpeakingMessageId(null);
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    const handleBeforeUnload = () => {
       stopAudio();
     };
-  }, [speakingMessageId]);
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Cleanup function that runs when component unmounts (e.g., when navigating away)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      stopAudio();
+      setSpeakingMessageId(null);
+    };
+  }, []); // Empty dependency array so cleanup runs on unmount
 
   useEffect(() => {
     checkUserAndProfile();
