@@ -28,7 +28,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="container mx-auto px-6 py-20 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent animate-gradient-flow-slow opacity-0-animate animate-fadeInDown">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent animate-gradient-flow-slow opacity-0-animate animate-fadeInDown pb-2 leading-tight">
           Language Learning Machine
         </h1>
         <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto mt-16 leading-relaxed opacity-0-animate animate-fadeInUp delay-300">
