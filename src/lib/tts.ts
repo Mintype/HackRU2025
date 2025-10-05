@@ -50,7 +50,7 @@ export async function playStreamingAudio(text: string, onStart?: () => void, onE
 
     const audioStream = await elevenlabs.textToSpeech.stream('JBFqnCBsd6RMkjVDRZzb', {
       text,
-      modelId: 'eleven_multilingual_v2',
+      modelId: 'eleven_v3',
     });
 
     const reader = audioStream.getReader();
