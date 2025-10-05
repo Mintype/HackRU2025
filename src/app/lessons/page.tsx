@@ -300,9 +300,9 @@ export default function LessonsPage() {
               return (
                 <div
                   key={lesson.id}
-                  className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2"
+                  className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 flex flex-col"
                 >
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     {/* Lesson Number Badge */}
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-2xl font-bold text-indigo-600">
@@ -349,7 +349,7 @@ export default function LessonsPage() {
                     {/* Action Button */}
                     <button
                       onClick={() => startLesson(lesson)}
-                      className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+                      className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors font-medium mt-auto"
                     >
                       {status === 'completed' ? 'Review' : status === 'in_progress' ? 'Continue' : 'Start Lesson'}
                     </button>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter, useParams } from 'next/navigation';
 import { User } from '@supabase/supabase-js';
+import { SourceTextModule } from 'vm';
 
 interface Lesson {
   id: string;
@@ -161,12 +162,56 @@ export default function LessonPage() {
     }
   }
 
+  function checkIfLessonCompleted(p0: number) {
+    console.log('Checking if lesson is completed...');
+
+    let activityCount = lesson?.content?.activities?.length || 0;
+    const answeredCount = Object.keys(correctAnswers).length;
+    console.log(`Answered ${p0} out of ${activityCount} activities.`);
+
+    if (p0 > 0 && p0 >= activityCount) {
+      // All activities answered - calculate score
+      const totalActivities = Object.keys(correctAnswers).length;
+      const correctCount = Object.values(correctAnswers).filter(Boolean).length;
+      const score = totalActivities > 0 ? Math.round((correctCount / totalActivities) * 100) : 0;
+      console.log('All activities answered. Completing lesson with score:', score);
+
+      // Display beautiful completion screen
+      const pageDiv = document.getElementById('page');
+      if (pageDiv) {
+        pageDiv.innerHTML = `
+          <div class="text-center py-12 space-y-6 animate-fade-in">
+            <div class="text-8xl mb-4 animate-bounce">🎉</div>
+            <h2 class="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Lesson Completed!
+            </h2>
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 mx-auto max-w-md border-2 border-indigo-200 shadow-lg">
+              <p class="text-7xl font-bold text-indigo-600 mb-2">${score}%</p>
+              <p class="text-gray-600 text-lg">Your Score</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 text-gray-500">
+              <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-600"></div>
+              <p>Redirecting you back to lessons...</p>
+            </div>
+          </div>
+        `;
+      }
+
+      setTimeout(() => {
+        completeLesson(score);
+      }, 2000);
+    }
+
+  }
+
   function handleMultipleChoice(activityIndex: number, answer: string, correctAnswer: string) {
     const isCorrect = answer === correctAnswer;
     setUserAnswers({ ...userAnswers, [activityIndex]: answer });
     setShowResult({ ...showResult, [activityIndex]: true });
     setCorrectAnswers({ ...correctAnswers, [activityIndex]: isCorrect });
     console.log(`Activity ${activityIndex + 1} completed! Answer: ${isCorrect ? '✓ Correct' : '✗ Incorrect'}`);
+
+    checkIfLessonCompleted(activityIndex + 1);
   }
 
   function handleWrittenAnswer(activityIndex: number, userAnswer: string, correctAnswer: string) {
@@ -177,18 +222,21 @@ export default function LessonPage() {
     setCorrectAnswers(newCorrectAnswers);
     console.log(`Activity ${activityIndex + 1} completed! Answer: ${isCorrect ? '✓ Correct' : '✗ Incorrect'}`);
 
-    const activityCount = lesson?.content?.activities?.length || 0;
+    
+    checkIfLessonCompleted(activityIndex + 1);
 
-    if(activityIndex + 1 >= activityCount) {
-      // All activities completed - calculate score with the updated answers
-      const totalActivities = Object.keys(newCorrectAnswers).length;
-      const correctCount = Object.values(newCorrectAnswers).filter(Boolean).length;
-      const score = totalActivities > 0 ? Math.round((correctCount / totalActivities) * 100) : 0;
+    // const activityCount = lesson?.content?.activities?.length || 0;
+
+    // if(activityIndex + 1 >= activityCount) {
+    //   // All activities completed - calculate score with the updated answers
+    //   const totalActivities = Object.keys(newCorrectAnswers).length;
+    //   const correctCount = Object.values(newCorrectAnswers).filter(Boolean).length;
+    //   const score = totalActivities > 0 ? Math.round((correctCount / totalActivities) * 100) : 0;
       
-      setTimeout(() => {
-        completeLesson(score);
-      }, 2000); // Wait 2 seconds to show completion screen
-    }
+    //   setTimeout(() => {
+    //     completeLesson(score);
+    //   }, 2000); // Wait 2 seconds to show completion screen
+    // }
 
   }
 
@@ -385,7 +433,7 @@ export default function LessonPage() {
                   const isCorrect = correctAnswers[currentActivityIndex];
 
                   return (
-                    <div className="space-y-6">
+                    <div id='page' className="space-y-6">
                       {activity.type === 'teaching' ? (
                         <h2 className="text-2xl font-bold text-gray-800">{activity.title || 'Lesson Content'}</h2>
                       ) : (
@@ -404,10 +452,9 @@ export default function LessonPage() {
                           </div>
                           <button
                             onClick={() => {
-                              setShowResult({ ...showResult, [currentActivityIndex]: true });
                               setCorrectAnswers({ ...correctAnswers, [currentActivityIndex]: true });
                               console.log(`Activity ${currentActivityIndex + 1} completed! (Teaching activity)`);
-                              setTimeout(() => handleNextActivity(), 500);
+                              handleNextActivity();
                             }}
                             className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
                           >
@@ -530,7 +577,7 @@ export default function LessonPage() {
                       )}
 
                       {/* Explanation */}
-                      {hasAnswered && (
+                      {hasAnswered && activity.explanation && currentActivityIndex < lesson.content.activities.length - 1 && (
                         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                           <p className="text-sm text-blue-900">
                             <strong>📚 Explanation:</strong> {activity.explanation}
