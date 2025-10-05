@@ -56,41 +56,60 @@ export async function playStreamingAudio(text: string, onStart?: () => void, onE
     const reader = audioStream.getReader();
     currentAudioContext = new AudioContext();
     
+    // Collect all audio chunks first
+    const audioChunks: Uint8Array[] = [];
+    
     while (isPlaying) {
       const { done, value } = await reader.read();
       if (done) break;
       
       if (value && isPlaying) {
-        // Create a copy of the buffer to ensure it's an ArrayBuffer
-        const buffer = new Uint8Array(value.buffer).buffer as ArrayBuffer;
-        const audioBuffer = await currentAudioContext.decodeAudioData(buffer);
-        const source = currentAudioContext.createBufferSource();
-        source.buffer = audioBuffer;
-        source.connect(currentAudioContext.destination);
-        currentSources.push(source);
-        
-        source.onended = () => {
-          const index = currentSources.indexOf(source);
-          if (index > -1) {
-            currentSources.splice(index, 1);
-          }
-        };
-
-        source.start(0);
-        await new Promise(resolve => source.onended = resolve);
+        audioChunks.push(new Uint8Array(value.buffer));
       }
     }
 
     if (!isPlaying) {
       reader.cancel();
+      onEnd?.();
+      return;
     }
 
-    onEnd?.();
+    // Concatenate all chunks into one buffer
+    const totalLength = audioChunks.reduce((acc, chunk) => acc + chunk.length, 0);
+    const completeAudio = new Uint8Array(totalLength);
+    let offset = 0;
+    for (const chunk of audioChunks) {
+      completeAudio.set(chunk, offset);
+      offset += chunk.length;
+    }
+
+    // Decode and play the complete audio
+    if (isPlaying) {
+      const audioBuffer = await currentAudioContext.decodeAudioData(completeAudio.buffer);
+      const source = currentAudioContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(currentAudioContext.destination);
+      currentSources.push(source);
+      
+      source.onended = () => {
+        const index = currentSources.indexOf(source);
+        if (index > -1) {
+          currentSources.splice(index, 1);
+        }
+        onEnd?.();
+      };
+
+      source.start(0);
+    } else {
+      onEnd?.();
+    }
   } catch (error) {
     console.error('Error playing streaming audio:', error);
     onEnd?.();
     throw error;
   } finally {
-    isPlaying = false;
+    if (currentSources.length === 0) {
+      isPlaying = false;
+    }
   }
 }
