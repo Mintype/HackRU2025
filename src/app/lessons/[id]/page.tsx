@@ -15,7 +15,7 @@ interface Lesson {
   description: string | null;
   difficulty: 'easy' | 'medium' | 'hard';
   xp_reward: number;
-  content: any;
+  content: { activities?: Activity[]; vocabulary?: Array<{ word: string; translation: string }> };
   is_published: boolean;
 }
 
@@ -26,7 +26,7 @@ interface Activity {
   title?: string;
   content?: string;
   options?: string[];
-  correct_answer?: string | any;
+  correct_answer?: string | string[];
   hint?: string;
   explanation?: string;
   pairs?: { spanish: string; english: string }[];
@@ -158,7 +158,8 @@ export default function LessonPage() {
 
       // Add vocabulary words to user's learned words
       if (lesson.content?.vocabulary && Array.isArray(lesson.content.vocabulary)) {
-        await addVocabularyToUserProfile(lesson.content.vocabulary);
+        const vocabularyStrings = lesson.content.vocabulary.map(v => typeof v === 'string' ? v : v.word);
+        await addVocabularyToUserProfile(vocabularyStrings);
       }
 
       // Show completion message and redirect
@@ -201,7 +202,7 @@ export default function LessonPage() {
   function checkIfLessonCompleted(p0: number) {
     console.log('Checking if lesson is completed...');
 
-    let activityCount = lesson?.content?.activities?.length || 0;
+    const activityCount = lesson?.content?.activities?.length || 0;
     const answeredCount = Object.keys(correctAnswers).length;
     console.log(`Answered ${p0} out of ${activityCount} activities.`);
 
@@ -307,7 +308,7 @@ export default function LessonPage() {
     setShowHint(false);
     
     // Check if this was the last activity
-    if (lesson && nextIndex >= lesson.content.activities.length) {
+    if (lesson && lesson.content.activities && nextIndex >= lesson.content.activities.length) {
       // Complete the lesson and redirect - calculate final score
       const totalActivities = Object.keys(correctAnswers).length;
       const correctCount = Object.values(correctAnswers).filter(Boolean).length;
@@ -533,7 +534,7 @@ export default function LessonPage() {
                             return (
                               <button
                                 key={index}
-                                onClick={() => !hasAnswered && handleMultipleChoice(currentActivityIndex, option, activity.correct_answer)}
+                                onClick={() => !hasAnswered && handleMultipleChoice(currentActivityIndex, option, Array.isArray(activity.correct_answer) ? activity.correct_answer[0] : (activity.correct_answer || ''))}
                                 disabled={hasAnswered}
                                 className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
                                   hasAnswered
@@ -582,7 +583,7 @@ export default function LessonPage() {
                           />
                           {!hasAnswered && (
                             <button
-                              onClick={() => handleWrittenAnswer(currentActivityIndex, writtenAnswer, activity.correct_answer)}
+                              onClick={() => handleWrittenAnswer(currentActivityIndex, writtenAnswer, Array.isArray(activity.correct_answer) ? activity.correct_answer[0] : (activity.correct_answer || ''))}
                               disabled={!writtenAnswer.trim()}
                               className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
                             >
@@ -692,7 +693,7 @@ export default function LessonPage() {
             </>
           ) : (
             <div className="text-center py-12">
-              <p className="text-gray-600 mb-4">This lesson doesn't have activities yet.</p>
+              <p className="text-gray-600 mb-4">This lesson doesn&apos;t have activities yet.</p>
               <button
                 onClick={() => router.push('/lessons')}
                 className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700"

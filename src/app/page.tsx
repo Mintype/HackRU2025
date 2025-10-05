@@ -82,7 +82,7 @@ export default function Home() {
             </div>
             <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-800 bg-clip-text text-transparent animate-gradient-flow-fast">AI Grammar Coach</h3>
             <p className="text-gray-700 dark:text-gray-400">
-              Get personalized explanations for complex grammar rules. Understand the 'why' behind the language.
+              Get personalized explanations for complex grammar rules. Understand the &apos;why&apos; behind the language.
             </p>
           </div>
 
@@ -139,7 +139,7 @@ export default function Home() {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-gray-600">Choose Your Language</h3>
             <p className="text-gray-700 dark:text-gray-400">
-              Select from 50+ languages and set your proficiency level. We'll customize your learning path.
+              Select from 50+ languages and set your proficiency level. We&apos;ll customize your learning path.
             </p>
           </div>
           <div className="text-center opacity-0-animate animate-fadeInUp delay-400">
@@ -174,10 +174,10 @@ export default function Home() {
               Language Learning Machine (LLM) is revolutionizing the way people learn languages. We combine cutting-edge AI technology with proven language learning methodologies to create an immersive, personalized, and effective learning experience.
             </p>
             <p className="text-lg text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-              Our mission is to break down language barriers and make fluency accessible to everyone. Whether you're learning for travel, career advancement, or personal enrichment, our AI-powered platform adapts to your learning style and pace.
+              Our mission is to break down language barriers and make fluency accessible to everyone. Whether you&apos;re learning for travel, career advancement, or personal enrichment, our AI-powered platform adapts to your learning style and pace.
             </p>
             <p className="text-lg text-gray-700 dark:text-gray-400 leading-relaxed">
-              Founded by language enthusiasts and AI experts, we believe that learning a new language should be engaging, interactive, and fun. That's why we've built a platform that feels more like a game than a traditional course.
+              Founded by language enthusiasts and AI experts, we believe that learning a new language should be engaging, interactive, and fun. That&apos;s why we&apos;ve built a platform that feels more like a game than a traditional course.
             </p>
           </div>
         </div>

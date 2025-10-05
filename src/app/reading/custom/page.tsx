@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { supabase } from '@/lib/supabase';
 import { User } from '@supabase/supabase-js';
 
@@ -10,7 +10,7 @@ interface UserProfile {
   learning_language: string | null;
 }
 
-export default function CustomReadingPage() {
+function CustomReadingPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [title, setTitle] = useState('');
@@ -319,5 +319,17 @@ export default function CustomReadingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CustomReadingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-600"></div>
+      </div>
+    }>
+      <CustomReadingPageContent />
+    </Suspense>
   );
 }

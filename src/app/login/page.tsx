@@ -68,10 +68,10 @@ export default function LoginPage() {
           });
         }
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       setMessage({
         type: 'error',
-        text: error.message || 'An error occurred. Please try again.',
+        text: error instanceof Error ? error.message : 'An error occurred. Please try again.',
       });
     } finally {
       setLoading(false);

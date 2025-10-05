@@ -117,10 +117,18 @@ export default function DashboardPage() {
         console.error('Error fetching recent activities:', error);
       } else {
         // Transform the data to match our interface
-        const activities = (data || []).map((item: any) => ({
+        const activities = (data || []).map((item: { 
+          id: string;
+          lesson_id: string;
+          status: string;
+          score: number | null;
+          completed_at: string | null;
+          last_accessed_at: string;
+          lesson: unknown;
+        }) => ({
           ...item,
           lesson: Array.isArray(item.lesson) ? item.lesson[0] : item.lesson
-        }));
+        })) as RecentActivity[];
         setRecentActivities(activities);
       }
     } catch (error) {
@@ -433,7 +441,7 @@ export default function DashboardPage() {
               My Vocabulary
             </h3>
             <p className="text-gray-700">
-              Review words you've learned
+              Review words you&apos;ve learned
             </p>
           </button>
 

@@ -70,10 +70,10 @@ Respond to the student's last message naturally as their ${languageName} teacher
     const text = response.text();
 
     return NextResponse.json({ message: text });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error calling Gemini API:', error);
     return NextResponse.json(
-      { error: error.message || 'Failed to generate response' },
+      { error: error instanceof Error ? error.message : 'Failed to generate response' },
       { status: 500 }
     );
   }

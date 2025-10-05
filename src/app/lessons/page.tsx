@@ -13,7 +13,7 @@ interface Lesson {
   description: string | null;
   difficulty: 'easy' | 'medium' | 'hard';
   xp_reward: number;
-  content: any;
+  content: { activities?: Activity[] };
   is_published: boolean;
 }
 
@@ -22,7 +22,7 @@ interface Activity {
   order: number;
   question: string;
   options?: string[];
-  correct_answer: string | any;
+  correct_answer: string | string[];
   hint?: string;
   explanation: string;
   pairs?: { spanish: string; english: string }[];

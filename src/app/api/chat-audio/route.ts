@@ -121,22 +121,22 @@ RESPONSE: [your response in ${languageName}]`;
         success: true
       });
 
-    } catch (audioError: any) {
+    } catch (audioError: unknown) {
       console.error('Error processing audio with Gemini:', audioError);
       
       return NextResponse.json(
         { 
           error: 'Failed to process audio. Please try again or use text chat.',
-          details: audioError.message 
+          details: audioError instanceof Error ? audioError.message : 'Unknown error'
         },
         { status: 500 }
       );
     }
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in audio chat API:', error);
     return NextResponse.json(
-      { error: error.message || 'Failed to process audio message' },
+      { error: error instanceof Error ? error.message : 'Failed to process audio message' },
       { status: 500 }
     );
   }

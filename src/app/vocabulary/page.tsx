@@ -204,7 +204,7 @@ export default function VocabularyPage() {
                 You did it! 🌟
               </p>
               <p className="text-xl text-gray-600">
-                You've reviewed all {vocabulary.length} words!
+                You&apos;ve reviewed all {vocabulary.length} words!
               </p>
             </div>
 
@@ -446,7 +446,7 @@ export default function VocabularyPage() {
                 📚 My Vocabulary
               </h1>
               <p className="text-gray-600">
-                You've learned {vocabulary.length} word{vocabulary.length !== 1 ? 's' : ''}!
+                You&apos;ve learned {vocabulary.length} word{vocabulary.length !== 1 ? 's' : ''}!
               </p>
             </div>
             {vocabulary.length > 0 && (
