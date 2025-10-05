@@ -127,6 +127,8 @@ export default function ReadingTextPage() {
   }
 
   async function handleWordClick(word: string, index: number, event: React.MouseEvent) {
+    const isChinese = readingText?.language_code === 'zh';
+    
     // Clean the word (remove punctuation)
     const cleanWord = word.replace(/[。，、！？；：""''（）【】《》…—]/g, '').trim();
     
@@ -145,21 +147,58 @@ export default function ReadingTextPage() {
     let newIndices: number[] = [];
     let newWord: string = '';
 
-    // Check if the clicked word is adjacent to any selected word
-    const isAdjacent = selectedIndices.length > 0 && 
-      (selectedIndices.includes(index - 1) || selectedIndices.includes(index + 1));
+    if (isChinese) {
+      // For Chinese, keep the character-by-character selection behavior
+      const isAdjacent = selectedIndices.length > 0 && 
+        (selectedIndices.includes(index - 1) || selectedIndices.includes(index + 1));
 
-    if (isAdjacent) {
-      // Add to selection
-      newIndices = [...selectedIndices, index].sort((a, b) => a - b);
-      
-      // Build the combined word from all selected characters
-      const chars = readingText?.content.split('') || [];
-      newWord = newIndices.map(i => chars[i]).join('').replace(/[。，、！？；：""''（）【】《》…—]/g, '').trim();
+      if (isAdjacent) {
+        // Add to selection
+        newIndices = [...selectedIndices, index].sort((a, b) => a - b);
+        
+        // Build the combined word from all selected characters
+        const chars = readingText?.content.split('') || [];
+        newWord = newIndices.map(i => chars[i]).join('').replace(/[。，、！？；：""''（）【】《》…—]/g, '').trim();
+      } else {
+        // Start new selection
+        newIndices = [index];
+        newWord = cleanWord;
+      }
     } else {
-      // Start new selection
-      newIndices = [index];
-      newWord = cleanWord;
+      // For other languages, handle word grouping
+      const tokens = readingText?.content.match(/[a-zA-Z\u00C0-\u00FF\u0100-\u017F]+|\s+|[^a-zA-Z\u00C0-\u00FF\u0100-\u017F\s]+/g) || [];
+      
+      // Find all word indices (excluding spaces and punctuation)
+      const wordIndices = tokens.map((token, idx) => 
+        /^[a-zA-Z\u00C0-\u00FF\u0100-\u017F]+$/.test(token) ? idx : -1
+      ).filter(idx => idx !== -1);
+      
+      // Find the clicked word's position in the word sequence
+      const wordSequenceIndex = wordIndices.indexOf(index);
+      
+      // Check if there are selected word indices
+      const selectedWordIndices = selectedIndices.map(idx => 
+        wordIndices.indexOf(idx)
+      ).filter(idx => idx !== -1);
+      
+      // Check if clicked word is adjacent to any selected word in the sequence
+      const isAdjacent = selectedWordIndices.length > 0 &&
+        selectedWordIndices.some(idx => Math.abs(idx - wordSequenceIndex) === 1);
+      
+      if (isAdjacent) {
+        // Add to selection and keep the group
+        const allIndices = [...selectedIndices, index];
+        newIndices = allIndices.sort((a, b) => a - b);
+        
+        // Get all tokens between the first and last selected index
+        const firstIdx = Math.min(...newIndices);
+        const lastIdx = Math.max(...newIndices);
+        newWord = tokens.slice(firstIdx, lastIdx + 1).join('').trim();
+      } else {
+        // Start new selection, deselecting previous words
+        newIndices = [index];
+        newWord = cleanWord;
+      }
     }
 
     setSelectedIndices(newIndices);
@@ -403,28 +442,42 @@ export default function ReadingTextPage() {
           {/* Reading Content */}
           <div className="relative reading-content-container">
             <div className="text-lg md:text-xl leading-relaxed text-gray-800 space-y-4">
-              {readingText.content.split('').map((char, index) => {
-                // Check if it's a word character (not punctuation or space)
-                const isWordChar = /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ffa-zA-Z]/.test(char);
+              {(() => {
+                const content = readingText?.content || '';
+                const isChinese = readingText?.language_code === 'zh';
                 
-                if (isWordChar) {
+                // Split content based on language
+                const tokens = isChinese
+                  ? content.split('') // Split by characters for Chinese
+                  : content.match(/[a-zA-Z\u00C0-\u00FF\u0100-\u017F]+|\s+|[^a-zA-Z\u00C0-\u00FF\u0100-\u017F\s]+/g) || []; // Match words with accents, spaces, and other characters
+                
+                return tokens.map((token, index) => {
+                  // For Chinese: check if it's a valid character
+                  // For other languages: check if it's a valid word (includes accented characters)
+                  const isValidToken = isChinese
+                    ? /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff]/.test(token)
+                    : /^[a-zA-Z\u00C0-\u00FF\u0100-\u017F]+$/.test(token); // Only match complete words with accents
+
                   const isSelected = selectedIndices.includes(index);
-                  return (
-                    <span
-                      key={index}
-                      onClick={(e) => handleWordClick(char, index, e)}
-                      className={`cursor-pointer transition-all duration-150 rounded px-0.5 ${
-                        isSelected 
-                          ? 'bg-yellow-300 text-purple-900 ring-2 ring-yellow-400 font-semibold' 
-                          : 'hover:bg-yellow-100 hover:text-purple-700'
-                      }`}
-                    >
-                      {char}
-                    </span>
-                  );
-                }
-                return <span key={index}>{char}</span>;
-              })}
+
+                  if (isValidToken) {
+                    return (
+                      <span
+                        key={index}
+                        onClick={(e) => handleWordClick(token, index, e)}
+                        className={`cursor-pointer transition-all duration-150 rounded px-0.5 ${
+                          isSelected 
+                            ? 'bg-yellow-300 text-purple-900 ring-2 ring-yellow-400 font-semibold' 
+                            : 'hover:bg-yellow-100 hover:text-purple-700'
+                        }`}
+                      >
+                        {token}
+                      </span>
+                    );
+                  }
+                  return <span key={index}>{token}</span>;
+                });
+              })()}
             </div>
 
             {/* Translation Popup */}
