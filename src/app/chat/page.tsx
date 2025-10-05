@@ -186,36 +186,36 @@ export default function ChatPage() {
 
   if (initializing) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-600"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 flex flex-col">
       {/* Header */}
-      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-6 py-4">
+      <nav className="container mx-auto px-6 py-6 backdrop-blur-sm bg-white/80 sticky top-0 z-50 rounded-b-2xl shadow-sm">
+        <div>
           <div className="flex items-center justify-between">
             <button
               onClick={() => router.push('/dashboard')}
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
-              <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              <span className="text-lg font-semibold text-gray-700">
                 Back to Dashboard
               </span>
             </button>
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center shadow-lg">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">
                 Practice Chat
               </span>
             </div>
@@ -224,19 +224,19 @@ export default function ChatPage() {
       </nav>
 
       {/* Chat Container */}
-      <div className="flex-1 container mx-auto px-4 py-6 max-w-4xl flex flex-col">
+      <div className="flex-1 container mx-auto px-6 py-12 max-w-4xl flex flex-col">
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto mb-4 space-y-4">
+        <div className="flex-1 overflow-y-auto mb-6 space-y-4">
           {messages.map((message, index) => (
             <div
               key={index}
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] rounded-2xl px-6 py-4 ${
+                className={`max-w-[80%] rounded-3xl px-6 py-4 ${
                   message.role === 'user'
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                    : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl'
+                    : 'bg-white/80 backdrop-blur-sm text-gray-800 shadow-xl border border-gray-100'
                 }`}
               >
                 <div className="flex items-start space-x-2">
@@ -252,7 +252,7 @@ export default function ChatPage() {
                         }
                       }}
                       disabled={speakingMessageId !== null && speakingMessageId !== index}
-                      className="ml-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                      className="ml-2 p-2 hover:bg-gray-100 rounded-full transition-colors"
                     >
                       {speakingMessageId === index ? (
                         <svg className="w-5 h-5 text-purple-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -271,7 +271,7 @@ export default function ChatPage() {
           ))}
           {loading && (
             <div className="flex justify-start">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl px-6 py-4 shadow-lg">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl px-6 py-4 shadow-xl border border-gray-100">
                 <div className="flex space-x-2">
                   <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
@@ -287,10 +287,10 @@ export default function ChatPage() {
         <div className="flex flex-col space-y-4">
           <button
             onClick={() => setAutoPlayEnabled(!autoPlayEnabled)}
-            className={`self-start flex items-center space-x-2 px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
+            className={`self-start flex items-center space-x-2 px-4 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
               autoPlayEnabled
-                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600'
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl'
+                : 'bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-300 shadow-xl'
             }`}
             title={autoPlayEnabled ? 'Disable autoplay' : 'Enable autoplay'}
           >
@@ -314,7 +314,7 @@ export default function ChatPage() {
             </span>
           </button>
 
-          <form onSubmit={sendMessage} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4">
+          <form onSubmit={sendMessage} className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-100 p-6">
             <div className="flex space-x-4">
               <input
                 type="text"
@@ -322,12 +322,12 @@ export default function ChatPage() {
                 onChange={(e) => setInput(e.target.value)}
                 disabled={loading}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition disabled:opacity-50"
+                className="flex-1 px-6 py-3 rounded-full border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-xl"
               >
                 Send
               </button>

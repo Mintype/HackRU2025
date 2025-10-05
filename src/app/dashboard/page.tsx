@@ -18,6 +18,21 @@ interface UserProfile {
   last_activity_date: string | null;
 }
 
+interface RecentActivity {
+  id: string;
+  lesson_id: string;
+  status: string;
+  score: number | null;
+  completed_at: string | null;
+  last_accessed_at: string;
+  lesson: {
+    title: string;
+    lesson_number: number;
+    difficulty: string;
+    xp_reward: number;
+  };
+}
+
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
@@ -25,6 +40,7 @@ export default function DashboardPage() {
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [savingLanguage, setSavingLanguage] = useState(false);
   const [vocabularyCount, setVocabularyCount] = useState(0);
+  const [recentActivities, setRecentActivities] = useState<RecentActivity[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -63,12 +79,51 @@ export default function DashboardPage() {
         }
         // Update streak
         await updateStreak(user.id, profile);
+        // Fetch recent activities
+        await fetchRecentActivities(user.id);
       }
     } catch (error) {
       console.error('Error checking user:', error);
       router.push('/login');
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function fetchRecentActivities(userId: string) {
+    try {
+      const { data, error } = await supabase
+        .from('user_lesson_progress')
+        .select(`
+          id,
+          lesson_id,
+          status,
+          score,
+          completed_at,
+          last_accessed_at,
+          lesson:lessons (
+            title,
+            lesson_number,
+            difficulty,
+            xp_reward
+          )
+        `)
+        .eq('user_id', userId)
+        .order('last_accessed_at', { ascending: false })
+        .limit(5);
+
+      if (error) {
+        console.error('Error fetching recent activities:', error);
+      } else {
+        // Transform the data to match our interface
+        const activities = (data || []).map((item: any) => ({
+          ...item,
+          lesson: Array.isArray(item.lesson) ? item.lesson[0] : item.lesson
+        }));
+        setRecentActivities(activities);
+      }
+    } catch (error) {
+      console.error('Error in fetchRecentActivities:', error);
     }
   }
 
@@ -391,16 +446,97 @@ export default function DashboardPage() {
           <h2 className="text-2xl font-bold text-gray-800 mb-6">
             Recent Activity
           </h2>
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+          {recentActivities.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <p className="text-gray-700 text-lg">
+                No activity yet. Start learning to see your progress here!
+              </p>
             </div>
-            <p className="text-gray-700 text-lg">
-              No activity yet. Start learning to see your progress here!
-            </p>
-          </div>
+          ) : (
+            <div className="space-y-4">
+              {recentActivities.map((activity) => {
+                const getDifficultyColor = (difficulty: string) => {
+                  switch (difficulty) {
+                    case 'easy': return 'bg-green-100 text-green-700';
+                    case 'medium': return 'bg-yellow-100 text-yellow-700';
+                    case 'hard': return 'bg-red-100 text-red-700';
+                    default: return 'bg-gray-100 text-gray-700';
+                  }
+                };
+
+                const getStatusColor = (status: string) => {
+                  switch (status) {
+                    case 'completed': return 'bg-green-500';
+                    case 'in_progress': return 'bg-blue-500';
+                    default: return 'bg-gray-400';
+                  }
+                };
+
+                const getStatusText = (status: string) => {
+                  switch (status) {
+                    case 'completed': return 'Completed';
+                    case 'in_progress': return 'In Progress';
+                    default: return 'Started';
+                  }
+                };
+
+                const timeAgo = (date: string) => {
+                  const now = new Date();
+                  const activityDate = new Date(date);
+                  const diffInMs = now.getTime() - activityDate.getTime();
+                  const diffInMins = Math.floor(diffInMs / 60000);
+                  const diffInHours = Math.floor(diffInMs / 3600000);
+                  const diffInDays = Math.floor(diffInMs / 86400000);
+
+                  if (diffInMins < 60) return `${diffInMins} minute${diffInMins !== 1 ? 's' : ''} ago`;
+                  if (diffInHours < 24) return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+                  if (diffInDays < 7) return `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
+                  return activityDate.toLocaleDateString();
+                };
+
+                return (
+                  <div
+                    key={activity.id}
+                    className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer"
+                    onClick={() => router.push(`/lessons/${activity.lesson_id}`)}
+                  >
+                    <div className="flex items-center space-x-4 flex-1">
+                      <div className={`w-3 h-3 rounded-full ${getStatusColor(activity.status)}`}></div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="font-semibold text-gray-800">
+                            Lesson {activity.lesson?.lesson_number}: {activity.lesson?.title}
+                          </h3>
+                          <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getDifficultyColor(activity.lesson?.difficulty)}`}>
+                            {activity.lesson?.difficulty}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                          <span>{getStatusText(activity.status)}</span>
+                          {activity.score !== null && (
+                            <>
+                              <span>•</span>
+                              <span className="font-medium">Score: {activity.score}%</span>
+                            </>
+                          )}
+                          <span>•</span>
+                          <span>🏆 {activity.lesson?.xp_reward} XP</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-sm text-gray-500 text-right ml-4">
+                      {timeAgo(activity.last_accessed_at)}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>
