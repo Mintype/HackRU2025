@@ -1,0 +1,646 @@
+{
+  "de": [
+    {
+      "title": "Basic Greetings",
+      "description": "Learn how to say hello, goodbye, and introduce yourself in Deutsch",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "Hallo",
+          "Auf Wiedersehen",
+          "Guten Morgen",
+          "Wie geht’s dir?",
+          "Ich heiße"
+        ],
+        "phrases": [
+          "Hallo, wie geht’s dir?",
+          "Freut mich, dich kennenzulernen",
+          "Wie heißt du?"
+        ]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Basic Greetings",
+          "content": "Welcome to your first Deutsch lesson! Let's learn the most essential greetings.\n\n📚 Basic Vocabulary:\n\nHallo – Hello\nThis is the most common greeting in German, used at any time of day.\n\nAuf Wiedersehen – Goodbye\nUse this when parting ways with someone.\n\nGuten Morgen – Good morning\nA polite morning greeting, literally means 'good morning.'\n\nLet's practice these greetings!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does Hallo mean in English?",
+          "options": [
+            "Hello",
+            "Goodbye",
+            "Thank you",
+            "Please"
+          ],
+          "correct_answer": "Hello",
+          "explanation": "Hallo is the most common way to say hello in German. It's used in both formal and informal situations."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does Auf Wiedersehen mean?",
+          "options": [
+            "Hello",
+            "Goodbye",
+            "Please",
+            "Sorry"
+          ],
+          "correct_answer": "Goodbye",
+          "explanation": "Auf Wiedersehen means goodbye. It literally means 'until we see again,' expressing hope to meet again."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "What does Guten Morgen mean?",
+          "options": [
+            "Good morning",
+            "Good afternoon",
+            "Good night",
+            "Hello"
+          ],
+          "correct_answer": "Good morning",
+          "explanation": "Guten Morgen is used to greet someone in the morning. Morgen means morning and gut means good."
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Asking How Someone Is",
+          "content": "Now let's learn how to ask someone how they are doing.\n\nWie geht’s dir? – How are you?\nThis is a standard question in German asking someone’s well‑being.\n\n💡 Common responses:\n• Mir geht’s gut. – I’m fine / Doing well\n• Nicht schlecht. – Not bad\n• Es geht so. – So‑so / Okay\n\nRemember: You can ask “Wie geht’s dir?” in casual contexts."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "How do you ask 'How are you?' in German?",
+          "options": [
+            "Wie geht’s dir?",
+            "Hallo",
+            "Auf Wiedersehen",
+            "Guten Morgen"
+          ],
+          "correct_answer": "Wie geht’s dir?",
+          "explanation": "Wie geht’s dir? is a standard way to ask how someone is in German."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Introducing Yourself",
+          "content": "Let's learn how to introduce yourself in German.\n\nIch heiße … – My name is …\n\nStructure:\nIch = I / me\nheiße = am called / am named\n\nExample:\nIch heiße Maria. – My name is Maria.\nIch heiße Tom. – My name is Tom.\n\nYou can use Ich heiße with any name, German or foreign!"
+        },
+        {
+          "type": "written",
+          "order": 8,
+          "question": "Translate to German: 'My name is…'",
+          "correct_answer": "Ich heiße",
+          "hint": "Starts with Ich",
+          "explanation": "Ich heiße is how you say “My name is…” in German."
+        },
+        {
+          "type": "teaching",
+          "order": 9,
+          "title": "Asking Someone’s Name",
+          "content": "Now you know how to introduce yourself. Let's learn how to ask someone their name.\n\nWie heißt du? – What is your name?\n\nBreakdown:\n• Wie = how / what\n• heißt = are called\n• du = you\n\n💬 Example dialogue:\nA: Hallo! Wie heißt du? – Hello! What’s your name?\nB: Ich heiße Anna. Und du? – My name is Anna. And you?\nA: Ich heiße Paul. Freut mich! – I’m Paul. Nice to meet you!"
+        },
+        {
+          "type": "written",
+          "order": 10,
+          "question": "Write in German: 'What is your name?'",
+          "correct_answer": "Wie heißt du?",
+          "hint": "Use Wie heißt du?",
+          "explanation": "Wie heißt du? is how you ask someone their name in German."
+        },
+        {
+          "type": "teaching",
+          "order": 11,
+          "title": "Putting It All Together",
+          "content": "Great work! Let's review everything you've learned:\n\n✅ Greetings:\n• Hallo – Hello\n• Guten Morgen – Good morning\n• Auf Wiedersehen – Goodbye\n\n✅ Questions:\n• Wie geht’s dir? – How are you?\n• Wie heißt du? – What’s your name?\n\n✅ Introduction:\n• Ich heiße … – My name is …\n\n✅ Bonus phrase:\n• Freut mich, dich kennenzulernen – Nice to meet you\n\nYou now have all the basics to have a polite greeting conversation in German!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "Which phrase means 'Nice to meet you' in German?",
+          "options": [
+            "Freut mich, dich kennenzulernen",
+            "Wie geht’s dir?",
+            "Auf Wiedersehen",
+            "Wie heißt du?"
+          ],
+          "correct_answer": "Freut mich, dich kennenzulernen",
+          "explanation": "Freut mich, dich kennenzulernen literally means “Pleased to meet you” and is commonly used on first meeting."
+        }
+      ]
+    },
+    {
+      "title": "Numbers 1-20",
+      "description": "Learn to count from 1 to 20 in Deutsch",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "eins",
+          "zwei",
+          "drei",
+          "vier",
+          "fünf",
+          "sechs",
+          "sieben",
+          "acht",
+          "neun",
+          "zehn",
+          "elf",
+          "zwölf",
+          "dreizehn",
+          "vierzehn",
+          "fünfzehn",
+          "sechzehn",
+          "siebzehn",
+          "achtzehn",
+          "neunzehn",
+          "zwanzig"
+        ],
+        "exercises": [
+          "Count to 10",
+          "Count to 20",
+          "Practice pronunciation"
+        ]
+      },
+      "xp_reward": 15,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Deutsch Numbers",
+          "content": "Welcome to German numbers! Counting in German is logical once you see the patterns.\n\n🔢 Numbers 1–10:\n1 – eins\n2 – zwei\n3 – drei\n4 – vier\n5 – fünf\n6 – sechs\n7 – sieben\n8 – acht\n9 – neun\n10 – zehn\n\nFun fact: Some numbers change slightly when used in compound numbers (like 'sechzehn')."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What number does 'drei' represent?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correct_answer": "3",
+          "explanation": "'drei' is the German word for 3."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does 'eins' mean in English?",
+          "options": [
+            "Zero",
+            "One",
+            "Two",
+            "Ten"
+          ],
+          "correct_answer": "One",
+          "explanation": "'eins' means one in German."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the German word for the number 5.",
+          "correct_answer": "fünf",
+          "hint": "Has an umlaut ü",
+          "explanation": "'fünf' is the German word for 5."
+        },
+        {
+          "type": "written",
+          "order": 5,
+          "question": "Write the German word for 10.",
+          "correct_answer": "zehn",
+          "hint": "Simple 4 letters",
+          "explanation": "'zehn' means ten in German."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "Which number comes after 'neun'?",
+          "options": [
+            "acht",
+            "zehn",
+            "elf",
+            "sieben"
+          ],
+          "correct_answer": "zehn",
+          "explanation": "After neun (9) comes zehn (10)."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Numbers 11–19: The Pattern",
+          "content": "Here’s where German numbers are clever! 11–19 follow special forms:\n\n11 – elf\n12 – zwölf\n13 – dreizehn\n14 – vierzehn\n15 – fünfzehn\n16 – sechzehn\n17 – siebzehn\n18 – achtzehn\n19 – neunzehn\n\nThey are formed by adding the base number to ‘zehn’ (e.g., drei + zehn = dreizehn)."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "What does 'fünfzehn' mean?",
+          "options": [
+            "5",
+            "10",
+            "15",
+            "50"
+          ],
+          "correct_answer": "15",
+          "explanation": "'fünfzehn' means fifteen in German."
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the German word for 12.",
+          "correct_answer": "zwölf",
+          "hint": "Short word with umlaut",
+          "explanation": "'zwölf' means twelve in German."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 10,
+          "question": "How do you write 18 in German?",
+          "options": [
+            "achtzehn",
+            "achtzig",
+            "neunzehn",
+            "neunzig"
+          ],
+          "correct_answer": "achtzehn",
+          "explanation": "'achtzehn' means eighteen in German – literally 'eight + ten'."
+        },
+        {
+          "type": "teaching",
+          "order": 11,
+          "title": "Number 20 and Beyond",
+          "content": "Now let's learn 20!\n\n20 – zwanzig\n\nPattern for tens:\n30 – dreißig\n40 – vierzig\n50 – fünfzig\n\nFor numbers like 21, 22, you combine:\n21 – einundzwanzig\n22 – zweiundzwanzig\n\nGerman often uses 'und' to connect ones and tens."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does 'zwanzig' mean?",
+          "options": [
+            "2",
+            "10",
+            "12",
+            "20"
+          ],
+          "correct_answer": "20",
+          "explanation": "'zwanzig' is the German word for 20."
+        },
+        {
+          "type": "written",
+          "order": 13,
+          "question": "Write the German word for 17.",
+          "correct_answer": "siebzehn",
+          "hint": "Like sieben + zehn",
+          "explanation": "'siebzehn' means seventeen in German."
+        },
+        {
+          "type": "teaching",
+          "order": 14,
+          "title": "Review: All Numbers 1–20",
+          "content": "Excellent work! Here’s your complete reference:\n\n1–10: eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn\n\n11–19: elf, zwölf, dreizehn, vierzehn, fünfzehn, sechzehn, siebzehn, achtzehn, neunzehn\n\n20: zwanzig\n\n✅ Key patterns:\n• 13–19: base number + zehn\n• 21+: 'einundzwanzig' style\n\nYou now know how to count from 1 to 20 in German!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 15,
+          "question": "Which word represents the number 6?",
+          "options": [
+            "fünf",
+            "sechs",
+            "sieben",
+            "acht"
+          ],
+          "correct_answer": "sechs",
+          "explanation": "'sechs' is the German word for 6."
+        }
+      ]
+    },
+    {
+      "title": "Colors",
+      "description": "Learn the names of common colors in Deutsch",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "rot",
+          "blau",
+          "grün",
+          "gelb",
+          "schwarz",
+          "weiß"
+        ],
+        "phrases": [
+          "Der Himmel ist blau",
+          "Der Apfel ist rot"
+        ]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Colors",
+          "content": "Let's learn the basic colors in German! Many color words in German are simple adjectives.\n\n🎨 Basic colors:\nrot – red\nblau – blue\ngrün – green\ngelb – yellow\nschwarz – black\nweiß – white\n\nTip: Adjectives may change form depending on gender or case (e.g., “der blaue Himmel”)."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "Which color is 'rot'?",
+          "options": [
+            "Red",
+            "Blue",
+            "Green",
+            "Yellow"
+          ],
+          "correct_answer": "Red",
+          "explanation": "'rot' means red in English."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does 'blau' mean?",
+          "options": [
+            "Red",
+            "Blue",
+            "Green",
+            "Black"
+          ],
+          "correct_answer": "Blue",
+          "explanation": "'blau' means blue."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the German word for 'blue'.",
+          "correct_answer": "blau",
+          "hint": "b-l-a-u",
+          "explanation": "'blau' is the German word for blue."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "What does 'gelb' mean?",
+          "options": [
+            "Yellow",
+            "Black",
+            "White",
+            "Green"
+          ],
+          "correct_answer": "Yellow",
+          "explanation": "'gelb' means yellow."
+        },
+        {
+          "type": "written",
+          "order": 6,
+          "question": "Write the German word for 'green'.",
+          "correct_answer": "grün",
+          "hint": "g-r-ü-n",
+          "explanation": "'grün' means green in German."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Black and White",
+          "content": "Let's focus on black and white, two fundamental colors:\n\nschwarz – black\nweiß – white\n\n📝 Examples:\nschwarze Schuhe – black shoes\nweißes Papier – white paper"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "Which color is 'schwarz'?",
+          "options": [
+            "White",
+            "Black",
+            "Gray",
+            "Brown"
+          ],
+          "correct_answer": "Black",
+          "explanation": "'schwarz' means black."
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the German word for 'white'.",
+          "correct_answer": "weiß",
+          "hint": "w-e-i-ß",
+          "explanation": "'weiß' means white."
+        },
+        {
+          "type": "teaching",
+          "order": 10,
+          "title": "Using Colors in Sentences",
+          "content": "Now let's learn how to use colors to describe things!\n\n📝 Pattern: [Object] + is + [Color]\n\nExamples:\nThe sky is blue. → Der Himmel ist blau.\nThe apple is red. → Der Apfel ist rot.\nThe grass is green. → Das Gras ist grün.\n\nNote: Adjectives may adapt (e.g., der blaue Himmel)."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 11,
+          "question": "Complete: 'Der Himmel ist ____.'",
+          "options": [
+            "rot",
+            "blau",
+            "grün",
+            "schwarz"
+          ],
+          "correct_answer": "blau",
+          "explanation": "Der Himmel ist blau means The sky is blue."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does 'Der Apfel ist rot' mean?",
+          "options": [
+            "The apple is red",
+            "The apple is green",
+            "The grass is red",
+            "The sky is red"
+          ],
+          "correct_answer": "The apple is red",
+          "explanation": "Der Apfel ist rot means The apple is red."
+        },
+        {
+          "type": "teaching",
+          "order": 13,
+          "title": "Color Review",
+          "content": "Great job! Let's review all the colors you've learned:\n\n• rot – red\n• blau – blue\n• grün – green\n• gelb – yellow\n• schwarz – black\n• weiß – white\n\n✅ Sentence pattern: Object + is + Color\n\nExample: The flower is yellow → Die Blume ist gelb.\n\nYou now know all six basic colors!"
+        },
+        {
+          "type": "written",
+          "order": 14,
+          "question": "Write the German word for 'red'.",
+          "correct_answer": "rot",
+          "hint": "r-o-t",
+          "explanation": "'rot' means red in German."
+        }
+      ]
+    },
+    {
+      "title": "Family Members",
+      "description": "Learn vocabulary for family and relatives in Deutsch",
+      "difficulty": "medium",
+      "content": {
+        "vocabulary": [
+          "Mutter",
+          "Vater",
+          "älterer Bruder",
+          "ältere Schwester",
+          "jüngerer Bruder",
+          "jüngere Schwester",
+          "Großmutter",
+          "Großvater"
+        ],
+        "phrases": [
+          "These are my family members",
+          "I have two older brothers"
+        ]
+      },
+      "xp_reward": 20,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Family Terms",
+          "content": "Welcome! Let's learn how to talk about family in German. German family terms are often more precise.\n\nParents:\nMutter – mother\nVater – father\n\nUsage:\nmy mother\nmy father\n\nLet's practice these key words!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does Mutter mean?",
+          "options": [
+            "Mother",
+            "Father",
+            "Sister",
+            "Brother"
+          ],
+          "correct_answer": "Mother",
+          "explanation": "Mutter means mother in German."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does Vater mean?",
+          "options": [
+            "Mother",
+            "Father",
+            "Grandfather",
+            "Uncle"
+          ],
+          "correct_answer": "Father",
+          "explanation": "Vater means father in German."
+        },
+        {
+          "type": "teaching",
+          "order": 4,
+          "title": "Siblings – Older Brothers and Sisters",
+          "content": "In German, you distinguish older and younger siblings!\n\nOlder siblings:\nälterer Bruder – older brother\nältere Schwester – older sister\n\nExamples:\nI have one older brother.\nMy older sister is very nice."
+        },
+        {
+          "type": "written",
+          "order": 5,
+          "question": "Write the word for 'older brother'.",
+          "correct_answer": "älterer Bruder",
+          "hint": "älterer + Bruder",
+          "explanation": "‘älterer Bruder’ means older brother."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "What does ältere Schwester mean?",
+          "options": [
+            "Younger sister",
+            "Older sister",
+            "Mother",
+            "Aunt"
+          ],
+          "correct_answer": "Older sister",
+          "explanation": "ältere Schwester means older sister."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Younger Siblings",
+          "content": "Now let's learn the words for younger siblings:\n\njüngerer Bruder – younger brother\njüngere Schwester – younger sister\n\nExamples:\nI have one younger brother.\nMy younger sister is five years old."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "Complete: 'I have two ____.'",
+          "options": [
+            "older brothers",
+            "older sisters",
+            "father",
+            "grandfather"
+          ],
+          "correct_answer": "older brothers",
+          "explanation": "‘I have two older brothers’ corresponds to ‘Ich habe zwei ältere Brüder’ in German."
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the word for 'younger sister'.",
+          "correct_answer": "jüngere Schwester",
+          "hint": "jüngere + Schwester",
+          "explanation": "‘jüngere Schwester’ means younger sister."
+        },
+        {
+          "type": "teaching",
+          "order": 10,
+          "title": "Grandparents",
+          "content": "Let's learn how to say grandmother and grandfather:\n\ngroßmutter – grandmother\ngroßvater – grandfather\n\nUsage:\nmy grandmother\nmy grandfather"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 11,
+          "question": "What does Großmutter mean?",
+          "options": [
+            "Grandmother",
+            "Grandfather",
+            "Sister",
+            "Mother"
+          ],
+          "correct_answer": "Grandmother",
+          "explanation": "Großmutter means grandmother."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does Großvater mean?",
+          "options": [
+            "Father",
+            "Grandfather",
+            "Older brother",
+            "Uncle"
+          ],
+          "correct_answer": "Grandfather",
+          "explanation": "Großvater means grandfather."
+        },
+        {
+          "type": "teaching",
+          "order": 13,
+          "title": "Family Phrases and Review",
+          "content": "Let's learn useful family phrases and review!\n\nThese are my family members.\nI have a big family.\nI love my family.\n\n✅ Complete vocabulary list:\nMutter, Vater, älterer Bruder, ältere Schwester, jüngerer Bruder, jüngere Schwester, Großmutter, Großvater\n\nYou now know all the essential family terms!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 14,
+          "question": "What does 'These are my family members' mean?",
+          "options": [
+            "This is my family",
+            "I love my family",
+            "I have a family",
+            "My family is big"
+          ],
+          "correct_answer": "This is my family",
+          "explanation": "‘These are my family members’ can be translated to German to introduce one’s family."
+        },
+        {
+          "type": "written",
+          "order": 15,
+          "question": "Write the German word for 'grandfather'.",
+          "correct_answer": "Großvater",
+          "hint": "Groß + Vater",
+          "explanation": "‘Großvater’ means grandfather."
+        }
+      ]
+    }
+  ]
+}

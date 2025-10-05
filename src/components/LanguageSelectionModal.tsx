@@ -9,26 +9,19 @@ interface Language {
 }
 
 const LANGUAGES: Language[] = [
-  { code: 'es', name: 'Spanish', flag: '🇪🇸' },
-  { code: 'fr', name: 'French', flag: '🇫🇷' },
-  { code: 'de', name: 'German', flag: '🇩🇪' },
-  { code: 'ja', name: 'Japanese', flag: '🇯🇵' },
   { code: 'zh', name: 'Chinese', flag: '🇨🇳' },
-  { code: 'ko', name: 'Korean', flag: '🇰🇷' },
-  { code: 'it', name: 'Italian', flag: '🇮🇹' },
-  { code: 'pt', name: 'Portuguese', flag: '🇵🇹' },
-  { code: 'ru', name: 'Russian', flag: '🇷🇺' },
-  { code: 'ar', name: 'Arabic', flag: '🇸🇦' },
-  { code: 'hi', name: 'Hindi', flag: '🇮🇳' },
-  { code: 'nl', name: 'Dutch', flag: '🇳🇱' },
+  { code: 'es', name: 'Spanish', flag: '🇪🇸' },
+  { code: 'de', name: 'German', flag: '🇩🇪' },
 ];
 
 interface LanguageSelectionModalProps {
   onSelect: (languageCode: string) => void;
   loading?: boolean;
+  onClose?: () => void;
+  canClose?: boolean;
 }
 
-export default function LanguageSelectionModal({ onSelect, loading = false }: LanguageSelectionModalProps) {
+export default function LanguageSelectionModal({ onSelect, loading = false, onClose, canClose = false }: LanguageSelectionModalProps) {
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
 
   const handleConfirm = () => {
@@ -37,12 +30,32 @@ export default function LanguageSelectionModal({ onSelect, loading = false }: La
     }
   };
 
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (canClose && onClose && e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+    <div 
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      onClick={handleBackdropClick}
+    >
       <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-8">
           {/* Header */}
           <div className="text-center mb-8">
+            {canClose && onClose && (
+              <button
+                onClick={onClose}
+                className="float-right text-gray-400 hover:text-gray-600 transition-colors"
+                disabled={loading}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
             <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <span className="text-4xl">🌍</span>
             </div>

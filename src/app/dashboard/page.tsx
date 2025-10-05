@@ -39,6 +39,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [savingLanguage, setSavingLanguage] = useState(false);
+  const [showLanguageSwitcher, setShowLanguageSwitcher] = useState(false);
   const [vocabularyCount, setVocabularyCount] = useState(0);
   const [recentActivities, setRecentActivities] = useState<RecentActivity[]>([]);
   const router = useRouter();
@@ -220,12 +221,17 @@ export default function DashboardPage() {
       // Refresh profile and fetch vocabulary count
       await checkUser();
       setShowLanguageModal(false);
+      setShowLanguageSwitcher(false);
     } catch (error) {
       console.error('Error setting language:', error);
       alert('Failed to set language. Please try again.');
     } finally {
       setSavingLanguage(false);
     }
+  }
+
+  function handleOpenLanguageSwitcher() {
+    setShowLanguageSwitcher(true);
   }
 
   async function handleLogout() {
@@ -252,11 +258,22 @@ export default function DashboardPage() {
         <LanguageSelectionModal 
           onSelect={handleLanguageSelection}
           loading={savingLanguage}
+          canClose={false}
+        />
+      )}
+
+      {/* Language Switcher Modal */}
+      {showLanguageSwitcher && (
+        <LanguageSelectionModal 
+          onSelect={handleLanguageSelection}
+          loading={savingLanguage}
+          canClose={true}
+          onClose={() => setShowLanguageSwitcher(false)}
         />
       )}
 
       {/* Navigation */}
-      {!showLanguageModal && (
+      {!showLanguageModal && !showLanguageSwitcher && (
         <nav className="container mx-auto px-6 py-6 backdrop-blur-sm bg-white/80 sticky top-0 z-50 rounded-b-2xl shadow-sm">
         <div>
           <div className="flex items-center justify-between">
@@ -267,7 +284,10 @@ export default function DashboardPage() {
             </button>
             <div className="flex items-center space-x-4">
               {userProfile?.learning_language && (
-                <div className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full border border-purple-200">
+                <button 
+                  onClick={handleOpenLanguageSwitcher}
+                  className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full border border-purple-200 hover:shadow-md hover:scale-105 transition-all duration-300"
+                >
                   <span className="text-lg">
                     {userProfile.learning_language === 'es' && '🇪🇸'}
                     {userProfile.learning_language === 'fr' && '🇫🇷'}
@@ -296,7 +316,10 @@ export default function DashboardPage() {
                     {userProfile.learning_language === 'hi' && 'Hindi'}
                     {userProfile.learning_language === 'nl' && 'Dutch'}
                   </span>
-                </div>
+                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
               )}
               <span className="text-gray-900 hidden md:block">
                 {user?.email}

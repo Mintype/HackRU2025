@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase';
 import { useRouter, useParams } from 'next/navigation';
 import { User } from '@supabase/supabase-js';
 import { SourceTextModule } from 'vm';
+import { set } from '@elevenlabs/elevenlabs-js/core/schemas';
 
 interface Lesson {
   id: string;
@@ -254,9 +255,11 @@ export default function LessonPage() {
           </div>
         `;
       }
-        
-        completeLesson(score);
       }, 2000);
+
+      setTimeout(() => {
+        completeLesson(score);
+      }, 3000); // Wait 5 seconds to show completion screen
     }
 
   }

@@ -1,0 +1,422 @@
+{
+  "es": [
+    {
+      "title": "Basic Greetings",
+      "description": "Learn how to say hello, goodbye, and introduce yourself in Spanish",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "Hola",
+          "Adiós",
+          "Buenos días",
+          "¿Cómo estás?",
+          "Me llamo"
+        ],
+        "phrases": [
+          "Hola, ¿cómo estás?",
+          "Mucho gusto",
+          "¿Cómo te llamas?"
+        ]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Basic Greetings",
+          "content": "Welcome to your first Spanish lesson! Let's learn the most essential greetings.\n\n📚 Basic Vocabulary:\n\nHola – Hello\nThis is the most common greeting in Spanish, used at any time of day.\n\nAdiós – Goodbye\nUse this when parting ways with someone.\n\nBuenos días – Good morning\nA polite morning greeting, literally means 'good days.'\n\nLet's practice these greetings!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What does Hola mean in English?",
+          "options": ["Hello", "Goodbye", "Thank you", "Please"],
+          "correct_answer": "Hello",
+          "explanation": "Hola is the most common way to say hello in Spanish. It's used in both formal and informal situations."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does Adiós mean?",
+          "options": ["Hello", "Goodbye", "Please", "Sorry"],
+          "correct_answer": "Goodbye",
+          "explanation": "Adiós means goodbye. It literally expresses parting from someone."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 4,
+          "question": "What does Buenos días mean?",
+          "options": ["Good morning", "Good afternoon", "Good night", "Hello"],
+          "correct_answer": "Good morning",
+          "explanation": "Buenos días is used to greet someone in the morning. Buenos means good, días means days."
+        },
+        {
+          "type": "teaching",
+          "order": 5,
+          "title": "Asking How Someone Is",
+          "content": "Now let's learn how to ask someone how they are doing.\n\n¿Cómo estás? – How are you?\nThis is a standard question in Spanish asking someone’s well-being.\n\n💡 Common responses:\n• Estoy bien. – I’m fine / Doing well\n• No está mal. – Not bad\n• Así así. – So-so / Okay\n\nRemember: You can ask “¿Cómo estás?” in casual contexts."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "How do you ask 'How are you?' in Spanish?",
+          "options": ["¿Cómo estás?", "Hola", "Adiós", "Buenos días"],
+          "correct_answer": "¿Cómo estás?",
+          "explanation": "¿Cómo estás? is a standard way to ask how someone is in Spanish."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Introducing Yourself",
+          "content": "Let's learn how to introduce yourself in Spanish.\n\nMe llamo … – My name is …\n\nStructure:\nMe = myself\nllamo = I am called\n\nExample:\nMe llamo María. – My name is Maria.\nMe llamo Tom. – My name is Tom.\n\nYou can use Me llamo with any name!"
+        },
+        {
+          "type": "written",
+          "order": 8,
+          "question": "Translate to Spanish: 'My name is…'",
+          "correct_answer": "Me llamo",
+          "hint": "Starts with Me",
+          "explanation": "Me llamo is how you say “My name is…” in Spanish."
+        },
+        {
+          "type": "teaching",
+          "order": 9,
+          "title": "Asking Someone’s Name",
+          "content": "Now you know how to introduce yourself. Let's learn how to ask someone their name.\n\n¿Cómo te llamas? – What is your name?\n\nBreakdown:\n• Cómo = how\n• te = yourself\n• llamas = are called\n\n💬 Example dialogue:\nA: ¡Hola! ¿Cómo te llamas? – Hello! What’s your name?\nB: Me llamo Ana. ¿Y tú? – My name is Ana. And you?\nA: Me llamo Paul. ¡Mucho gusto! – I’m Paul. Nice to meet you!"
+        },
+        {
+          "type": "written",
+          "order": 10,
+          "question": "Write in Spanish: 'What is your name?'",
+          "correct_answer": "¿Cómo te llamas?",
+          "hint": "Starts with ¿Cómo",
+          "explanation": "¿Cómo te llamas? is how you ask someone their name in Spanish."
+        },
+        {
+          "type": "teaching",
+          "order": 11,
+          "title": "Putting It All Together",
+          "content": "Great work! Let's review everything you've learned:\n\n✅ Greetings:\n• Hola – Hello\n• Buenos días – Good morning\n• Adiós – Goodbye\n\n✅ Questions:\n• ¿Cómo estás? – How are you?\n• ¿Cómo te llamas? – What’s your name?\n\n✅ Introduction:\n• Me llamo … – My name is …\n\n✅ Bonus phrase:\n• Mucho gusto – Nice to meet you\n\nYou now have all the basics to have a polite greeting conversation in Spanish!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "Which phrase means 'Nice to meet you' in Spanish?",
+          "options": ["Mucho gusto", "¿Cómo estás?", "Adiós", "¿Cómo te llamas?"],
+          "correct_answer": "Mucho gusto",
+          "explanation": "Mucho gusto literally means “Much pleasure” and is commonly used when meeting someone for the first time."
+        }
+      ]
+    },
+    {
+      "title": "Numbers 1-20",
+      "description": "Learn to count from 1 to 20 in Spanish",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": [
+          "uno",
+          "dos",
+          "tres",
+          "cuatro",
+          "cinco",
+          "seis",
+          "siete",
+          "ocho",
+          "nueve",
+          "diez",
+          "once",
+          "doce",
+          "trece",
+          "catorce",
+          "quince",
+          "dieciséis",
+          "diecisiete",
+          "dieciocho",
+          "diecinueve",
+          "veinte"
+        ],
+        "exercises": ["Count to 10", "Count to 20", "Practice pronunciation"]
+      },
+      "xp_reward": 15,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Spanish Numbers",
+          "content": "Welcome to Spanish numbers! Counting in Spanish is easy and rhythmic once you learn the pattern.\n\n🔢 Numbers 1–10:\n1 – uno\n2 – dos\n3 – tres\n4 – cuatro\n5 – cinco\n6 – seis\n7 – siete\n8 – ocho\n9 – nueve\n10 – diez\n\nLet’s get counting!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "What number does 'tres' represent?",
+          "options": ["2", "3", "4", "5"],
+          "correct_answer": "3",
+          "explanation": "'tres' is the Spanish word for 3."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does 'uno' mean in English?",
+          "options": ["Zero", "One", "Two", "Ten"],
+          "correct_answer": "One",
+          "explanation": "'uno' means one in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Spanish word for the number 5.",
+          "correct_answer": "cinco",
+          "hint": "Starts with c",
+          "explanation": "'cinco' is the Spanish word for 5."
+        },
+        {
+          "type": "written",
+          "order": 5,
+          "question": "Write the Spanish word for 10.",
+          "correct_answer": "diez",
+          "hint": "4 letters, starts with d",
+          "explanation": "'diez' means ten in Spanish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 6,
+          "question": "Which number comes after 'nueve'?",
+          "options": ["ocho", "diez", "once", "siete"],
+          "correct_answer": "diez",
+          "explanation": "After nueve (9) comes diez (10)."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Numbers 11–19: The Pattern",
+          "content": "Spanish numbers 11–19 mostly start with 'dieci-' after 15:\n\n11 – once\n12 – doce\n13 – trece\n14 – catorce\n15 – quince\n16 – dieciséis\n17 – diecisiete\n18 – dieciocho\n19 – diecinueve\n\nNotice how 'dieci' means 'ten plus' (from diez)."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "What does 'quince' mean?",
+          "options": ["5", "10", "15", "50"],
+          "correct_answer": "15",
+          "explanation": "'quince' means fifteen in Spanish."
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the Spanish word for 12.",
+          "correct_answer": "doce",
+          "hint": "4 letters",
+          "explanation": "'doce' means twelve in Spanish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 10,
+          "question": "How do you write 18 in Spanish?",
+          "options": ["dieciocho", "dieciséis", "diecinueve", "veinte"],
+          "correct_answer": "dieciocho",
+          "explanation": "'dieciocho' means eighteen in Spanish – literally 'ten and eight.'"
+        },
+        {
+          "type": "teaching",
+          "order": 11,
+          "title": "Number 20 and Beyond",
+          "content": "Now let's learn 20!\n\n20 – veinte\n\nPattern for tens:\n30 – treinta\n40 – cuarenta\n50 – cincuenta\n\nFor numbers like 21, 22, you combine:\n21 – veintiuno\n22 – veintidós\n\nSpanish joins the words together for numbers up to 29."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does 'veinte' mean?",
+          "options": ["2", "10", "12", "20"],
+          "correct_answer": "20",
+          "explanation": "'veinte' is the Spanish word for 20."
+        },
+        {
+          "type": "written",
+          "order": 13,
+          "question": "Write the Spanish word for 17.",
+          "correct_answer": "diecisiete",
+          "hint": "Starts with dieci-",
+          "explanation": "'diecisiete' means seventeen in Spanish."
+        },
+        {
+          "type": "teaching",
+          "order": 14,
+          "title": "Review: All Numbers 1–20",
+          "content": "Excellent work! Here’s your complete reference:\n\n1–10: uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez\n\n11–19: once, doce, trece, catorce, quince, dieciséis, diecisiete, dieciocho, diecinueve\n\n20: veinte\n\n✅ Key patterns:\n• 16–19: 'dieci' + base number\n• 21–29: 'veinti' + number\n\nYou now know how to count from 1 to 20 in Spanish!"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 15,
+          "question": "Which word represents the number 6?",
+          "options": ["cinco", "seis", "siete", "ocho"],
+          "correct_answer": "seis",
+          "explanation": "'seis' is the Spanish word for 6."
+        }
+      ]
+    },
+    {
+      "title": "Colors",
+      "description": "Learn the names of common colors in Spanish",
+      "difficulty": "easy",
+      "content": {
+        "vocabulary": ["rojo", "azul", "verde", "amarillo", "negro", "blanco"],
+        "phrases": ["El cielo es azul", "La manzana es roja"]
+      },
+      "xp_reward": 10,
+      "activities": [
+        {
+          "type": "teaching",
+          "order": 1,
+          "title": "Introduction to Colors",
+          "content": "Let's learn the basic colors in Spanish! Many color words are simple adjectives.\n\n🎨 Basic colors:\nrojo – red\nazul – blue\nverde – green\namarillo – yellow\nnegro – black\nblanco – white"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 2,
+          "question": "Which color is 'rojo'?",
+          "options": ["Red", "Blue", "Green", "Yellow"],
+          "correct_answer": "Red",
+          "explanation": "'rojo' means red in English."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 3,
+          "question": "What does 'azul' mean?",
+          "options": ["Red", "Blue", "Green", "Black"],
+          "correct_answer": "Blue",
+          "explanation": "'azul' means blue."
+        },
+        {
+          "type": "written",
+          "order": 4,
+          "question": "Write the Spanish word for 'blue'.",
+          "correct_answer": "azul",
+          "hint": "a-z-u-l",
+          "explanation": "'azul' is the Spanish word for blue."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 5,
+          "question": "What does 'amarillo' mean?",
+          "options": ["Yellow", "Black", "White", "Green"],
+          "correct_answer": "Yellow",
+          "explanation": "'amarillo' means yellow."
+        },
+        {
+          "type": "written",
+          "order": 6,
+          "question": "Write the Spanish word for 'green'.",
+          "correct_answer": "verde",
+          "hint": "v-e-r-d-e",
+          "explanation": "'verde' means green in Spanish."
+        },
+        {
+          "type": "teaching",
+          "order": 7,
+          "title": "Black and White",
+          "content": "Let's focus on black and white, two essential colors:\n\nnegro – black\nblanco – white\n\n📝 Examples:\nZapatos negros – black shoes\nPapel blanco – white paper"
+        },
+        {
+          "type": "multiple_choice",
+          "order": 8,
+          "question": "Which color is 'negro'?",
+          "options": ["White", "Black", "Gray", "Brown"],
+          "correct_answer": "Black",
+          "explanation": "'negro' means black."
+        },
+        {
+          "type": "written",
+          "order": 9,
+          "question": "Write the Spanish word for 'white'.",
+          "correct_answer": "blanco",
+          "hint": "b-l-a-n-c-o",
+          "explanation": "'blanco' means white."
+        },
+        {
+          "type": "teaching",
+          "order": 10,
+          "title": "Using Colors in Sentences",
+          "content": "Now let's learn how to use colors to describe things!\n\n📝 Pattern: [Object] + is + [Color]\n\nExamples:\nThe sky is blue. → El cielo es azul.\nThe apple is red. → La manzana es roja.\nThe grass is green. → El césped es verde."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 11,
+          "question": "Complete: 'El cielo es ____.'",
+          "options": ["rojo", "azul", "verde", "negro"],
+          "correct_answer": "azul",
+          "explanation": "El cielo es azul means The sky is blue."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 12,
+          "question": "What does 'La manzana es roja' mean?",
+          "options": ["The apple is red", "The apple is green", "The grass is red", "The sky is red"],
+          "correct_answer": "The apple is red",
+          "explanation": "La manzana es roja means The apple is red."
+        },
+        {
+          "type": "teaching",
+          "order": 13,
+          "title": "Color Review",
+          "content": "Great job! Let's review all the colors you've learned:\n\n• rojo – red\n• azul – blue\n• verde – green\n• amarillo – yellow\n• negro – black\n• blanco – white\n\n✅ Sentence pattern: Object + es + Color\n\nExample: The flower is yellow → La flor es amarilla."
+        },
+        {
+          "type": "written",
+          "order": 14,
+          "question": "Write the Spanish word for 'red'.",
+          "correct_answer": "rojo",
+          "hint": "r-o-j-o",
+          "explanation": "'rojo' means red in Spanish."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 15,
+          "question": "What does 'El cielo es azul' mean?",
+          "options": [
+            "The sky is blue",
+            "The apple is red",
+            "The grass is green",
+            "The flower is yellow"
+          ],
+          "correct_answer": "The sky is blue",
+          "explanation": "'El cielo es azul' means 'The sky is blue.' It’s a simple descriptive sentence using the color azul (blue)."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 16,
+          "question": "Which color means 'green' in Spanish?",
+          "options": ["verde", "rojo", "blanco", "amarillo"],
+          "correct_answer": "verde",
+          "explanation": "'verde' is the Spanish word for 'green.'"
+        },
+        {
+          "type": "teaching",
+          "order": 17,
+          "title": "Color Gender Agreement",
+          "content": "Colors in Spanish change slightly depending on the gender of the noun they describe.\n\n🎨 Example:\nLa manzana es roja. – The apple is red (feminine)\nEl coche es rojo. – The car is red (masculine)\n\nNotice how 'roja' ends with 'a' for feminine nouns and 'rojo' with 'o' for masculine ones.\n\nNot all colors change — azul, verde, gris stay the same for both genders."
+        },
+        {
+          "type": "multiple_choice",
+          "order": 18,
+          "question": "Which version of 'red' is correct for a feminine noun?",
+          "options": ["rojo", "roja", "rojes", "rojus"],
+          "correct_answer": "roja",
+          "explanation": "In Spanish, adjectives like colors agree in gender. 'Roja' is the feminine form of 'rojo.'"
+        },
+        {
+          "type": "written",
+          "order": 19,
+          "question": "Translate to Spanish: 'The apple is red.'",
+          "correct_answer": "La manzana es roja",
+          "hint": "Starts with La manzana...",
+          "explanation": "'La manzana es roja' literally means 'The apple is red.'"
+        },
+        {
+          "type": "teaching",
+          "order": 20,
+          "title": "Color Summary and Practice",
+          "content": "Great job! You now know the main colors in Spanish and how to use them in sentences.\n\n🎨 Summary:\n• rojo / roja – red\n• azul – blue\n• verde – green\n• amarillo / amarilla – yellow\n• negro / negra – black\n• blanco / blanca – white\n\n🗣️ Practice:\nDescribe things around you in Spanish:\n- El libro es rojo.\n- La camisa es blanca.\n- El pasto es verde.\n\nKeep practicing — colors are everywhere!"
+        }
+      ]
+    }
+  ]
+}
