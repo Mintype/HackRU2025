@@ -24,6 +24,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [savingLanguage, setSavingLanguage] = useState(false);
+  const [vocabularyCount, setVocabularyCount] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -56,6 +57,9 @@ export default function DashboardPage() {
         // Check if user has selected a language
         if (!profile.learning_language) {
           setShowLanguageModal(true);
+        } else {
+          // Fetch vocabulary count for the user's learning language
+          await fetchVocabularyCount(user.id, profile.learning_language);
         }
         // Update streak
         await updateStreak(user.id, profile);
@@ -65,6 +69,24 @@ export default function DashboardPage() {
       router.push('/login');
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function fetchVocabularyCount(userId: string, languageCode: string) {
+    try {
+      const { count, error } = await supabase
+        .from('user_vocabulary')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId)
+        .eq('language_code', languageCode);
+
+      if (error) {
+        console.error('Error fetching vocabulary count:', error);
+      } else {
+        setVocabularyCount(count || 0);
+      }
+    } catch (error) {
+      console.error('Error in fetchVocabularyCount:', error);
     }
   }
 
@@ -140,7 +162,7 @@ export default function DashboardPage() {
 
       if (error) throw error;
 
-      // Refresh profile
+      // Refresh profile and fetch vocabulary count
       await checkUser();
       setShowLanguageModal(false);
     } catch (error) {
@@ -287,7 +309,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-800">{userProfile?.words_learned || 0}</p>
+            <p className="text-3xl font-bold text-gray-800">{vocabularyCount}</p>
           </div>
 
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl border border-gray-100 p-6 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2">
@@ -306,7 +328,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <button onClick={() => router.push('/lessons')} className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl border border-gray-100 p-8 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 text-left group">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,6 +340,20 @@ export default function DashboardPage() {
             </h3>
             <p className="text-gray-700">
               Begin learning with interactive lessons
+            </p>
+          </button>
+
+          <button onClick={() => router.push('/vocabulary')} className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl border border-gray-100 p-8 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 text-left group">
+            <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">
+              My Vocabulary
+            </h3>
+            <p className="text-gray-700">
+              Review words you've learned
             </p>
           </button>
 

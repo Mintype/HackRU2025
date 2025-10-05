@@ -131,9 +131,10 @@ export default function LessonPage() {
   }
 
   async function completeLesson(score: number) {
-    if (!user || !lesson) return;
+    if (!user || !lesson || !userProfile) return;
 
     try {
+      // Update lesson progress
       const { error } = await supabase
         .from('user_lesson_progress')
         .upsert({
@@ -154,11 +155,45 @@ export default function LessonPage() {
 
       console.log(`🎉 Lesson "${lesson.title}" completed with score: ${score}%`);
 
+      // Add vocabulary words to user's learned words
+      if (lesson.content?.vocabulary && Array.isArray(lesson.content.vocabulary)) {
+        await addVocabularyToUserProfile(lesson.content.vocabulary);
+      }
+
       // Show completion message and redirect
       // alert('Lesson completed!');
       router.push('/lessons');
     } catch (error) {
       console.error('Error completing lesson:', error);
+    }
+  }
+
+  async function addVocabularyToUserProfile(vocabulary: string[]) {
+    if (!user || !userProfile?.learning_language) return;
+
+    try {
+      // Prepare vocabulary entries
+      const vocabularyEntries = vocabulary.map(word => ({
+        user_id: user.id,
+        word: word,
+        language_code: userProfile.learning_language,
+      }));
+
+      // Insert vocabulary words (will ignore duplicates due to UNIQUE constraint)
+      const { error } = await supabase
+        .from('user_vocabulary')
+        .upsert(vocabularyEntries, {
+          onConflict: 'user_id,word,language_code',
+          ignoreDuplicates: false, // This will increment times_reviewed for existing words
+        });
+
+      if (error) {
+        console.error('Error adding vocabulary:', error);
+      } else {
+        console.log(`📚 Added ${vocabulary.length} words to vocabulary`);
+      }
+    } catch (error) {
+      console.error('Error in addVocabularyToUserProfile:', error);
     }
   }
 
